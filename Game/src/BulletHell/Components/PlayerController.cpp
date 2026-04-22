@@ -15,6 +15,11 @@ namespace bulletHell
     void PlayerController::Start()
     {
         LoadConfig();
+
+        lives = startingLives;
+        dead = false;
+        invulnerabilityTimer = 0.0f;
+        shootTimer = 0.0f;
     }
 
     void PlayerController::Update(float _delta_time)
@@ -84,9 +89,10 @@ namespace bulletHell
         ImGui::Separator();
 
         ImGui::Text("Damage / Survival");
-        ImGui::Text("Lives: %d", lives);
+        ImGui::Text("Lives: %d / %d", lives, startingLives);
         ImGui::Text("Focus Mode: %s", focusMode ? "ON" : "OFF");
         ImGui::Text("Invulnerability: %.2f", invulnerabilityTimer);
+        changed |= ImGui::DragInt("Starting Lives", &startingLives, 1.0f, 1, 20);
         changed |= ImGui::DragFloat("Invulnerability Duration", &invulnerabilityDuration, 0.01f, 0.05f, 5.0f);
 
         if (ImGui::Button("Save Config"))
@@ -353,7 +359,7 @@ namespace bulletHell
         RectangleShapeRenderer* renderer = hitboxObject->GetComponent<RectangleShapeRenderer>();
         if (renderer != nullptr)
         {
-            renderer->SetSize({ hitboxVisualSize, hitboxVisualSize });
+            renderer->SetSize(Maths::Vector2f(hitboxVisualSize, hitboxVisualSize));
         }
     }
 
@@ -379,7 +385,7 @@ namespace bulletHell
         file << rightBulletOffset.x << ' ' << rightBulletOffset.y << '\n';
 
         file << hitRadius << '\n';
-        file << lives << '\n';
+        file << startingLives << '\n';
         file << invulnerabilityDuration << '\n';
         file << hitboxVisualSize << '\n';
 
@@ -392,6 +398,7 @@ namespace bulletHell
         std::ifstream file("Assets\\BulletHell\\bulletHellPlayerConfig.txt");
         if (!file.is_open())
         {
+            startingLives = 10;
             return;
         }
 
@@ -407,7 +414,7 @@ namespace bulletHell
         file >> rightBulletOffset.x >> rightBulletOffset.y;
 
         file >> hitRadius;
-        file >> lives;
+        file >> startingLives;
         file >> invulnerabilityDuration;
         file >> hitboxVisualSize;
 
@@ -416,5 +423,10 @@ namespace bulletHell
         autoTargetInFocus = (autoTarget != 0);
 
         file >> autoTargetStrength;
+
+        if (startingLives < 1)
+        {
+            startingLives = 1;
+        }
     }
 }

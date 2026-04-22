@@ -1,43 +1,77 @@
 #include "BulletHell/UI/PlayerHUDComponent.h"
 
-#include "imgui.h"
-
-#include "BulletHell/BulletHellDebug.h"
+#include "Components/RectangleShapeRenderer.h"
 #include "BulletHell/Components/PlayerController.h"
 
 namespace bulletHell
 {
-    void PlayerHUDComponent::OnGUI()
+    void PlayerHUDComponent::Start()
     {
-        if (!g_showDebugUI)
+        if (player != nullptr)
         {
-            return;
+            maxLives = player->GetLives();
         }
 
-        if (player == nullptr)
-        {
-            return;
-        }
+        RefreshLives();
+    }
 
-        if (!ImGui::Begin("Player HUD"))
-        {
-            ImGui::End();
-            return;
-        }
-
-        ImGui::Text("Lives: %d", player->GetLives());
-
-        if (player->IsDead())
-        {
-            ImGui::Separator();
-            ImGui::Text("GAME OVER");
-        }
-
-        ImGui::End();
+    void PlayerHUDComponent::Update(float _delta_time)
+    {
+        (void)_delta_time;
+        RefreshLives();
     }
 
     void PlayerHUDComponent::SetPlayer(PlayerController* _player)
     {
         player = _player;
+
+        if (player != nullptr)
+        {
+            maxLives = player->GetLives();
+        }
+    }
+
+    void PlayerHUDComponent::AddLifePip(GameObject* _lifePip)
+    {
+        if (_lifePip == nullptr)
+        {
+            return;
+        }
+
+        lifePips.push_back(_lifePip);
+    }
+
+    void PlayerHUDComponent::RefreshLives()
+    {
+        if (player == nullptr)
+        {
+            return;
+        }
+
+        const int currentLives = player->GetLives();
+
+        for (int i = 0; i < static_cast<int>(lifePips.size()); ++i)
+        {
+            GameObject* pipObject = lifePips[i];
+            if (pipObject == nullptr)
+            {
+                continue;
+            }
+
+            RectangleShapeRenderer* renderer = pipObject->GetComponent<RectangleShapeRenderer>();
+            if (renderer == nullptr)
+            {
+                continue;
+            }
+
+            if (i < currentLives)
+            {
+                renderer->SetColor(sf::Color(80, 255, 120));
+            }
+            else
+            {
+                renderer->SetColor(sf::Color(70, 70, 70));
+            }
+        }
     }
 }

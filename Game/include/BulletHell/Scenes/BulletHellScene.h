@@ -15,6 +15,7 @@ namespace bulletHell
         BulletHellScene();
 
     private:
+        void CreateBackground();
         void CreatePlayer();
         void CreatePlayerBulletPool();
         void CreateEnemyBulletPool();
@@ -28,6 +29,7 @@ namespace bulletHell
         std::vector<GameObject*> playerBullets;
         std::vector<GameObject*> enemyBullets;
 
+        Texture* backgroundTexture = nullptr;
         Texture* playerTexture = nullptr;
         Texture* bossTexture = nullptr;
         Texture* bulletTexture = nullptr;

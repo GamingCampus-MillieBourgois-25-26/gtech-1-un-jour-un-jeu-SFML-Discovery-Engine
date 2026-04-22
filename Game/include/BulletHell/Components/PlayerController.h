@@ -54,6 +54,8 @@ namespace bulletHell
         Maths::Vector2f rightBulletOffset = Maths::Vector2f(19.0f, 20.0f);
 
         float hitRadius = 10.0f;
+
+        int startingLives = 10;
         int lives = 10;
 
         float invulnerabilityDuration = 1.0f;

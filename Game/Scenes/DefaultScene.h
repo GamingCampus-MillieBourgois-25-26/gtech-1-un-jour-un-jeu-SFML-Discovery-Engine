@@ -18,10 +18,11 @@ public:
 		GameObject* player = CreateDummyGameObject("Player", 200.f, sf::Color::Red);
 		player->CreateComponent<Player>();
 
-		GameObject* enemy = CreateDummyGameObject("Enemy", 400.f, sf::Color::Blue);
+		GameObject* enemy = CreateDummyGameObject("Enemy", 900.f, sf::Color::Blue);
 		enemy->CreateComponent<EnnemieMouve>();
+		enemy->SetPosition(Maths::Vector2f(900.f, 0.f));
 
-		GameObject* enemy2 = CreateDummyGameObject("Enemy2", 500.f, sf::Color::Green);
+		GameObject* enemy2 = CreateDummyGameObject("Enemy2", -1.f, sf::Color::Green);
 		enemy2->CreateComponent<EnnemieMouve>();
 
 		/*AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
@@ -36,8 +37,8 @@ public:
 		game_object->SetPosition(Maths::Vector2f(_position, _position));
 
 		SquareCollider* square_collider = game_object->CreateComponent<SquareCollider>();
-		square_collider->SetWidth(0.f);
-		square_collider->SetHeight(0.f);
+		square_collider->SetWidth(20.f);
+		square_collider->SetHeight(20.f);
 
 		RectangleShapeRenderer* shape_renderer = game_object->CreateComponent<RectangleShapeRenderer>();
 		shape_renderer->SetColor(_color);

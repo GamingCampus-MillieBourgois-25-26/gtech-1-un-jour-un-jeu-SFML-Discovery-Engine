@@ -10,7 +10,7 @@ void WindowModule::Awake()
 {
     Module::Awake();
 
-    window = new sf::RenderWindow(sf::VideoMode({1000, 1000}), "SFML Discovery Engine");
+    window = new sf::RenderWindow(sf::VideoMode({1000, 900}), "SFML Discovery Engine");
 }
 
 void WindowModule::PreRender()

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-template <typename ComponentType, typename... Args> requires IsComponent<ComponentType>
+template <typename ComponentType, typename... Args> requires IsComponent<ComponentType> 
 ComponentType* GameObject::CreateComponent(Args&&... _args)
 {
     ComponentType* component = new ComponentType(_args...);

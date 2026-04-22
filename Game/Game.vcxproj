@@ -95,13 +95,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EnnemieMouve.cpp" />
+    <ClCompile Include="include\Demo\Tile.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scenes\Demo\DemoScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EnnemieMouve.h" />
-    <ClInclude Include="include\Player.h" />
-    <ClInclude Include="Scenes\DefaultScene.h" />
+    <ClInclude Include="include\Demo\Player.h" />
+    <ClInclude Include="include\Demo\Tile.h" />
+    <ClInclude Include="Scenes\Demo\DemoScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

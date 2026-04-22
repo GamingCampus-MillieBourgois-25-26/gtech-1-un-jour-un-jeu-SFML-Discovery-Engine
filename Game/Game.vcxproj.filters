@@ -1,150 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-
-    <Filter Include="Demo" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ClCompile Include="*.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\Demo\Tile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\Demo\TileSpawner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\Demo\DemoScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimalData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ShopItem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ShopPanel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ClickArea.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MainScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ClickComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FloatingTextComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\Demo\Tile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\Demo\DemoScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TDScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WaveManagerComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TowerComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ProjectileComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InputComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UIComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletSpawner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-
-  <ItemGroup>
-
-
-    <ClCompile Include="include\Demo\*">
-      <Filter>Demo</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\Demo\*">
-      <Filter>Demo</Filter>
-    </ClCompile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ClInclude Include="include\*.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\*.inl">
-
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletHellScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletHellPlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletSpawner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="BulletHellAlice\Scenes\GameScene.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="BulletHellAlice\PlayerController.cpp" />
+    <ClCompile Include="BulletHellLeo\Bullet.cpp" />
+    <ClCompile Include="BulletHellLeo\BulletHellPlayer.cpp" />
+    <ClCompile Include="BulletHellLeo\BulletHellScene.cpp" />
+    <ClCompile Include="BulletHellLeo\BulletSpawner.cpp" />
+    <ClCompile Include="BulletHellLeo\Enemy.cpp" />
+    <ClCompile Include="BulletHellLeo\Game.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="ClickerLeo\AnimalData.cpp" />
+    <ClCompile Include="ClickerLeo\ClickArea.cpp" />
+    <ClCompile Include="ClickerLeo\ClickComponent.cpp" />
+    <ClCompile Include="ClickerLeo\FloatingTextComponent.cpp" />
+    <ClCompile Include="ClickerLeo\GameManager.cpp" />
+    <ClCompile Include="ClickerLeo\MainScene.cpp" />
+    <ClCompile Include="ClickerLeo\ShopItem.cpp" />
+    <ClCompile Include="ClickerLeo\ShopPanel.cpp" />
+    <ClCompile Include="TowerDefenseLeo\EnemyComponent.cpp" />
+    <ClCompile Include="TowerDefenseLeo\InputComponent.cpp" />
+    <ClCompile Include="TowerDefenseLeo\ProjectileComponent.cpp" />
+    <ClCompile Include="TowerDefenseLeo\TDScene.cpp" />
+    <ClCompile Include="TowerDefenseLeo\TowerComponent.cpp" />
+    <ClCompile Include="TowerDefenseLeo\UIComponent.cpp" />
+    <ClCompile Include="TowerDefenseLeo\WaveManagerComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Game.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    <ClInclude Include="BulletHellAlice\PlayerController.h" />
+    <ClInclude Include="BulletHellAlice\Scenes\GameScene.h" />
+    <ClInclude Include="BulletHellLeo\Bullet.h" />
+    <ClInclude Include="BulletHellLeo\BulletHellPlayer.h" />
+    <ClInclude Include="BulletHellLeo\BulletHellScene.h" />
+    <ClInclude Include="BulletHellLeo\BulletSpawner.h" />
+    <ClInclude Include="BulletHellLeo\Enemy.h" />
+    <ClInclude Include="BulletHellLeo\Game.h" />
+    <ClInclude Include="ClickerLeo\AnimalData.h" />
+    <ClInclude Include="ClickerLeo\ClickArea.h" />
+    <ClInclude Include="ClickerLeo\ClickComponent.h" />
+    <ClInclude Include="ClickerLeo\FloatingTextComponent.h" />
+    <ClInclude Include="ClickerLeo\GameManager.h" />
+    <ClInclude Include="ClickerLeo\MainScene.h" />
+    <ClInclude Include="ClickerLeo\ShopItem.h" />
+    <ClInclude Include="ClickerLeo\ShopPanel.h" />
+    <ClInclude Include="TowerDefenseLeo\EnemyComponent.h" />
+    <ClInclude Include="TowerDefenseLeo\InputComponent.h" />
+    <ClInclude Include="TowerDefenseLeo\ProjectileComponent.h" />
+    <ClInclude Include="TowerDefenseLeo\TDScene.h" />
+    <ClInclude Include="TowerDefenseLeo\TowerComponent.h" />
+    <ClInclude Include="TowerDefenseLeo\UIComponent.h" />
+    <ClInclude Include="TowerDefenseLeo\WaveManagerComponent.h" />
   </ItemGroup>
 </Project>

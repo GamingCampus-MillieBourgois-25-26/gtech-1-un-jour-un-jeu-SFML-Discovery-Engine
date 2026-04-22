@@ -1,21 +1,20 @@
-﻿#include "Engine.h"
-#include "SceneModule.h"
+#include "Engine.h"
+#include "Modules/SceneModule.h"
+#include "BulletHellAlice/Scenes/GameScene.h"
 
-#include "BulletHell/BulletHellScene.h"
-#include "TowerDefense/TDScene.h"
-#include "Clicker/MainScene.h"
-
-
-int main(int argc, const char** argv)
+int main(int argc, char* argv[])
 {
     Engine* engine = Engine::GetInstance();
+    engine->Init(argc, (const char**)argv);
 
-    engine->Init(argc, argv);
+    auto* sceneModule = engine->GetModuleManager()->GetModule<SceneModule>();
 
+    if (sceneModule)
+    {
+        sceneModule->CreateScene<BulletHellAlice::GameScene>();
 
-
-    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<TD::TDScene>();
-
+        sceneModule->SetScene<BulletHellAlice::GameScene>();
+    }
 
     engine->Run();
 

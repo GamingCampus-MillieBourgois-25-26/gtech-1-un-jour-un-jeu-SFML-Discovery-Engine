@@ -3,6 +3,7 @@
 #include "FPlayer.h"
 #include "Bullet.h"
 #include "EnemyShooter.h"
+#include "BulletPool.h"
 #include "Assets/Texture.h"
 #include "Components/RectangleShapeRenderer.h"
 #include "Components/SpriteRenderer.h"
@@ -13,12 +14,12 @@
 #include "Modules/AssetsModule.h"
 class Bullet;
 class EnemyShooter;
-
 class FBHene final : public Scene
 {
 public:
 	FBHene() : Scene("F_BULLET_HELLScene")
 	{
+		gBulletPool.Init(this, 1000);
 		GameObject* player = CreateDummyGameObject("Player", 200.f, sf::Color::Cyan);
 		player->CreateComponent<FPlayer>();
 

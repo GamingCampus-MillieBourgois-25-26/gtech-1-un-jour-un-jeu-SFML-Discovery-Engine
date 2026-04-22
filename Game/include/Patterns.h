@@ -2,6 +2,7 @@
 #include <cmath>
 #include "Core/GameObject.h"
 #include "Bullet.h"
+#include "BulletPool.h"
 
 namespace Patterns
 {
@@ -12,14 +13,15 @@ namespace Patterns
             float angle = i * 10.f;
             float rad = angle * 3.14159f / 180.f;
 
-            GameObject* bullet = owner->GetScene()->CreateGameObject("Bullet");
-            bullet->SetPosition(owner->GetPosition());
+            Bullet* b = gBulletPool.GetBullet();
+            if (!b) return;
 
-            auto b = bullet->CreateComponent<Bullet>();
-
-            b->velocity = Maths::Vector2f(
-                std::cos(rad) * 200.f,
-                std::sin(rad) * 200.f
+            b->Activate(
+                owner->GetPosition(),
+                Maths::Vector2f(
+                    std::cos(rad) * 200.f,
+                    std::sin(rad) * 200.f
+                )
             );
         }
     }
@@ -33,14 +35,15 @@ namespace Patterns
             float angle = baseAngle + i * 20.f;
             float rad = angle * 3.14159f / 180.f;
 
-            GameObject* bullet = owner->GetScene()->CreateGameObject("Bullet");
-            bullet->SetPosition(owner->GetPosition());
+            Bullet* b = gBulletPool.GetBullet();
+            if (!b) return;
 
-            auto b = bullet->CreateComponent<Bullet>();
-
-            b->velocity = Maths::Vector2f(
-                std::cos(rad) * 200.f,
-                std::sin(rad) * 200.f
+            b->Activate(
+                owner->GetPosition(),
+                Maths::Vector2f(
+                    std::cos(rad) * 200.f,
+                    std::sin(rad) * 200.f
+                )
             );
         }
 
@@ -58,14 +61,15 @@ namespace Patterns
             float angle = std::sin(t + i * 0.5f) * 45.f;
             float rad = angle * 3.14159f / 180.f;
 
-            GameObject* bullet = owner->GetScene()->CreateGameObject("Bullet");
-            bullet->SetPosition(owner->GetPosition() + Maths::Vector2f(0, offsetY));
+            Bullet* b = gBulletPool.GetBullet();
+            if (!b) return;
 
-            auto b = bullet->CreateComponent<Bullet>();
-
-            b->velocity = Maths::Vector2f(
-                std::cos(rad) * 250.f,
-                std::sin(rad) * 100.f
+            b->Activate(
+                owner->GetPosition() + Maths::Vector2f(0, offsetY),
+                Maths::Vector2f(
+                    std::cos(rad) * 250.f,
+                    std::sin(rad) * 100.f
+                )
             );
         }
 
@@ -79,18 +83,20 @@ namespace Patterns
 
         for (int i = 0; i < 20; i++)
         {
-            GameObject* bullet = owner->GetScene()->CreateGameObject("Bullet");
+            Bullet* b = gBulletPool.GetBullet();
+            if (!b) return;
 
-            bullet->SetPosition(owner->GetPosition() + Maths::Vector2f(
+            Maths::Vector2f pos = owner->GetPosition() + Maths::Vector2f(
                 std::cos(rad) * i * 10.f,
                 std::sin(rad) * i * 10.f
-            ));
+            );
 
-            auto b = bullet->CreateComponent<Bullet>();
-
-            b->velocity = Maths::Vector2f(
-                std::cos(rad) * 300.f,
-                std::sin(rad) * 300.f
+            b->Activate(
+                pos,
+                Maths::Vector2f(
+                    std::cos(rad) * 300.f,
+                    std::sin(rad) * 300.f
+                )
             );
         }
     }

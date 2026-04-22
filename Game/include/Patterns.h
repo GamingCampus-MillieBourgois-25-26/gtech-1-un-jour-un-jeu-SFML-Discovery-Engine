@@ -100,4 +100,50 @@ namespace Patterns
             );
         }
     }
+    inline void ShootRadialBurst(GameObject* owner, int bulletCount = 72)
+    {
+        float step = 360.f / bulletCount;
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float angle = i * step;
+            float rad = angle * 3.14159f / 180.f;
+
+            Bullet* b = gBulletPool.GetBullet();
+            if (!b) return;
+
+            Maths::Vector2f dir(
+                std::cos(rad),
+                std::sin(rad)
+            );
+
+            b->Activate(
+                owner->GetPosition(),
+                dir * 250.f // vitesse
+            );
+        }
+    }
+    inline void ShootRadialBurstSpiral(GameObject* owner)
+    {
+        static float offset = 0.f;
+
+        int bulletCount = 72;
+        float step = 360.f / bulletCount;
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float angle = i * step + offset;
+            float rad = angle * 3.14159f / 180.f;
+
+            Bullet* b = gBulletPool.GetBullet();
+            if (!b) return;
+
+            b->Activate(
+                owner->GetPosition(),
+                Maths::Vector2f(std::cos(rad), std::sin(rad)) * 250.f
+            );
+        }
+
+        offset += 2.f; // rotation lente
+    }
 }

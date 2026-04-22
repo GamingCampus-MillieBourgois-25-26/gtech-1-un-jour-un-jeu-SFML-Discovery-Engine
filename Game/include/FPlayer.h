@@ -10,6 +10,7 @@
         bool invincible = false;
 
     public:
+        float radius = 15.f;
         void Update(const float _delta_time) override
         {
             if (invincible)

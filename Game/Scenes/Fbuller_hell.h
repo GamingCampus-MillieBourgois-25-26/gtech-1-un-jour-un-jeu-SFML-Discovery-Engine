@@ -23,7 +23,7 @@ public:
 		GameObject* player = CreateDummyGameObject("Player", 200.f, sf::Color::Cyan);
 		player->CreateComponent<FPlayer>();
 
-		GameObject* enemy = CreateDummyGameObject("Enemy", 400.f, sf::Color::Blue);
+		GameObject* enemy = CreateDummyGameObject("Enemy", 100.f, sf::Color::Blue);
         enemy->CreateComponent<EnemyShooter>();
 
 		GameObject* enemy2 = CreateDummyGameObject("Enemy2", 0.f, sf::Color::Yellow);

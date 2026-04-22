@@ -196,9 +196,9 @@ namespace bulletHell
 
     void EnemyComponent::SaveConfig() const
     {
-        std::filesystem::create_directories("Assets\\BulletHell");
+        std::filesystem::create_directories("Assets\\BulletHellChris");
 
-        std::ofstream file("Assets\\BulletHell\\bulletHellEnemyConfig.txt");
+        std::ofstream file("Assets\\BulletHellChris\\bulletHellEnemyConfig.txt");
         if (!file.is_open())
         {
             return;
@@ -216,7 +216,7 @@ namespace bulletHell
 
     void EnemyComponent::LoadConfig()
     {
-        std::ifstream file("Assets\\BulletHell\\bulletHellEnemyConfig.txt");
+        std::ifstream file("Assets\\BulletHellChris\\bulletHellEnemyConfig.txt");
         if (!file.is_open())
         {
             return;

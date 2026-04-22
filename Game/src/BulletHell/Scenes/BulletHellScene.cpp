@@ -20,7 +20,7 @@ namespace bulletHell
         AssetsModule* assetsModule = Component::GetModule<AssetsModule>();
         if (assetsModule != nullptr)
         {
-            backgroundTexture = assetsModule->LoadAsset<Texture>("BulletHell/background.jpg");
+            backgroundTexture = assetsModule->LoadAsset<Texture>("BulletHellChris/background.jpg");
         }
 
         CreateBackground();
@@ -54,8 +54,8 @@ namespace bulletHell
         AssetsModule* assetsModule = Component::GetModule<AssetsModule>();
         if (assetsModule != nullptr)
         {
-            playerTexture = assetsModule->LoadAsset<Texture>("BulletHell/Ships/ship_0000.png");
-            bulletTexture = assetsModule->LoadAsset<Texture>("BulletHell/Tiles/tile_0000.png");
+            playerTexture = assetsModule->LoadAsset<Texture>("BulletHellChris/Ships/ship_0000.png");
+            bulletTexture = assetsModule->LoadAsset<Texture>("BulletHellChris/Tiles/tile_0000.png");
         }
 
         player = CreateGameObject("Player");
@@ -161,11 +161,11 @@ namespace bulletHell
         AssetsModule* assetsModule = Component::GetModule<AssetsModule>();
         if (assetsModule != nullptr)
         {
-            bossTexture = assetsModule->LoadAsset<Texture>("BulletHell/Ships/ship_0006.png");
+            bossTexture = assetsModule->LoadAsset<Texture>("BulletHellChris/Ships/ship_0006.png");
 
             if (bulletTexture == nullptr)
             {
-                bulletTexture = assetsModule->LoadAsset<Texture>("BulletHell/Tiles/tile_0000.png");
+                bulletTexture = assetsModule->LoadAsset<Texture>("BulletHellChris/Tiles/tile_0000.png");
             }
         }
 

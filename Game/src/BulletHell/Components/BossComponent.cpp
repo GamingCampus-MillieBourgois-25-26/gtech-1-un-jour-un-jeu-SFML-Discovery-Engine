@@ -410,9 +410,9 @@ namespace bulletHell
 
     void BossComponent::SaveConfig() const
     {
-        std::filesystem::create_directories("Assets\\BulletHell");
+        std::filesystem::create_directories("Assets\\BulletHellChris");
 
-        std::ofstream file("Assets\\BulletHell\\bossConfig.txt");
+        std::ofstream file("Assets\\BulletHellChris\\bossConfig.txt");
         if (!file.is_open())
         {
             return;
@@ -447,7 +447,7 @@ namespace bulletHell
 
     void BossComponent::LoadConfig()
     {
-        std::ifstream file("Assets\\BulletHell\\bossConfig.txt");
+        std::ifstream file("Assets\\BulletHellChris\\bossConfig.txt");
         if (!file.is_open())
         {
             return;

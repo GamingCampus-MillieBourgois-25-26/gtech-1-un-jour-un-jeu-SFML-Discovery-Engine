@@ -367,7 +367,7 @@ namespace bulletHell
     {
         std::filesystem::create_directories("Assets\\BulletHell");
 
-        std::ofstream file("Assets\\BulletHell\\bulletHellPlayerConfig.txt");
+        std::ofstream file("Assets\\BulletHellChris\\bulletHellPlayerConfig.txt");
         if (!file.is_open())
         {
             return;
@@ -395,7 +395,7 @@ namespace bulletHell
 
     void PlayerController::LoadConfig()
     {
-        std::ifstream file("Assets\\BulletHell\\bulletHellPlayerConfig.txt");
+        std::ifstream file("Assets\\BulletHellChris\\bulletHellPlayerConfig.txt");
         if (!file.is_open())
         {
             startingLives = 10;

@@ -13,18 +13,48 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\BulletHellJCPP">
+      <UniqueIdentifier>{8ddd2f07-e13c-4adb-9463-a91701356b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BulletHellJH">
+      <UniqueIdentifier>{26c67c4e-9dc3-405b-afd2-69418d42f149}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletHellSceneJ.cpp">
+      <Filter>Source Files\BulletHellJCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyJ.cpp">
+      <Filter>Source Files\BulletHellJCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileJ.cpp">
+      <Filter>Source Files\BulletHellJCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManagerJ.cpp">
+      <Filter>Source Files\BulletHellJCPP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scenes\DefaultScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Player.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="BulletHellSceneJ.h">
+      <Filter>Header Files\BulletHellJH</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyJ.h">
+      <Filter>Header Files\BulletHellJH</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PlayerJ.h">
+      <Filter>Header Files\BulletHellJH</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileJ.h">
+      <Filter>Header Files\BulletHellJH</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManagerJ.h">
+      <Filter>Header Files\BulletHellJH</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

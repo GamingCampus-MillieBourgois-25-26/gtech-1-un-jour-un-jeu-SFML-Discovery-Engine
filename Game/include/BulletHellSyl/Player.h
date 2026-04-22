@@ -2,7 +2,7 @@
 #include "Core/Component.h"
 #include "InputModule.h"
 
-class SPlayer : public Component
+class Player : public Component
 {
 public:
     void Update(const float _delta_time) override

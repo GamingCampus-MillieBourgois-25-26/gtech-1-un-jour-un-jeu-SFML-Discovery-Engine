@@ -1,10 +1,10 @@
 #pragma once
 #include "Core/Component.h"
 
-class SmallBullet : public Component
+class BulletComponent : public Component
 {
 public:
-	SmallBullet();
+	BulletComponent();
 	void Update(float _delta_time) override;
 	Maths::Vector2f randomDirection();
 

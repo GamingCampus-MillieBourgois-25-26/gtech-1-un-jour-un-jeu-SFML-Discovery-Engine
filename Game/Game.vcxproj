@@ -95,19 +95,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="include\EnnemyA.cpp" />
-    <ClCompile Include="Scenes\BulletHellSyl.cpp" />
+    <ClCompile Include="include\BulletHellSyl\Enemy.cpp" />
+    <ClCompile Include="Scenes\BHScenesSyl\BulletHellScene.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="include\SmallBullet.cpp" />
-    <ClCompile Include="include\SPlayer.cpp" />
+    <ClCompile Include="include\BulletHellSyl\BulletComponent.cpp" />
+    <ClCompile Include="include\BulletHellSyl\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\EnnemyA.h" />
-    <ClInclude Include="Scenes\BulletHellSyl.h" />
+    <ClInclude Include="include\BulletHellSyl\Enemy.h" />
+    <ClInclude Include="Scenes\BHScenesSyl\BulletHellScene.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="Scenes\DefaultScene.h" />
-    <ClInclude Include="include\SmallBullet.h" />
-    <ClInclude Include="include\SPlayer.h" />
+    <ClInclude Include="include\BulletHellSyl\BulletComponent.h" />
+    <ClInclude Include="include\BulletHellSyl\Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

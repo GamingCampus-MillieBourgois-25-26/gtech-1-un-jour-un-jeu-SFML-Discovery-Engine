@@ -1,10 +1,10 @@
 #pragma once
 #include "Core/Component.h"
 
-class EnnemyA : public Component
+class Enemy : public Component
 {
 public:
-	EnnemyA();
+	Enemy();
 	void Update(const float _delta_time) override;
 	void CreateBullet(Maths::Vector2f _position);
 

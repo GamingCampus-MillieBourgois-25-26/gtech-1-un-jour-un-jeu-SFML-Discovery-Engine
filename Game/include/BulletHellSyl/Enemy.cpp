@@ -1,5 +1,5 @@
-#include "EnnemyA.h"
-#include "SmallBullet.h"
+#include "Enemy.h"
+#include "BulletComponent.h"
 #include "Assets/Texture.h"
 #include "Core/GameObject.h"
 #include "Modules/AssetsModule.h"
@@ -8,11 +8,11 @@
 #include "Core/Scene.h"
 #include <iostream>
 
-EnnemyA::EnnemyA()
+Enemy::Enemy()
 {
 }
 
-void EnnemyA::Update(const float _delta_time)
+void Enemy::Update(const float _delta_time)
 {
 	timer += _delta_time;
 	if (timer >= 2.f)
@@ -22,11 +22,11 @@ void EnnemyA::Update(const float _delta_time)
 	}
 }
 
-void EnnemyA::CreateBullet(Maths::Vector2f _position)
+void Enemy::CreateBullet(Maths::Vector2f _position)
 {
 	GameObject* bullet = GetOwner()->GetScene()->CreateGameObject("bullet");
 	bullet->SetPosition(_position);
-	bullet->CreateComponent<SmallBullet>();
+	bullet->CreateComponent<BulletComponent>();
 	SquareCollider* square_collider = bullet->CreateComponent<SquareCollider>();
 	square_collider->SetWidth(20.f);
 	square_collider->SetHeight(200.f);

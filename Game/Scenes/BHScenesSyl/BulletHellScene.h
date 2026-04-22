@@ -1,7 +1,7 @@
 #pragma once
 
-#include "SPlayer.h"
-#include "EnnemyA.h"
+#include "BulletHellSyl/Player.h"
+#include "BulletHellSyl/Enemy.h"
 #include "Assets/Texture.h"
 #include "Components/RectangleShapeRenderer.h"
 #include "Components/SpriteRenderer.h"
@@ -9,17 +9,18 @@
 #include "Core/GameObject.h"
 #include "Core/Scene.h"
 #include "Modules/AssetsModule.h"
+#include <vector>
 
-class BulletHellSyl final : public Scene
+class BulletHellScene final : public Scene
 {
 public:
-	BulletHellSyl() : Scene("BulletHellSyl")
+	BulletHellScene() : Scene("BulletHellScene")
 	{
 		GameObject* player = CreateDummyGameObject("Player", { 250.f, 400.f });
-		player->CreateComponent<SPlayer>();
+		player->CreateComponent<Player>();
 
 		GameObject* enemy = CreateDummyGameObject("Enemy", { 100.f, 250.f });
-		enemy->CreateComponent<EnnemyA>();
+		enemy->CreateComponent<Enemy>();
 
 		//GameObject* enemy2 = CreateDummyGameObject("Enemy2", { 0.f, 50.f }, sf::Color::Yellow);
 
@@ -47,5 +48,6 @@ public:
 
 		return game_object;
 	}
-};
 
+	std::vector<GameObject*> bullets;
+};

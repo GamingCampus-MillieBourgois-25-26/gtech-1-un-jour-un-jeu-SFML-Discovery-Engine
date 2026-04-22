@@ -18,16 +18,16 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\BulletHellSyl.cpp">
+    <ClCompile Include="Scenes\BHScenesSyl\BulletHellScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\SmallBullet.cpp">
+    <ClCompile Include="include\BulletHellSyl\BulletComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\EnnemyA.cpp">
+    <ClCompile Include="include\BulletHellSyl\Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\SPlayer.cpp">
+    <ClCompile Include="include\BulletHellSyl\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,16 +38,16 @@
     <ClInclude Include="include\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes\BulletHellSyl.h">
+    <ClInclude Include="Scenes\BHScenesSyl\BulletHellScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\SmallBullet.h">
+    <ClInclude Include="include\BulletHellSyl\BulletComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\EnnemyA.h">
+    <ClInclude Include="include\BulletHellSyl\Enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\SPlayer.h">
+    <ClInclude Include="include\BulletHellSyl\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

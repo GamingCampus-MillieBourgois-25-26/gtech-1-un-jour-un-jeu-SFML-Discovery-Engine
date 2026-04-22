@@ -26,7 +26,7 @@ public:
 		GameObject* enemy = CreateDummyGameObject("Enemy", 100.f, sf::Color::Blue);
         enemy->CreateComponent<EnemyShooter>();
 
-		GameObject* enemy2 = CreateDummyGameObject("Enemy2", 0.f, sf::Color::Yellow);
+		/*GameObject* enemy2 = CreateDummyGameObject("Enemy2", 0.f, sf::Color::Yellow);*/
 
 		AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
 		/*Texture* texture = assets_module->LoadAsset<Texture>("logo.png");

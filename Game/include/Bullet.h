@@ -7,6 +7,7 @@
 class Bullet : public Component
 {
 public:
+    GameObject* player = nullptr;
     Maths::Vector2f velocity;
     bool active = false;
 
@@ -38,19 +39,23 @@ public:
         {
             if (obj->GetName() == "Player")
             {
-                FPlayer* player = obj->GetComponent<FPlayer>();
-                if (!player) continue;
-
-                Maths::Vector2f diff = pos - obj->GetPosition();
-                float dist2 = diff.x * diff.x + diff.y * diff.y;
-                float radius = player->radius + 3.f; // bullet radius
-
-                if (dist2 < radius * radius)
+                FPlayer* playerComp = obj->GetComponent<FPlayer>();
+                if ((playerComp))
                 {
-                    std::cout << "HIT PLAYER!\n";
+                    Maths::Vector2f diff = pos - playerComp->GetPosition();
+                    float dist2 = diff.x * diff.x + diff.y * diff.y;
 
-                    Deactivate();
-                    return;
+                    float radius = 15.f + 3.f;
+
+                    if (dist2 < radius * radius)
+                    {
+                        std::cout << "HIT PLAYER!\n";
+
+                        playerComp->TakeDamage();
+
+                        Deactivate();
+                        return;
+                    }
                 }
             }
         }

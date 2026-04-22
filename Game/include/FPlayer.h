@@ -1,5 +1,8 @@
 #pragma once
 #include "Core/Component.h"
+
+#include "Components/RectangleShapeRenderer.h"
+#include "Components/SpriteRenderer.h"
 #include "InputModule.h"
 
     class FPlayer : public Component
@@ -8,6 +11,8 @@
         int lives = 3;
         float invincibleTimer = 0.f;
         bool invincible = false;
+        float blinkTimer = 0.f;
+        bool visible = true;
 
     public:
         float radius = 15.f;
@@ -17,10 +22,25 @@
             {
                 invincibleTimer -= _delta_time;
 
+                blinkTimer += _delta_time;
+
+                if (blinkTimer > 0.1f)
+                {
+                    visible = !visible;
+                    blinkTimer = 0.f;
+                }
+
                 if (invincibleTimer <= 0.f)
                 {
                     invincible = false;
+                    visible = true; // reset visibility
                 }
+            }
+            auto renderer = GetOwner()->GetComponent<RectangleShapeRenderer>();
+
+            if (renderer)
+            {
+                renderer->SetColor(visible ? sf::Color::Cyan : sf::Color::Transparent);
             }
             Maths::Vector2<float> position = GetOwner()->GetPosition();
 
@@ -48,6 +68,10 @@
             {
                 Engine::GetInstance()->RequestQuit();
             }
+        }
+        Maths::Vector2f GetPosition() const
+        {
+            return GetOwner()->GetPosition();
         }
         void TakeDamage()
         {

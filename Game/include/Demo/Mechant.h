@@ -1,17 +1,23 @@
-#pragma once
-#include "Core/Component.h"
-#include "InputModule.h"
+#include <chrono>
+#include <cstdint>
+#include <random>
+
+
+#include "Core/Scene.h"
 
 class Mechant : public Component
 {
 private:
 	int max_hp;
 	int hp;
-	int ms;
+	float ms;
+	int spawn_time;
 public:
 	void Update() {
 		Maths::Vector2<float> position = GetOwner()->GetPosition();
 		GetOwner()->SetPosition(position);
 	}
+	Mechant* CreateMechant();
+	
 };
 

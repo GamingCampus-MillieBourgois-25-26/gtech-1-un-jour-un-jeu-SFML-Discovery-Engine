@@ -4,24 +4,32 @@
 #include "Core/GameObject.h"
 #include "Modules/AssetsModule.h"
 #include "Components/SpriteRenderer.h"
+#include "Components/SquareCollider.h"
 #include "Core/Scene.h"
+#include <iostream>
+
+EnnemyA::EnnemyA()
+{
+}
 
 void EnnemyA::Update(const float _delta_time)
 {
 	timer += _delta_time;
-	if (timer >= 1.f)
+	if (timer >= 2.f)
 	{
-		timer = 0.f;
-		CreateBullet();
+		timer = -9999.f;
+		CreateBullet(GetOwner()->GetPosition());
 	}
 }
 
-void EnnemyA::CreateBullet()
+void EnnemyA::CreateBullet(Maths::Vector2f _position)
 {
 	GameObject* bullet = GetOwner()->GetScene()->CreateGameObject("bullet");
-	bullet->SetPosition({ 300.f, 100.f });
+	bullet->SetPosition(_position);
 	bullet->CreateComponent<SmallBullet>();
+	SquareCollider* square_collider = bullet->CreateComponent<SquareCollider>();
+	square_collider->SetWidth(20.f);
+	square_collider->SetHeight(200.f);
 	AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
-	Texture* texture = assets_module->GetAsset<Texture>("Sylvain/BulletHell/laserBlue.png");
-	bullet->CreateComponent<SpriteRenderer>(texture);
+	bullet->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/BulletHell/laserBlue.png"));
 }

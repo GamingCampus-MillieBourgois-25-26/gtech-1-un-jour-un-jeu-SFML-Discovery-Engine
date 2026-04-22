@@ -4,9 +4,10 @@
 class EnnemyA : public Component
 {
 public:
+	EnnemyA();
 	void Update(const float _delta_time) override;
-	void CreateBullet();
+	void CreateBullet(Maths::Vector2f _position);
 
-	float timer = 0.2f;
+	float timer = 0.f;
 };
 

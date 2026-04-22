@@ -4,6 +4,7 @@
 #include "Core/GameObject.h"
 #include "Modules/AssetsModule.h"
 #include "Components/SpriteRenderer.h"
+#include "Core/Scene.h"
 
 void EnnemyA::Update(const float _delta_time)
 {
@@ -11,7 +12,7 @@ void EnnemyA::Update(const float _delta_time)
 	if (timer >= 0.2f)
 	{
 		timer = 0.f;
-		GameObject* bullet = CreateGameObject("bullet");
+		GameObject* bullet = GetOwner()->GetScene()->CreateGameObject("bullet");
 		bullet->SetPosition({ 300.f, 100.f });
 		bullet->CreateComponent<SmallBullet>();
 		AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Player.h"
+#include "SPlayer.h"
 #include "EnnemyA.h"
 #include "Assets/Texture.h"
 #include "Components/RectangleShapeRenderer.h"
@@ -16,7 +16,7 @@ public:
 	BulletHellSyl() : Scene("BulletHellSyl")
 	{
 		GameObject* player = CreateDummyGameObject("Player", { 250.f, 400.f }, sf::Color::Red);
-		player->CreateComponent<Player>();
+		player->CreateComponent<SPlayer>();
 
 		GameObject* enemy = CreateDummyGameObject("Enemy", { 100.f, 250.f }, sf::Color::Blue);
 		enemy->CreateComponent<EnnemyA>();

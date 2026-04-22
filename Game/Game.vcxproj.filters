@@ -27,6 +27,9 @@
     <ClCompile Include="include\EnnemyA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="include\SPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scenes\DefaultScene.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\EnnemyA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

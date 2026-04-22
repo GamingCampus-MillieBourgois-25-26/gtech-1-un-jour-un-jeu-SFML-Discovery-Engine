@@ -7,17 +7,20 @@
 #include "Texture.h"
 
 Demo::DemoScene::DemoScene(): Scene("DemoScene") {
-    GameObject* player = CreateDummyGameObject("Player", 200.f, sf::Color::Red);
-    player->CreateComponent<Player>();
+	GameObject* background = CreateGameObject("Background");
 
-    GameObject* enemy = CreateDummyGameObject("Enemy", 400.f, sf::Color::Blue);
+	GameObject* player = CreateGameObject("Player");
+	player->CreateComponent<BulletHell::Player>(300.f, 550.f);
 
-    GameObject* enemy2 = CreateDummyGameObject("Enemy2", 0.f, sf::Color::Green);
+	GameObject* enemy = CreateGameObject("Enemy");
+	enemy->CreateComponent<BulletHell::Enemy>(300.f, 350.f);
 
-    AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
-    Texture* texture = assets_module->LoadAsset<Texture>("logo.png");
+	AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
+	Texture* texturePlayer = assets_module->LoadAsset<Texture>("playerShip.png");
+	Texture* textureBackground = assets_module->LoadAsset<Texture>("wallpaperVoxel.jpg");
 
-    player->CreateComponent<SpriteRenderer>(texture);
+	player->CreateComponent<SpriteRenderer>(texturePlayer);
+	background->CreateComponent<SpriteRenderer>(textureBackground);
 }
 
 GameObject* Demo::DemoScene::CreateDummyGameObject(const std::string& _name, const float _position, const sf::Color _color) {
@@ -33,4 +36,23 @@ GameObject* Demo::DemoScene::CreateDummyGameObject(const std::string& _name, con
     shape_renderer->SetSize(Maths::Vector2f(200.f, 200.f));
 
     return game_object;
+}
+
+void Demo::DemoScene::ShouldCreateBullet()
+{
+	if (bulletCount <= 100)
+	{
+		Logger::Log(ELogLevel::Debug, "Shoot avec succes");
+
+		GameObject* bullet = CreateGameObject("Bullet");
+		SquareCollider* square_collider = bullet->CreateComponent<SquareCollider>();
+		square_collider->SetWidth(40.f);
+		square_collider->SetHeight(20.f);
+
+		RectangleShapeRenderer* shape_renderer = bullet->CreateComponent<RectangleShapeRenderer>();
+		shape_renderer->SetColor(sf::Color::Green);
+		shape_renderer->SetSize(Maths::Vector2f(40.f, 20.f));
+
+		bullet->CreateComponent<Bullet>(100.f, 400.f, 400.f);
+	}
 }

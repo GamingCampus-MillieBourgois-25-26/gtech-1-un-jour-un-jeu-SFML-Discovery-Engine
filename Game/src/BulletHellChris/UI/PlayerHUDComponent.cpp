@@ -1,7 +1,7 @@
-#include "BulletHell/UI/PlayerHUDComponent.h"
+#include "BulletHellChris/UI/PlayerHUDComponent.h"
 
 #include "Components/RectangleShapeRenderer.h"
-#include "BulletHell/Components/PlayerController.h"
+#include "BulletHellChris/Components/PlayerController.h"
 
 namespace bulletHell
 {

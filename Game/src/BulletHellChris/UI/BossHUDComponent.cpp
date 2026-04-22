@@ -1,7 +1,7 @@
-#include "BulletHell/UI/BossHUDComponent.h"
+#include "BulletHellChris/UI/BossHUDComponent.h"
 
 #include "Components/RectangleShapeRenderer.h"
-#include "BulletHell/Components/BossComponent.h"
+#include "BulletHellChris/Components/BossComponent.h"
 #include "Maths/Vector2.h"
 
 namespace bulletHell

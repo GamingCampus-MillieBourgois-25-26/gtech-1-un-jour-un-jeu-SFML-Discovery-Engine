@@ -1,4 +1,4 @@
-﻿#include "BulletHell/Scenes/BulletHellScene.h"
+﻿#include "BulletHellChris/Scenes/BulletHellScene.h"
 
 #include "Assets/Texture.h"
 #include "Modules/AssetsModule.h"
@@ -6,11 +6,11 @@
 #include "Components/SpriteRenderer.h"
 #include "Components/RectangleShapeRenderer.h"
 
-#include "BulletHell/Components/PlayerController.h"
-#include "BulletHell/Components/BulletComponent.h"
-#include "BulletHell/Components/BossComponent.h"
-#include "BulletHell/UI/BossHUDComponent.h"
-#include "BulletHell/UI/PlayerHUDComponent.h"
+#include "BulletHellChris/Components/PlayerController.h"
+#include "BulletHellChris/Components/BulletComponent.h"
+#include "BulletHellChris/Components/BossComponent.h"
+#include "BulletHellChris/UI/BossHUDComponent.h"
+#include "BulletHellChris/UI/PlayerHUDComponent.h"
 
 namespace bulletHell
 {

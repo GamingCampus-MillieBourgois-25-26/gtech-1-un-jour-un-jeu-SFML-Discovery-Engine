@@ -1,6 +1,6 @@
 #include "Engine.h"
 #include "SceneModule.h"
-#include "BulletHell/Scenes/BulletHellScene.h"
+#include "BulletHellChris/Scenes/BulletHellScene.h"
 
 int main(const int _argc, const char** _argv)
 {

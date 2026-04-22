@@ -9,40 +9,36 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BulletHell\Scenes\BulletHellScene.cpp">
+    <ClCompile Include="src\BulletHellChris\Components\BossComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BulletHell\Components\PlayerController.cpp">
+    <ClCompile Include="src\BulletHellChris\Components\BulletComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BulletHell\Components\BulletComponent.cpp">
+    <ClCompile Include="src\BulletHellChris\Components\EnemyComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BulletHell\Components\EnemyComponent.cpp">
+    <ClCompile Include="src\BulletHellChris\Components\PlayerController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BulletHell\Systems\EnemySpawner.cpp">
+    <ClCompile Include="src\BulletHellChris\Scenes\BulletHellScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BulletHell\UI\BulletHellHUD.cpp">
+    <ClCompile Include="src\BulletHellChris\Systems\EnemySpawner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BulletHell\UI\BossHUDComponent.cpp">
+    <ClCompile Include="src\BulletHellChris\UI\BossHUDComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BulletHell\Components\BossComponent.cpp">
+    <ClCompile Include="src\BulletHellChris\UI\BulletHellHUD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BulletHell\UI\PlayerHUDComponent.cpp">
+    <ClCompile Include="src\BulletHellChris\UI\PlayerHUDComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,37 +46,37 @@
     <ClInclude Include="Scenes\DefaultScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\BulletHellTypes.h">
+    <ClInclude Include="include\BulletHellChris\Components\BossComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\Scenes\BulletHellScene.h">
+    <ClInclude Include="include\BulletHellChris\Components\BulletComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\Components\PlayerController.h">
+    <ClInclude Include="include\BulletHellChris\Components\EnemyComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\Components\BulletComponent.h">
+    <ClInclude Include="include\BulletHellChris\Components\PlayerController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\Components\EnemyComponent.h">
+    <ClInclude Include="include\BulletHellChris\Scenes\BulletHellScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\Systems\EnemySpawner.h">
+    <ClInclude Include="include\BulletHellChris\Systems\EnemySpawner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\UI\BulletHellHUD.h">
+    <ClInclude Include="include\BulletHellChris\UI\BossHUDComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\Components\BossComponent.h">
+    <ClInclude Include="include\BulletHellChris\UI\BulletHellHUD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\UI\BossHUDComponent.h">
+    <ClInclude Include="include\BulletHellChris\UI\PlayerHUDComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\UI\PlayerHUDComponent.h">
+    <ClInclude Include="include\BulletHellChris\BulletHellDebug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BulletHell\BulletHellDebug.h">
+    <ClInclude Include="include\BulletHellChris\BulletHellTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

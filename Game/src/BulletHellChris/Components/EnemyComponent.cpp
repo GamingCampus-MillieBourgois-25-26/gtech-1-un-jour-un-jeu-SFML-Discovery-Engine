@@ -1,4 +1,4 @@
-#include "BulletHell/Components/EnemyComponent.h"
+#include "BulletHellChris/Components/EnemyComponent.h"
 
 #include <cmath>
 #include <filesystem>
@@ -6,8 +6,8 @@
 
 #include "imgui.h"
 
-#include "BulletHell/BulletHellDebug.h"
-#include "BulletHell/Components/BulletComponent.h"
+#include "BulletHellChris/BulletHellDebug.h"
+#include "BulletHellChris/Components/BulletComponent.h"
 
 namespace bulletHell
 {

@@ -1,4 +1,4 @@
-#include "BulletHell/Components/PlayerController.h"
+#include "BulletHellChris/Components/PlayerController.h"
 
 #include <filesystem>
 #include <fstream>
@@ -7,8 +7,8 @@
 
 #include "InputModule.h"
 #include "Components/RectangleShapeRenderer.h"
-#include "BulletHell/Components/BulletComponent.h"
-#include "BulletHell/BulletHellDebug.h"
+#include "BulletHellChris/Components/BulletComponent.h"
+#include "BulletHellChris/BulletHellDebug.h"
 
 namespace bulletHell
 {

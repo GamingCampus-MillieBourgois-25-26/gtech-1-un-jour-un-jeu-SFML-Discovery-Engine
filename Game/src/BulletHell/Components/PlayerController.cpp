@@ -7,6 +7,7 @@
 #include "InputModule.h"
 #include "Components/RectangleShapeRenderer.h"
 #include "BulletHell/Components/BulletComponent.h"
+#include "BulletHell/BulletHellDebug.h"
 
 namespace bulletHell
 {
@@ -35,6 +36,16 @@ namespace bulletHell
 
     void PlayerController::OnGUI()
     {
+        if (InputModule::GetKeyDown(sf::Keyboard::Key::F1))
+        {
+            g_showDebugUI = !g_showDebugUI;
+        }
+
+        if (!g_showDebugUI)
+        {
+            return;
+        }
+
         if (!ImGui::Begin("BulletHell Debug"))
         {
             ImGui::End();
@@ -481,4 +492,4 @@ namespace bulletHell
             autoTargetStrength = 0.35f;
         }
     }
-}
+} 

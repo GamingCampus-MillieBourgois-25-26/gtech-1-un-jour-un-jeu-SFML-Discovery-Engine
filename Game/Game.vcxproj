@@ -107,11 +107,11 @@
     <ClCompile Include="src\BulletHell\UI\PlayerHUDComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\BulletHell\BulletHellDebug.h" />
     <ClInclude Include="include\BulletHell\Components\BossComponent.h" />
     <ClInclude Include="include\BulletHell\UI\BossHUDComponent.h" />
     <ClInclude Include="include\BulletHell\UI\PlayerHUDComponent.h" />
     <ClInclude Include="Scenes\DefaultScene.h" />
-    <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\BulletHell\BulletHellTypes.h" />
     <ClInclude Include="include\BulletHell\Scenes\BulletHellScene.h" />
     <ClInclude Include="include\BulletHell\Components\PlayerController.h" />

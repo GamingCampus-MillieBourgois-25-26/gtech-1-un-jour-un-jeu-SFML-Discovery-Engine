@@ -30,6 +30,7 @@ namespace bulletHell
         if (assetsModule != nullptr)
         {
             playerTexture = assetsModule->LoadAsset<Texture>("BulletHell/Ships/ship_0000.png");
+            bulletTexture = assetsModule->LoadAsset<Texture>("BulletHell/Tiles/tile_0000.png");
         }
 
         player = CreateGameObject("Player");
@@ -68,11 +69,18 @@ namespace bulletHell
         {
             GameObject* bullet = CreateGameObject("PlayerBullet");
             bullet->SetPosition({ -10000.0f, -10000.0f });
-            bullet->SetScale({ 1.0f, 1.0f });
+            bullet->SetScale({ 0.35f, 0.35f });
 
-            RectangleShapeRenderer* renderer = bullet->CreateComponent<RectangleShapeRenderer>();
-            renderer->SetColor(sf::Color::Cyan);
-            renderer->SetSize({ 4.0f, 12.0f });
+            if (bulletTexture != nullptr)
+            {
+                bullet->CreateComponent<SpriteRenderer>(bulletTexture);
+            }
+            else
+            {
+                RectangleShapeRenderer* renderer = bullet->CreateComponent<RectangleShapeRenderer>();
+                renderer->SetColor(sf::Color::Cyan);
+                renderer->SetSize({ 4.0f, 12.0f });
+            }
 
             bullet->CreateComponent<BulletComponent>();
             playerBullets.push_back(bullet);
@@ -96,11 +104,18 @@ namespace bulletHell
         {
             GameObject* bullet = CreateGameObject("EnemyBullet");
             bullet->SetPosition({ -10000.0f, -10000.0f });
-            bullet->SetScale({ 1.0f, 1.0f });
+            bullet->SetScale({ 0.45f, 0.45f });
 
-            RectangleShapeRenderer* renderer = bullet->CreateComponent<RectangleShapeRenderer>();
-            renderer->SetColor(sf::Color(255, 110, 110));
-            renderer->SetSize({ 10.0f, 10.0f });
+            if (bulletTexture != nullptr)
+            {
+                bullet->CreateComponent<SpriteRenderer>(bulletTexture);
+            }
+            else
+            {
+                RectangleShapeRenderer* renderer = bullet->CreateComponent<RectangleShapeRenderer>();
+                renderer->SetColor(sf::Color(255, 110, 110));
+                renderer->SetSize({ 10.0f, 10.0f });
+            }
 
             bullet->CreateComponent<BulletComponent>();
             enemyBullets.push_back(bullet);
@@ -122,6 +137,11 @@ namespace bulletHell
         if (assetsModule != nullptr)
         {
             bossTexture = assetsModule->LoadAsset<Texture>("BulletHell/Ships/ship_0006.png");
+
+            if (bulletTexture == nullptr)
+            {
+                bulletTexture = assetsModule->LoadAsset<Texture>("BulletHell/Tiles/tile_0000.png");
+            }
         }
 
         boss = CreateGameObject("Boss");

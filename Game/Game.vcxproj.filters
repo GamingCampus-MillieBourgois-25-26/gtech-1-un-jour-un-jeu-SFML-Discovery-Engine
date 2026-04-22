@@ -50,9 +50,6 @@
     <ClInclude Include="Scenes\DefaultScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\BulletHell\BulletHellTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -81,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\BulletHell\UI\PlayerHUDComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHell\BulletHellDebug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

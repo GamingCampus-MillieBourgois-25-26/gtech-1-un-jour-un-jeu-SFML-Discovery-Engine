@@ -30,5 +30,6 @@ namespace bulletHell
 
         Texture* playerTexture = nullptr;
         Texture* bossTexture = nullptr;
+        Texture* bulletTexture = nullptr;
     };
 }

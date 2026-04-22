@@ -1,44 +1,44 @@
-#pragma once
+﻿#pragma once
 #include "Core/Component.h"
 #include "InputModule.h"
 
 class Enemy : public Component
 {
 public:
-	void Update(const float _delta_time) override
-	{
+    Enemy() = default;
+    ~Enemy() override = default;
+
+    void Start() override
+    {
+        velocity = Maths::Vector2f(150.f, 120.f); // vitesse initiale
+    }
+
+    void Update(const float _delta_time) override
+    {
 		Maths::Vector2<float> position = GetOwner()->GetPosition();
-		Maths::Vector2u window_size = Engine::GetInstance()->GetModuleManager()->GetModule<WindowModule>()->GetSize();
 
-		if (!Isturnedx) {
-			position.x += speed * _delta_time;
-			if (position.x > window_size.x) {
-				Isturnedx = true;
-			}
-		}
-		else if (Isturnedx) {
-			position.x -= speed * _delta_time;
-			if (position.x < window_size.x - window_size.x) {
-				Isturnedx = false;
-			}
-		}
-		if (!Isturnedy) {
-			position.y += speed * _delta_time;
-			if (position.y > window_size.y) {
-				Isturnedy = true;
-			}
-		}
-		else if (Isturnedy) {
-			position.y -= speed * _delta_time;
-			if (position.y < window_size.y - window_size.y) {
-				Isturnedy = false;
-			}
-		}
+        // Déplacement
+        position.x += velocity.x * _delta_time;
+        position.y += velocity.y * _delta_time;
+
+        Maths::Vector2u window_size = Engine::GetInstance()->GetModuleManager()->GetModule<WindowModule>()->GetSize();
+
+        // Taille de l'objet 
+        const float size = 20.f;
+
+        if (position.x <= 0.f || position.x + size >= window_size.x)
+        {
+            velocity.x *= -1.f;
+        }
+
+        if (position.y <= 0.f || position.y + size >= window_size.y)
+        {
+            velocity.y *= -1.f;
+        }
+
 		GetOwner()->SetPosition(position);
-	}
+    }
 
-	bool Isturnedx = true;
-	bool Isturnedy = true;
-
-	float speed = 100.0f;
+private:
+    Maths::Vector2f velocity;
 };

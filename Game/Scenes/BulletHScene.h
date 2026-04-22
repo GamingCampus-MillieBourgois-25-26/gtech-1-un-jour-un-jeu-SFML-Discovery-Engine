@@ -41,7 +41,7 @@ public:
 
 		RectangleShapeRenderer* shape_renderer = game_object->CreateComponent<RectangleShapeRenderer>();
 		shape_renderer->SetColor(_color);
-		shape_renderer->SetSize(Maths::Vector2f(200.f, 200.f));
+		shape_renderer->SetSize(Maths::Vector2f(20.f, 20.f));
 
 		return game_object;
 	}

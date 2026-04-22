@@ -1,12 +1,10 @@
 #pragma once
 
-#include <vector>
 #include <string>
+#include <vector>
 
-#include "Core/Component.h"
+#include "Core/GameObject.h"
 #include "Maths/Vector2.h"
-
-class GameObject;
 
 namespace bulletHell
 {
@@ -42,18 +40,18 @@ namespace bulletHell
         void LoadConfig();
 
     private:
-        float moveSpeed = 280.f;
-        float focusMoveSpeed = 120.f;
+        float moveSpeed = 280.0f;
+        float focusMoveSpeed = 120.0f;
         float shootCooldown = 0.10f;
         float shootTimer = 0.0f;
 
-        Maths::Vector2f playerSize = { 1.0f, 1.0f };
-        Maths::Vector2f bulletSize = { 4.0f, 12.0f };
+        Maths::Vector2f playerSize = Maths::Vector2f(1.0f, 1.0f);
+        Maths::Vector2f bulletSize = Maths::Vector2f(4.0f, 4.0f);
 
         float bulletSpeed = 700.0f;
 
-        Maths::Vector2f leftBulletOffset = { -6.0f, -20.0f };
-        Maths::Vector2f rightBulletOffset = { 6.0f, -20.0f };
+        Maths::Vector2f leftBulletOffset = Maths::Vector2f(12.0f, 20.0f);
+        Maths::Vector2f rightBulletOffset = Maths::Vector2f(19.0f, 20.0f);
 
         float hitRadius = 10.0f;
         int lives = 10;
@@ -65,7 +63,7 @@ namespace bulletHell
         bool focusMode = false;
 
         bool autoTargetInFocus = true;
-        float autoTargetStrength = 0.35f;
+        float autoTargetStrength = 2.0f;
 
         GameObject* hitboxObject = nullptr;
         GameObject* bossObject = nullptr;

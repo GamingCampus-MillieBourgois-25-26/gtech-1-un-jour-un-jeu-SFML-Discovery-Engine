@@ -2,12 +2,18 @@
 
 #include "imgui.h"
 
+#include "BulletHell/BulletHellDebug.h"
 #include "BulletHell/Components/PlayerController.h"
 
 namespace bulletHell
 {
     void PlayerHUDComponent::OnGUI()
     {
+        if (!g_showDebugUI)
+        {
+            return;
+        }
+
         if (player == nullptr)
         {
             return;

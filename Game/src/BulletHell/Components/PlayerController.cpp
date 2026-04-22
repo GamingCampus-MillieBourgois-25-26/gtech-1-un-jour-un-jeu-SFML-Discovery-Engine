@@ -1,5 +1,6 @@
 #include "BulletHell/Components/PlayerController.h"
 
+#include <filesystem>
 #include <fstream>
 
 #include "imgui.h"
@@ -220,10 +221,14 @@ namespace bulletHell
             {
                 invulnerabilityTimer = 0.0f;
             }
+        }
+
+        if (dead || invulnerabilityTimer > 0.0f)
+        {
             return;
         }
 
-        const Maths::Vector2f playerPosition = owner->GetPosition();
+        const Maths::Vector2f playerPos = owner->GetPosition();
         const float hitRadiusSquared = hitRadius * hitRadius;
 
         for (GameObject* bulletObject : enemyBulletPool)
@@ -239,26 +244,21 @@ namespace bulletHell
                 continue;
             }
 
-            const Maths::Vector2f bulletPosition = bulletObject->GetPosition();
-            const Maths::Vector2f delta = bulletPosition - playerPosition;
-            const float distanceSquared = delta.x * delta.x + delta.y * delta.y;
-
-            if (distanceSquared > hitRadiusSquared)
+            const Maths::Vector2f delta = bulletObject->GetPosition() - playerPos;
+            if (delta.MagnitudeSquared() <= hitRadiusSquared)
             {
-                continue;
+                bulletComponent->Deactivate();
+
+                --lives;
+                if (lives <= 0)
+                {
+                    lives = 0;
+                    dead = true;
+                }
+
+                invulnerabilityTimer = invulnerabilityDuration;
+                break;
             }
-
-            bulletComponent->Deactivate();
-            lives--;
-            invulnerabilityTimer = invulnerabilityDuration;
-
-            if (lives <= 0)
-            {
-                lives = 0;
-                dead = true;
-            }
-
-            return;
         }
     }
 
@@ -270,74 +270,55 @@ namespace bulletHell
             return;
         }
 
-        const int poolSize = static_cast<int>(bulletPool.size());
-
-        for (int i = 0; i < poolSize; ++i)
+        const std::size_t poolSize = bulletPool.size();
+        for (std::size_t i = 0; i < poolSize; ++i)
         {
             GameObject* bulletObject = bulletPool[nextBulletIndex];
-            nextBulletIndex = (nextBulletIndex + 1) % poolSize;
+            nextBulletIndex = (nextBulletIndex + 1) % static_cast<int>(poolSize);
 
             if (bulletObject == nullptr)
             {
                 continue;
             }
 
-            BulletComponent* bulletComponent = bulletObject->GetComponent<BulletComponent>();
-            if (bulletComponent == nullptr)
+            BulletComponent* bullet = bulletObject->GetComponent<BulletComponent>();
+            if (bullet == nullptr || bullet->IsActive())
             {
                 continue;
             }
 
-            if (bulletComponent->IsActive())
-            {
-                continue;
-            }
-
-            bulletObject->SetScale(bulletSize);
-
-            RectangleShapeRenderer* renderer = bulletObject->GetComponent<RectangleShapeRenderer>();
-            if (renderer != nullptr)
-            {
-                renderer->SetSize(bulletSize);
-            }
-
-            bulletComponent->Fire(_spawnPosition, _direction, bulletSpeed);
+            bulletObject->SetPosition(_spawnPosition);
+            bullet->Activate(_direction, bulletSpeed, bulletSize);
             return;
         }
     }
 
     Maths::Vector2f PlayerController::GetFocusedShotDirection() const
     {
-        const Maths::Vector2f up = { 0.0f, -1.0f };
-
         if (!focusMode || !autoTargetInFocus || bossObject == nullptr)
         {
-            return up;
+            return Maths::Vector2f(0.0f, -1.0f);
         }
 
-        if (dead)
-        {
-            return up;
-        }
-
-        GameObject* owner = GetOwner();
+        const GameObject* owner = GetOwner();
         if (owner == nullptr)
         {
-            return up;
+            return Maths::Vector2f(0.0f, -1.0f);
         }
 
         Maths::Vector2f toBoss = bossObject->GetPosition() - owner->GetPosition();
         if (toBoss.MagnitudeSquared() <= 0.0001f)
         {
-            return up;
+            return Maths::Vector2f(0.0f, -1.0f);
         }
 
-        toBoss = toBoss.Normalize();
+        const Maths::Vector2f forward = Maths::Vector2f(0.0f, -1.0f);
+        Maths::Vector2f targetDir = toBoss.Normalize();
+        Maths::Vector2f blended = forward + (targetDir - forward) * autoTargetStrength;
 
-        Maths::Vector2f blended = up + (toBoss * autoTargetStrength);
         if (blended.MagnitudeSquared() <= 0.0001f)
         {
-            return up;
+            return forward;
         }
 
         return blended.Normalize();
@@ -356,8 +337,13 @@ namespace bulletHell
 
     void PlayerController::UpdateHitboxVisual()
     {
+        if (hitboxObject == nullptr)
+        {
+            return;
+        }
+
         GameObject* owner = GetOwner();
-        if (owner == nullptr || hitboxObject == nullptr)
+        if (owner == nullptr)
         {
             return;
         }
@@ -367,129 +353,68 @@ namespace bulletHell
         RectangleShapeRenderer* renderer = hitboxObject->GetComponent<RectangleShapeRenderer>();
         if (renderer != nullptr)
         {
-            if (focusMode && !dead)
-            {
-                renderer->SetSize({ hitboxVisualSize, hitboxVisualSize });
-                renderer->SetColor(sf::Color::White);
-            }
-            else
-            {
-                renderer->SetSize({ 0.0f, 0.0f });
-            }
+            renderer->SetSize({ hitboxVisualSize, hitboxVisualSize });
         }
     }
 
     void PlayerController::SaveConfig() const
     {
-        std::ofstream file("player_config.txt");
+        std::filesystem::create_directories("Assets\\BulletHell");
+
+        std::ofstream file("Assets\\BulletHell\\bulletHellPlayerConfig.txt");
         if (!file.is_open())
         {
             return;
         }
 
-        file << moveSpeed << "\n";
-        file << focusMoveSpeed << "\n";
-        file << shootCooldown << "\n";
-        file << bulletSpeed << "\n";
+        file << moveSpeed << '\n';
+        file << focusMoveSpeed << '\n';
+        file << shootCooldown << '\n';
+        file << bulletSpeed << '\n';
 
-        file << playerSize.x << " " << playerSize.y << "\n";
-        file << bulletSize.x << " " << bulletSize.y << "\n";
+        file << playerSize.x << ' ' << playerSize.y << '\n';
+        file << bulletSize.x << ' ' << bulletSize.y << '\n';
 
-        file << leftBulletOffset.x << " " << leftBulletOffset.y << "\n";
-        file << rightBulletOffset.x << " " << rightBulletOffset.y << "\n";
+        file << leftBulletOffset.x << ' ' << leftBulletOffset.y << '\n';
+        file << rightBulletOffset.x << ' ' << rightBulletOffset.y << '\n';
 
-        file << hitRadius << "\n";
-        file << invulnerabilityDuration << "\n";
-        file << hitboxVisualSize << "\n";
-        file << autoTargetInFocus << "\n";
-        file << autoTargetStrength << "\n";
+        file << hitRadius << '\n';
+        file << lives << '\n';
+        file << invulnerabilityDuration << '\n';
+        file << hitboxVisualSize << '\n';
+
+        file << (autoTargetInFocus ? 1 : 0) << '\n';
+        file << autoTargetStrength << '\n';
     }
 
     void PlayerController::LoadConfig()
     {
-        std::ifstream file("player_config.txt");
+        std::ifstream file("Assets\\BulletHell\\bulletHellPlayerConfig.txt");
         if (!file.is_open())
         {
             return;
         }
 
-        float loadedMoveSpeed = moveSpeed;
-        float loadedFocusMoveSpeed = focusMoveSpeed;
-        float loadedShootCooldown = shootCooldown;
-        float loadedBulletSpeed = bulletSpeed;
+        file >> moveSpeed;
+        file >> focusMoveSpeed;
+        file >> shootCooldown;
+        file >> bulletSpeed;
 
-        Maths::Vector2f loadedPlayerSize = playerSize;
-        Maths::Vector2f loadedBulletSize = bulletSize;
+        file >> playerSize.x >> playerSize.y;
+        file >> bulletSize.x >> bulletSize.y;
 
-        Maths::Vector2f loadedLeftOffset = leftBulletOffset;
-        Maths::Vector2f loadedRightOffset = rightBulletOffset;
+        file >> leftBulletOffset.x >> leftBulletOffset.y;
+        file >> rightBulletOffset.x >> rightBulletOffset.y;
 
-        float loadedHitRadius = hitRadius;
-        float loadedInvulnerabilityDuration = invulnerabilityDuration;
-        float loadedHitboxVisualSize = hitboxVisualSize;
+        file >> hitRadius;
+        file >> lives;
+        file >> invulnerabilityDuration;
+        file >> hitboxVisualSize;
 
-        bool loadedAutoTargetInFocus = autoTargetInFocus;
-        float loadedAutoTargetStrength = autoTargetStrength;
+        int autoTarget = 1;
+        file >> autoTarget;
+        autoTargetInFocus = (autoTarget != 0);
 
-        if (!(file >> loadedMoveSpeed)) return;
-        if (!(file >> loadedFocusMoveSpeed)) return;
-        if (!(file >> loadedShootCooldown)) return;
-        if (!(file >> loadedBulletSpeed)) return;
-
-        if (!(file >> loadedPlayerSize.x >> loadedPlayerSize.y)) return;
-        if (!(file >> loadedBulletSize.x >> loadedBulletSize.y)) return;
-
-        if (!(file >> loadedLeftOffset.x >> loadedLeftOffset.y)) return;
-        if (!(file >> loadedRightOffset.x >> loadedRightOffset.y)) return;
-
-        if (!(file >> loadedHitRadius)) return;
-        if (!(file >> loadedInvulnerabilityDuration)) return;
-        if (!(file >> loadedHitboxVisualSize)) return;
-
-        if (!(file >> loadedAutoTargetInFocus)) return;
-        if (!(file >> loadedAutoTargetStrength)) return;
-
-        moveSpeed = loadedMoveSpeed;
-        focusMoveSpeed = loadedFocusMoveSpeed;
-        shootCooldown = loadedShootCooldown;
-        bulletSpeed = loadedBulletSpeed;
-
-        playerSize = loadedPlayerSize;
-        bulletSize = loadedBulletSize;
-
-        leftBulletOffset = loadedLeftOffset;
-        rightBulletOffset = loadedRightOffset;
-
-        hitRadius = loadedHitRadius;
-        invulnerabilityDuration = loadedInvulnerabilityDuration;
-        hitboxVisualSize = loadedHitboxVisualSize;
-
-        autoTargetInFocus = loadedAutoTargetInFocus;
-        autoTargetStrength = loadedAutoTargetStrength;
-
-        if (shootCooldown < 0.01f || shootCooldown > 2.0f)
-        {
-            shootCooldown = 0.10f;
-        }
-
-        if (bulletSpeed < 50.0f || bulletSpeed > 5000.0f)
-        {
-            bulletSpeed = 700.0f;
-        }
-
-        if (focusMoveSpeed < 10.0f || focusMoveSpeed > 1000.0f)
-        {
-            focusMoveSpeed = 120.0f;
-        }
-
-        if (moveSpeed < 10.0f || moveSpeed > 2000.0f)
-        {
-            moveSpeed = 280.0f;
-        }
-
-        if (autoTargetStrength < 0.0f || autoTargetStrength > 1.0f)
-        {
-            autoTargetStrength = 0.35f;
-        }
+        file >> autoTargetStrength;
     }
-} 
+}

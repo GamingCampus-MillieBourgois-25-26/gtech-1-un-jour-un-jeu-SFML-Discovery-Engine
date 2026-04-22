@@ -2,12 +2,18 @@
 
 #include "imgui.h"
 
+#include "BulletHell/BulletHellDebug.h"
 #include "BulletHell/Components/BossComponent.h"
 
 namespace bulletHell
 {
     void BossHUDComponent::OnGUI()
     {
+        if (!g_showDebugUI)
+        {
+            return;
+        }
+
         if (boss == nullptr)
         {
             return;

@@ -2,10 +2,8 @@
 
 #include <vector>
 
-#include "Core/Component.h"
+#include "Core/GameObject.h"
 #include "Maths/Vector2.h"
-
-class GameObject;
 
 namespace bulletHell
 {
@@ -54,6 +52,7 @@ namespace bulletHell
             float _speed,
             const Maths::Vector2f& _bulletSize,
             const Maths::Vector2f& _spawnOffset);
+
         void FireSpread(const BossPhaseSettings& _settings);
         void FireStraightBurst(float _speed,
             const Maths::Vector2f& _bulletSize,
@@ -76,14 +75,16 @@ namespace bulletHell
         int phase = 1;
         bool defeated = false;
 
-        float hitRadius = 28.0f;
+        float hitRadius = 80.0f;
+        Maths::Vector2f hitboxOffset = Maths::Vector2f(0.0f, 0.0f);
+
         float contactDamage = 1.0f;
 
         float movementTimer = 0.0f;
         float shootTimer = 0.0f;
         int phaseBurstCounter = 0;
 
-        Maths::Vector2f basePosition = Maths::Vector2f(400.0f, 120.0f);
+        Maths::Vector2f basePosition = Maths::Vector2f(225.0f, 50.0f);
 
         BossPhaseSettings phase1Settings;
         BossPhaseSettings phase2Settings;

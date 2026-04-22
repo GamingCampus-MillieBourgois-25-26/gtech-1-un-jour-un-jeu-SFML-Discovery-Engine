@@ -1,5 +1,7 @@
 #include "BulletHell/Components/BulletComponent.h"
 
+#include "Components/RectangleShapeRenderer.h"
+
 namespace bulletHell
 {
     void BulletComponent::Update(float _delta_time)
@@ -45,6 +47,27 @@ namespace bulletHell
         direction = _direction;
         speed = _speed;
         owner->SetPosition(_startPosition);
+    }
+
+    void BulletComponent::Activate(const Maths::Vector2f& _direction,
+        float _speed,
+        const Maths::Vector2f& _visualSize)
+    {
+        GameObject* owner = GetOwner();
+        if (owner == nullptr)
+        {
+            return;
+        }
+
+        active = true;
+        direction = _direction;
+        speed = _speed;
+
+        RectangleShapeRenderer* renderer = owner->GetComponent<RectangleShapeRenderer>();
+        if (renderer != nullptr)
+        {
+            renderer->SetSize(_visualSize);
+        }
     }
 
     void BulletComponent::Deactivate()

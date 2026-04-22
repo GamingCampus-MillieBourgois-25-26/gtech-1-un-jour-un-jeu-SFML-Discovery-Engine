@@ -1,11 +1,12 @@
 #include "BulletHell/Components/EnemyComponent.h"
 
 #include <cmath>
+#include <filesystem>
 #include <fstream>
 
 #include "imgui.h"
 
-#include "Components/RectangleShapeRenderer.h"
+#include "BulletHell/BulletHellDebug.h"
 #include "BulletHell/Components/BulletComponent.h"
 
 namespace bulletHell
@@ -23,6 +24,11 @@ namespace bulletHell
 
     void EnemyComponent::OnGUI()
     {
+        if (!g_showDebugUI)
+        {
+            return;
+        }
+
         if (!ImGui::Begin("Enemy Debug"))
         {
             ImGui::End();
@@ -152,12 +158,11 @@ namespace bulletHell
             return;
         }
 
-        const int poolSize = static_cast<int>(bulletPool.size());
-
-        for (int i = 0; i < poolSize; ++i)
+        const std::size_t poolSize = bulletPool.size();
+        for (std::size_t i = 0; i < poolSize; ++i)
         {
             GameObject* bulletObject = bulletPool[nextBulletIndex];
-            nextBulletIndex = (nextBulletIndex + 1) % poolSize;
+            nextBulletIndex = (nextBulletIndex + 1) % static_cast<int>(poolSize);
 
             if (bulletObject == nullptr)
             {
@@ -165,36 +170,20 @@ namespace bulletHell
             }
 
             BulletComponent* bulletComponent = bulletObject->GetComponent<BulletComponent>();
-            if (bulletComponent == nullptr)
+            if (bulletComponent == nullptr || bulletComponent->IsActive())
             {
                 continue;
             }
 
-            if (bulletComponent->IsActive())
-            {
-                continue;
-            }
-
-            RectangleShapeRenderer* renderer = bulletObject->GetComponent<RectangleShapeRenderer>();
-            if (renderer != nullptr)
-            {
-                renderer->SetColor(sf::Color(255, 120, 120));
-                renderer->SetSize(bulletSize);
-            }
-
-            bulletObject->SetScale(bulletSize);
-
-            const Maths::Vector2f spawnPosition = owner->GetPosition() + bulletSpawnOffset;
-            bulletComponent->Fire(spawnPosition, _direction, bulletSpeed);
+            bulletObject->SetPosition(owner->GetPosition() + bulletSpawnOffset);
+            bulletComponent->Activate(_direction, bulletSpeed, bulletSize);
             return;
         }
     }
 
     Maths::Vector2f EnemyComponent::RotateVectorDegrees(const Maths::Vector2f& _vector, float _degrees) const
     {
-        constexpr float pi = 3.14159265359f;
-        const float radians = _degrees * pi / 180.0f;
-
+        const float radians = _degrees * 3.14159265f / 180.0f;
         const float cosAngle = std::cos(radians);
         const float sinAngle = std::sin(radians);
 
@@ -207,25 +196,27 @@ namespace bulletHell
 
     void EnemyComponent::SaveConfig() const
     {
-        std::ofstream file("enemy_config.txt");
+        std::filesystem::create_directories("Assets\\BulletHell");
+
+        std::ofstream file("Assets\\BulletHell\\bulletHellEnemyConfig.txt");
         if (!file.is_open())
         {
             return;
         }
 
-        file << targetPosition.x << " " << targetPosition.y << "\n";
-        file << moveSpeed << "\n";
-        file << shootCooldown << "\n";
-        file << bulletSpeed << "\n";
-        file << bulletSize.x << " " << bulletSize.y << "\n";
-        file << bulletSpawnOffset.x << " " << bulletSpawnOffset.y << "\n";
-        file << spreadBulletCount << "\n";
-        file << spreadAngleDegrees << "\n";
+        file << targetPosition.x << ' ' << targetPosition.y << '\n';
+        file << moveSpeed << '\n';
+        file << shootCooldown << '\n';
+        file << bulletSpeed << '\n';
+        file << bulletSize.x << ' ' << bulletSize.y << '\n';
+        file << bulletSpawnOffset.x << ' ' << bulletSpawnOffset.y << '\n';
+        file << spreadBulletCount << '\n';
+        file << spreadAngleDegrees << '\n';
     }
 
     void EnemyComponent::LoadConfig()
     {
-        std::ifstream file("enemy_config.txt");
+        std::ifstream file("Assets\\BulletHell\\bulletHellEnemyConfig.txt");
         if (!file.is_open())
         {
             return;

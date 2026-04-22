@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Component.h"
+#include "Core/GameObject.h"
 #include "Maths/Vector2.h"
 
 namespace bulletHell
@@ -14,13 +14,17 @@ namespace bulletHell
             const Maths::Vector2f& _direction,
             float _speed);
 
+        void Activate(const Maths::Vector2f& _direction,
+            float _speed,
+            const Maths::Vector2f& _visualSize);
+
         void Deactivate();
 
         bool IsActive() const;
 
     private:
         bool active = false;
-        Maths::Vector2f direction = { 0.f, -1.f };
-        float speed = 0.f;
+        Maths::Vector2f direction = Maths::Vector2f(0.0f, -1.0f);
+        float speed = 0.0f;
     };
 }

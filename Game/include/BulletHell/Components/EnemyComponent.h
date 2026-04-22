@@ -2,10 +2,8 @@
 
 #include <vector>
 
-#include "Core/Component.h"
+#include "Core/GameObject.h"
 #include "Maths/Vector2.h"
-
-class GameObject;
 
 namespace bulletHell
 {
@@ -28,7 +26,7 @@ namespace bulletHell
         void LoadConfig();
 
     private:
-        Maths::Vector2f targetPosition = { 400.0f, 140.0f };
+        Maths::Vector2f targetPosition = Maths::Vector2f(400.0f, 140.0f);
         float moveSpeed = 120.0f;
         bool reachedTarget = false;
 
@@ -36,8 +34,8 @@ namespace bulletHell
         float shootTimer = 0.0f;
         float bulletSpeed = 260.0f;
 
-        Maths::Vector2f bulletSize = { 10.0f, 10.0f };
-        Maths::Vector2f bulletSpawnOffset = { 0.0f, 24.0f };
+        Maths::Vector2f bulletSize = Maths::Vector2f(10.0f, 10.0f);
+        Maths::Vector2f bulletSpawnOffset = Maths::Vector2f(0.0f, 24.0f);
 
         int spreadBulletCount = 5;
         float spreadAngleDegrees = 40.0f;

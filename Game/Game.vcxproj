@@ -95,13 +95,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\EnnemyA.cpp" />
     <ClCompile Include="Scenes\BulletHellSyl.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="include\SmallBullet.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\EnnemyA.h" />
     <ClInclude Include="Scenes\BulletHellSyl.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="Scenes\DefaultScene.h" />
+    <ClInclude Include="include\SmallBullet.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

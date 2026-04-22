@@ -2,21 +2,45 @@
 #include "Core/Component.h"
 #include "Core/GameObject.h"
 #include "Components/SquareCollider.h"
+#include "PlayerJ.h"
 
 namespace BulletHell_J {
     class ProjectileJ : public Component {
     public:
         Maths::Vector2f direction;
-        float speed = 150.0f;
+        float speed = 300.0f;
+        GameObject* targetPlayer = nullptr;
 
         void Update(const float _dt) override {
+            if (!targetPlayer) return;
+
             GetOwner()->SetPosition(GetOwner()->GetPosition() + direction * speed * _dt);
 
-            // Destruction si hors écran (optimisation J1)
-            Maths::Vector2f pos = GetOwner()->GetPosition();
-            if (pos.x < -50 || pos.x > 650 || pos.y < -50 || pos.y > 650) {
-                // Ton moteur semble avoir besoin d'une fonction de destruction 
-                // Pour J1, on peut simplement le téléporter très loin si Destroy n'est pas prêt
+            if (targetPlayer) {
+                // Recherche manuelle du collider du joueur
+                SquareCollider* pCol = nullptr;
+                for (Component* c : targetPlayer->GetComponents()) {
+                    pCol = dynamic_cast<SquareCollider*>(c);
+                    if (pCol) break;
+                }
+
+                // Recherche de mon propre collider
+                SquareCollider* myCol = nullptr;
+                for (Component* c : GetOwner()->GetComponents()) {
+                    myCol = dynamic_cast<SquareCollider*>(c);
+                    if (myCol) break;
+                }
+
+                if (pCol && myCol && SquareCollider::IsColliding(*myCol, *pCol)) {
+                    for (Component* c : targetPlayer->GetComponents()) {
+                        PlayerJ* pJ = dynamic_cast<PlayerJ*>(c);
+                        if (pJ) {
+                            pJ->TakeDamage();
+                            GetOwner()->SetPosition({ -1000.f, -1000.f }); // On "détruit"
+                            break;
+                        }
+                    }
+                }
             }
         }
     };

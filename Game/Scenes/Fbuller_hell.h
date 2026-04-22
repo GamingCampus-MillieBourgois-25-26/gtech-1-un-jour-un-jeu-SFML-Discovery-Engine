@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Player.h"
+#include "FPlayer.h"
 #include "Bullet.h"
 #include "EnemyShooter.h"
 #include "Assets/Texture.h"
@@ -20,7 +20,7 @@ public:
 	FBHene() : Scene("F_BULLET_HELLScene")
 	{
 		GameObject* player = CreateDummyGameObject("Player", 200.f, sf::Color::Cyan);
-		player->CreateComponent<Player>();
+		player->CreateComponent<FPlayer>();
 
 		GameObject* enemy = CreateDummyGameObject("Enemy", 400.f, sf::Color::Blue);
         enemy->CreateComponent<EnemyShooter>();
@@ -48,3 +48,10 @@ public:
 		return game_object;
 	}
 };
+//idee : 
+// ajouter des boss avec plusieurs phases(HP  patterns)
+//faire un système de score
+// ajouter un dash pour le joueur(très bullet hell)
+// améliorer les patterns(spirale plus complexe, aim, random)
+// optimiser les bullets(pooling pour 1000 + projectiles sans lag)
+// ajouter des effets(flash hit, slow motion, screen shake)*/

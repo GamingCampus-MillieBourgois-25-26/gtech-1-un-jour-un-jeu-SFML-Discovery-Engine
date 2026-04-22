@@ -1,7 +1,6 @@
 #include "Engine.h"
 #include "SceneModule.h"
-#include "Scenes/DefaultScene.h"
-#include "Scenes/buller_hell_F.h"
+#include "Scenes/Fbuller_hell.h"
 
 int main(const int _argc, const char** _argv)
 {

@@ -101,8 +101,9 @@
   <ItemGroup>
     <ClInclude Include="include\Bullet.h" />
     <ClInclude Include="include\EnemyShooter.h" />
+    <ClInclude Include="include\FPlayer.h" />
     <ClInclude Include="include\Patterns.h" />
-    <ClInclude Include="Scenes\buller_hell_F.h" />
+    <ClInclude Include="Scenes\Fbuller_hell.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="Scenes\DefaultScene.h" />
     <ClInclude Include="include\Demo\Player.h" />

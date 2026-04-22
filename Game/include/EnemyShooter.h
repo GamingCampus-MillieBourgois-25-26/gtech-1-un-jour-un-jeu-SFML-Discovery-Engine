@@ -6,39 +6,30 @@
 class EnemyShooter : public Component
 {
 public:
+    int phase = 0;
     float timer = 0.f;
 
-    void Update(float dt) override
+    void Update(float _delta_time) override
     {
-        timer += dt;
+        timer += _delta_time;
 
-        if (timer > 1.f)
+        if (timer > 1.f + (phase * 0.2f))
         {
-            ShootCircle();
+            if (phase == 0)
+                Patterns::ShootCircle(GetOwner());
+            else if (phase == 1)
+                Patterns::ShootSpiral(GetOwner());
+            else if (phase == 2)
+                Patterns::ShootWave(GetOwner());
+            else
+                Patterns::ShootLaser(GetOwner());
+
             timer = 0.f;
-        }
-    }
-
-private:
-    void ShootCircle()
-    {
-        GameObject* owner = GetOwner();
-
-        for (int i = 0; i < 36; i++)
-        {
-            float angle = i * 10.f;
-            float rad = angle * 3.14159f / 180.f;
-
-            GameObject* bullet = owner->GetScene()->CreateGameObject("Bullet");
-
-            bullet->SetPosition(owner->GetPosition());
-
-            auto b = bullet->CreateComponent<Bullet>();
-
-            b->velocity = Maths::Vector2f(
-                std::cos(rad) * 200.f,
-                std::sin(rad) * 200.f
-            );
+            phase = (phase + 1) % 4;
         }
     }
 };
+//Patterns::ShootCircle(GetOwner());
+//Patterns::ShootSpiral(GetOwner());
+//Patterns::ShootWave(GetOwner());
+//Patterns::ShootLaser(GetOwner());

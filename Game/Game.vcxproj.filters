@@ -18,12 +18,18 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scenes\BulletHellSyl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scenes\DefaultScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\BulletHellSyl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

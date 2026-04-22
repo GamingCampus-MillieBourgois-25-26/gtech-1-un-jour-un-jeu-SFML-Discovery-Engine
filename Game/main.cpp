@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "SceneModule.h"
 #include "Scenes/DefaultScene.h"
+#include "Scenes/BulletHellSyl.h"
 
 int main(const int _argc, const char** _argv)
 {
@@ -8,7 +9,7 @@ int main(const int _argc, const char** _argv)
 
     engine->Init(_argc, _argv);
 
-    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<DefaultScene>();
+    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<BulletHellSyl>();
 
     engine->Run();
 

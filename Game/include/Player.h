@@ -1,6 +1,7 @@
 #pragma once
 #include "Core/Component.h"
 #include "InputModule.h"
+#include "Components/SquareCollider.h"
 
 class Player : public Component
 {
@@ -35,5 +36,7 @@ public:
 		}
 	}
 
-	float speed = 100.0f;
+	float speed = 1000.0f;
+
+
 };

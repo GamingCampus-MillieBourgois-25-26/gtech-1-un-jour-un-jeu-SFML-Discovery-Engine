@@ -1,9 +1,14 @@
+<<<<<<< Updated upstream
 #include "Engine.h"
 #include "SceneModule.h"
 #include "Scenes/Demo/DemoScene.h"
+=======
+#include "Game.h"
+>>>>>>> Stashed changes
 
-int main(const int _argc, const char** _argv)
+int main(int argc, const char** argv)
 {
+<<<<<<< Updated upstream
     Engine* const engine = Engine::GetInstance();
 
     engine->Init(_argc, _argv);
@@ -12,5 +17,9 @@ int main(const int _argc, const char** _argv)
 
     engine->Run();
 
+=======
+    Game game;
+    game.Run(argc, argv);
+>>>>>>> Stashed changes
     return 0;
 }

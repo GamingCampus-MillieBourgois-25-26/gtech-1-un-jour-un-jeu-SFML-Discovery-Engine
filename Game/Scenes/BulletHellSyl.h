@@ -25,6 +25,7 @@ public:
 
 		AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
 		Texture* texture = assets_module->LoadAsset<Texture>("logo.png");
+		Texture* laserBlue = assets_module->LoadAsset<Texture>("Sylvain/BulletHell/laserBlue.png");
 
 		player->CreateComponent<SpriteRenderer>(texture);
 	}

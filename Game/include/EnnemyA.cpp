@@ -9,15 +9,19 @@
 void EnnemyA::Update(const float _delta_time)
 {
 	timer += _delta_time;
-	if (timer >= 0.2f)
+	if (timer >= 1.f)
 	{
 		timer = 0.f;
-		GameObject* bullet = GetOwner()->GetScene()->CreateGameObject("bullet");
-		bullet->SetPosition({ 300.f, 100.f });
-		bullet->CreateComponent<SmallBullet>();
-		AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
-		Texture* texture = assets_module->LoadAsset<Texture>("Sylvain/BulletHell/laserBlue.png");
-
-		bullet->CreateComponent<SpriteRenderer>(texture);
+		CreateBullet();
 	}
+}
+
+void EnnemyA::CreateBullet()
+{
+	GameObject* bullet = GetOwner()->GetScene()->CreateGameObject("bullet");
+	bullet->SetPosition({ 300.f, 100.f });
+	bullet->CreateComponent<SmallBullet>();
+	AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
+	Texture* texture = assets_module->GetAsset<Texture>("Sylvain/BulletHell/laserBlue.png");
+	bullet->CreateComponent<SpriteRenderer>(texture);
 }

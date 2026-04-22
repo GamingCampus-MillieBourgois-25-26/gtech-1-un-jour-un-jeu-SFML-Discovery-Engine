@@ -11,7 +11,7 @@ void WindowModule::Awake()
 {
     Module::Awake();
 
-    window = std::make_unique<sf::RenderWindow>(sf::VideoMode({1500, 800}), "SFML Discovery Engine");
+    window = new sf::RenderWindow(sf::VideoMode({1500, 800}), "SFML Discovery Engine");
 }
 
 void WindowModule::PreRender()

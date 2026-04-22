@@ -108,14 +108,14 @@
     <ClCompile Include="ClickerLeo\ShopPanel.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="BulletHellAlice\PlayerController.cpp" />
-    <ClCompile Include="pch.cpp" />
-    <ClCompile Include="TowerDefenseLeo\EnemyComponent.cpp" />
-    <ClCompile Include="TowerDefenseLeo\InputComponent.cpp" />
-    <ClCompile Include="TowerDefenseLeo\ProjectileComponent.cpp" />
-    <ClCompile Include="TowerDefenseLeo\TDScene.cpp" />
-    <ClCompile Include="TowerDefenseLeo\TowerComponent.cpp" />
-    <ClCompile Include="TowerDefenseLeo\UIComponent.cpp" />
-    <ClCompile Include="TowerDefenseLeo\WaveManagerComponent.cpp" />
+    <ClCompile Include="BulletHellAlice\Enemy\FanShooter.cpp" />
+    <ClCompile Include="BulletHellAlice\Enemy\CurtainSpawner.cpp" />
+    <ClCompile Include="BulletHellAlice\Enemy\EasySentry.cpp" />
+    <ClCompile Include="BulletHellAlice\HitboxRenderer.cpp" />
+    <ClCompile Include="BulletHellAlice\HealthBarRenderer.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="BulletHellAlice\Enemy\Projectile.cpp" />
+    <ClCompile Include="BulletHellAlice\ProgressionManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
@@ -125,27 +125,13 @@
   <ItemGroup>
     <ClInclude Include="BulletHellAlice\PlayerController.h" />
     <ClInclude Include="BulletHellAlice\Scenes\GameScene.h" />
-    <ClInclude Include="BulletHellLeo\Bullet.h" />
-    <ClInclude Include="BulletHellLeo\BulletHellPlayer.h" />
-    <ClInclude Include="BulletHellLeo\BulletHellScene.h" />
-    <ClInclude Include="BulletHellLeo\BulletSpawner.h" />
-    <ClInclude Include="BulletHellLeo\Enemy.h" />
-    <ClInclude Include="BulletHellLeo\Game.h" />
-    <ClInclude Include="ClickerLeo\AnimalData.h" />
-    <ClInclude Include="ClickerLeo\ClickArea.h" />
-    <ClInclude Include="ClickerLeo\ClickComponent.h" />
-    <ClInclude Include="ClickerLeo\FloatingTextComponent.h" />
-    <ClInclude Include="ClickerLeo\GameManager.h" />
-    <ClInclude Include="ClickerLeo\MainScene.h" />
-    <ClInclude Include="ClickerLeo\ShopItem.h" />
-    <ClInclude Include="ClickerLeo\ShopPanel.h" />
-    <ClInclude Include="TowerDefenseLeo\EnemyComponent.h" />
-    <ClInclude Include="TowerDefenseLeo\InputComponent.h" />
-    <ClInclude Include="TowerDefenseLeo\ProjectileComponent.h" />
-    <ClInclude Include="TowerDefenseLeo\TDScene.h" />
-    <ClInclude Include="TowerDefenseLeo\TowerComponent.h" />
-    <ClInclude Include="TowerDefenseLeo\UIComponent.h" />
-    <ClInclude Include="TowerDefenseLeo\WaveManagerComponent.h" />
+    <ClInclude Include="BulletHellAlice\Enemy\Projectile.h" />
+    <ClInclude Include="BulletHellAlice\Enemy\FanShooter.h" />
+    <ClInclude Include="BulletHellAlice\Enemy\CurtainSpawner.h" />
+    <ClInclude Include="BulletHellAlice\ProgressionManager.h" />
+    <ClInclude Include="BulletHellAlice\Enemy\EasySentry.h" />
+    <ClInclude Include="BulletHellAlice\HitboxRenderer.h" />
+    <ClInclude Include="BulletHellAlice\HealthBarRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

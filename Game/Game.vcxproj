@@ -96,6 +96,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BulletS.cpp" />
+    <ClCompile Include="CellType.cpp" />
     <ClCompile Include="include\Demo\Tile.cpp" />
     <ClCompile Include="BulletHellSceneS.cpp" />
     <ClCompile Include="main.cpp" />
@@ -103,17 +104,19 @@
     <ClCompile Include="Scenes\Demo\DemoScene.cpp" />
     <ClCompile Include="PlayerS.cpp" />
     <ClCompile Include="SceneTD.cpp" />
+    <ClCompile Include="TowerDefenseScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BulletS.h" />
+    <ClInclude Include="CellType.h" />
     <ClInclude Include="include\Demo\Player.h" />
     <ClInclude Include="include\Demo\Tile.h" />
     <ClInclude Include="PlayerTD.h" />
     <ClInclude Include="Scenes\Demo\DemoScene.h" />
     <ClInclude Include="BulletHellSceneS.h" />
     <ClInclude Include="PlayerS.h" />
-    <ClInclude Include="Scenes\DefaultScene.h" />
     <ClInclude Include="SceneTD.h" />
+    <ClInclude Include="TowerDefenseScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

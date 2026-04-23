@@ -45,11 +45,14 @@
     <ClCompile Include="BulletS.cpp">
       <Filter>Bullet Hell</Filter>
     </ClCompile>
+    <ClCompile Include="TowerDefenseScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CellType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Scenes\DefaultScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Demo\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -73,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="SceneTD.h">
       <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerDefenseScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CellType.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -8,6 +8,7 @@ public:
     static int baseHP;
     static int enemiesKilled;
     static int enemiesEscaped;
+
     static bool gameOver;
     static bool victory;
 

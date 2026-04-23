@@ -1,13 +1,10 @@
 #pragma once
-#include "Core/Component.h"
 
-class Scene;
+#include "Core/Component.h"
 
 class SpawnerComponent : public Component
 {
 public:
-    static Scene* scene;
-
     void Update(float _delta_time) override;
 
 private:

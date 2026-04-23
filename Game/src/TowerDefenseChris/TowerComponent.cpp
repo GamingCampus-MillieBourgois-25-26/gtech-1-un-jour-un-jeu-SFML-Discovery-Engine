@@ -4,11 +4,38 @@
 #include "Core/GameObject.h"
 #include "Maths/Vector2.h"
 
+#include <algorithm>
 #include <cmath>
-#include <iostream>
+
+std::vector<TowerComponent*> TowerComponent::towers;
+
+TowerComponent::TowerComponent()
+{
+    towers.push_back(this);
+}
+
+TowerComponent::~TowerComponent()
+{
+    towers.erase(std::remove(towers.begin(), towers.end(), this), towers.end());
+}
+
+void TowerComponent::ActivateAt(float x, float y)
+{
+    isActive = true;
+    timer = 0.f;
+    GetOwner()->SetPosition(Maths::Vector2f(x, y));
+}
+
+bool TowerComponent::IsActive() const
+{
+    return isActive;
+}
 
 void TowerComponent::Update(float _delta_time)
 {
+    if (!isActive)
+        return;
+
     timer += _delta_time;
 
     if (timer < cooldown)
@@ -21,10 +48,7 @@ void TowerComponent::Update(float _delta_time)
 
     for (EnemyComponent* enemy : EnemyComponent::enemies)
     {
-        if (enemy == nullptr)
-            continue;
-
-        if (enemy->GetOwner() == nullptr)
+        if (enemy == nullptr || !enemy->IsActive())
             continue;
 
         Maths::Vector2f enemyPos = enemy->GetOwner()->GetPosition();
@@ -42,7 +66,6 @@ void TowerComponent::Update(float _delta_time)
 
     if (target != nullptr)
     {
-        std::cout << "tour attaque\n";
         target->TakeDamage(damage);
         timer = 0.0f;
     }

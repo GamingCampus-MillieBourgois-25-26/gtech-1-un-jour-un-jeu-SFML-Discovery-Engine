@@ -1,50 +1,51 @@
-#include "TowerDefenseChris/TowerDefenseScene.h"
+﻿#include "TowerDefenseChris/TowerDefenseScene.h"
 #include "TowerDefenseChris/InputTowerComponent.h"
 #include "TowerDefenseChris/EnemyComponent.h"
 #include "TowerDefenseChris/SpawnerComponent.h"
 #include "TowerDefenseChris/GameManagerComponent.h"
+#include "TowerDefenseChris/TowerComponent.h"
+#include "Engine.h"
+#include "ModuleManager.h"
+#include "Modules/AssetsModule.h"
 
 #include "Core/GameObject.h"
-#include "Components/RectangleShapeRenderer.h"
+#include "Assets/Texture.h"
+#include "Components/SpriteRenderer.h"
 #include "Maths/Vector2.h"
 
 TowerDefense::TowerDefenseScene::TowerDefenseScene()
     : Scene("TowerDefenseScene")
 {
-    const int rows = 5;
-    const int cols = 8;
-    const float cellSize = 80.f;
+    AssetsModule* assets = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
 
-    for (int y = 0; y < rows; y++)
+    Texture* mapTexture = assets->LoadAsset<Texture>("TowerDefenseChris/set/map.png");
+    Texture* enemyTex = assets->LoadAsset<Texture>("TowerDefenseChris/set/enemy.png");
+    Texture* towerTex = assets->LoadAsset<Texture>("TowerDefenseChris/set/tower.png");
+
+    GameObject* map = CreateGameObject("Map");
+    map->SetPosition(Maths::Vector2f(0.f, 0.f));
+    map->SetScale(Maths::Vector2f(4.f, 4.f));
+    map->CreateComponent<SpriteRenderer>(mapTexture);
+
+    for (int i = 0; i < 20; ++i)
     {
-        for (int x = 0; x < cols; x++)
-        {
-            GameObject* cell = CreateGameObject("Cell_" + std::to_string(x) + "_" + std::to_string(y));
-            cell->SetPosition(Maths::Vector2f(x * cellSize, y * cellSize));
-            cell->SetScale(Maths::Vector2f(1.f, 1.f));
-
-            RectangleShapeRenderer* renderer = cell->CreateComponent<RectangleShapeRenderer>();
-            renderer->SetSize(Maths::Vector2f(cellSize - 2.f, cellSize - 2.f));
-
-            if (y == 2)
-                renderer->SetColor(sf::Color(180, 120, 60));
-            else
-                renderer->SetColor(sf::Color(60, 160, 60));
-        }
+        GameObject* enemy = CreateGameObject("Enemy_" + std::to_string(i));
+        enemy->SetPosition(Maths::Vector2f(-1000.f, -1000.f));
+        enemy->SetScale(Maths::Vector2f(2.f, 2.f));
+        enemy->CreateComponent<SpriteRenderer>(enemyTex);
+        enemy->CreateComponent<EnemyComponent>();
     }
 
-    GameObject* enemy = CreateGameObject("Enemy_Start");
-    enemy->SetPosition(Maths::Vector2f(20.f, 2.f * cellSize + 20.f));
-    enemy->SetScale(Maths::Vector2f(1.f, 1.f));
-
-    RectangleShapeRenderer* enemyRenderer = enemy->CreateComponent<RectangleShapeRenderer>();
-    enemyRenderer->SetSize(Maths::Vector2f(40.f, 40.f));
-    enemyRenderer->SetColor(sf::Color::Red);
-
-    enemy->CreateComponent<EnemyComponent>();
+    for (int i = 0; i < 30; ++i)
+    {
+        GameObject* tower = CreateGameObject("TowerPool_" + std::to_string(i));
+        tower->SetPosition(Maths::Vector2f(-1000.f, -1000.f));
+        tower->SetScale(Maths::Vector2f(1.f, 1.f));
+        tower->CreateComponent<SpriteRenderer>(towerTex);
+        tower->CreateComponent<TowerComponent>();
+    }
 
     InputTowerComponent::scene = this;
-    SpawnerComponent::scene = this;
 
     GameObject* spawner = CreateGameObject("Spawner");
     spawner->CreateComponent<SpawnerComponent>();

@@ -1,38 +1,36 @@
-#include "TowerDefenseChris/GameManagerComponent.h"
+﻿#include "TowerDefenseChris/GameManagerComponent.h"
 
-#include <iostream>
+#include <imgui.h>
 
 int GameManagerComponent::baseHP = 3;
 int GameManagerComponent::enemiesKilled = 0;
 int GameManagerComponent::enemiesEscaped = 0;
+
 bool GameManagerComponent::gameOver = false;
 bool GameManagerComponent::victory = false;
 
 void GameManagerComponent::OnGUI()
 {
-    static int lastBaseHP = -1;
-    static int lastKilled = -1;
-    static int lastEscaped = -1;
-    static bool lastGameOver = false;
-    static bool lastVictory = false;
+    ImGui::SetNextWindowPos(ImVec2(10.f, 10.f), ImGuiCond_Always);
+    ImGui::SetNextWindowBgAlpha(0.75f);
 
-    if (baseHP != lastBaseHP || enemiesKilled != lastKilled || enemiesEscaped != lastEscaped
-        || gameOver != lastGameOver || victory != lastVictory)
-    {
-        std::cout << "Base HP: " << baseHP
-            << " | Kills: " << enemiesKilled
-            << " | Escaped: " << enemiesEscaped << "\n";
+    ImGuiWindowFlags flags =
+        ImGuiWindowFlags_NoMove |
+        ImGuiWindowFlags_NoResize |
+        ImGuiWindowFlags_AlwaysAutoResize |
+        ImGuiWindowFlags_NoCollapse;
 
-        if (gameOver)
-            std::cout << "DEFAITE\n";
+    ImGui::Begin("HUD", nullptr, flags);
 
-        if (victory)
-            std::cout << "VICTOIRE\n";
+    ImGui::Text("HP: %d", baseHP);
+    ImGui::Text("Kills: %d", enemiesKilled);
+    ImGui::Text("Escaped: %d", enemiesEscaped);
 
-        lastBaseHP = baseHP;
-        lastKilled = enemiesKilled;
-        lastEscaped = enemiesEscaped;
-        lastGameOver = gameOver;
-        lastVictory = victory;
-    }
+    if (gameOver)
+        ImGui::Text("GAME OVER");
+
+    if (victory)
+        ImGui::Text("VICTORY");
+
+    ImGui::End();
 }

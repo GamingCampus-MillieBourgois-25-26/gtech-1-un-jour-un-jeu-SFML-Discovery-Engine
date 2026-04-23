@@ -17,8 +17,11 @@ void Bullet::Update(float deltaTime) {
     if (!myCollider) return;
 
     auto* sm = Engine::GetInstance()->GetModuleManager()->GetModule<SceneModule>();
-    if (!sm || sm->GetScenesList().empty()) return;
-    Scene* scene = sm->GetScenesList().front().get();
+    if (!sm) return;
+
+    // On cible la scène de combat spécifiquement
+    Scene* scene = sm->GetSceneByName("BulletHell");
+    if (!scene) return;
 
     // 3. Détection de collision
     if (this->isEnemy) {

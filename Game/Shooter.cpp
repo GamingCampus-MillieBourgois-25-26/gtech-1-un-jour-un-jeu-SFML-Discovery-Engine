@@ -38,11 +38,13 @@ void Shooter::Update(float deltaTime)
     else
         dir = Maths::Vector2f(0.0f, -1.0f); // Tir par défaut vers le haut si la souris est sur le joueur
 
-    // 3. Récupération de la scène
+    // 3. Récupération de la scène par son nom exact
     SceneModule* sceneModule = Engine::GetInstance()->GetModuleManager()->GetModule<SceneModule>();
-    if (!sceneModule || sceneModule->GetScenesList().empty()) return;
+    if (!sceneModule) return;
 
-    Scene* scene = sceneModule->GetScenesList().front().get();
+    // On cherche "BulletHell" car c'est là que le combat se passe
+    Scene* scene = sceneModule->GetSceneByName("BulletHell");
+    if (!scene) return;
 
     // 4. Création de la balle (Désormais SÛR grâce à ta modif moteur !)
     GameObject* bullet = scene->CreateGameObject("PlayerBullet");

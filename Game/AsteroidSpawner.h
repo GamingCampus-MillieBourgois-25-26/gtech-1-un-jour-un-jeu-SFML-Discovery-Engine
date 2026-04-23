@@ -8,6 +8,7 @@ public:
     float spawnRate = 0.15f;
     bool canSpawnLaser = false;
     float timer = 0.f;
+    bool isEnabled = true;
 
     void Update(float dt) override;
 private:

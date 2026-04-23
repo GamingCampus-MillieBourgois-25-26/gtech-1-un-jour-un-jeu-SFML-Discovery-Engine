@@ -109,6 +109,7 @@
     <ClCompile Include="LaserTrap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Shooter.cpp" />
+    <ClCompile Include="TowerDefenseScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asteroid.h" />
@@ -124,9 +125,12 @@
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="LaserTrap.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MenuScene.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scenes\DefaultScene.h" />
     <ClInclude Include="Shooter.h" />
+    <ClInclude Include="TowerDefenseScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

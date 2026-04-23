@@ -16,6 +16,7 @@
 
 void BulletHellSpawner::Update(float _deltaTime)
 {
+    if (!isEnabled) return;
     // Mise à jour des timers
     bulletTimer += _deltaTime;
     enemyTimer += _deltaTime;
@@ -46,7 +47,8 @@ void BulletHellSpawner::Update(float _deltaTime)
         laserTimer = 0.0f;
 
         auto* sm = Engine::GetInstance()->GetModuleManager()->GetModule<SceneModule>();
-        Scene* scene = sm->GetScenesList().front().get();
+        if (!sm) return;
+        Scene* scene = sm->GetSceneByName("BulletHell");
 
         if (scene)
         {
@@ -74,8 +76,11 @@ void BulletHellSpawner::Update(float _deltaTime)
 
 void BulletHellSpawner::SpawnRainBullet()
 {
-    auto* mm = Engine::GetInstance()->GetModuleManager();
-    Scene* scene = mm->GetModule<SceneModule>()->GetScenesList().front().get();
+    auto* sm = Engine::GetInstance()->GetModuleManager()->GetModule<SceneModule>();
+    if (!sm) return;
+    Scene* scene = sm->GetSceneByName("BulletHell");
+
+    if (!scene) return;
 
     GameObject* rain = scene->CreateGameObject("RainBullet");
     if (rain)
@@ -134,8 +139,13 @@ void BulletHellSpawner::SpawnRainBullet()
 void BulletHellSpawner::SpawnEnemy()
 {
     auto* mm = Engine::GetInstance()->GetModuleManager();
-    Scene* scene = mm->GetModule<SceneModule>()->GetScenesList().front().get();
+    auto* sm = mm->GetModule<SceneModule>();
     auto* assets = mm->GetModule<AssetsModule>();
+
+    // CORRECTION : On remplace .front().get() par GetSceneByName
+    Scene* scene = sm->GetSceneByName("BulletHell");
+    if (!scene) return;
+
 
     GameObject* enemyObj = scene->CreateGameObject("Enemy");
     if (enemyObj)

@@ -13,12 +13,14 @@ void Asteroid::Update(float dt)
     pos.y += speed * dt;
     GetOwner()->SetPosition(pos);
 
-    // 2. Récupération sécurisée de la scène
+    // 2. Récupération sécurisée de la scène par son nom
     auto* mm = Engine::GetInstance()->GetModuleManager();
     auto* sceneModule = mm->GetModule<SceneModule>();
-    if (!sceneModule || sceneModule->GetScenesList().empty()) return;
+    if (!sceneModule) return;
 
-    Scene* scene = sceneModule->GetScenesList().front().get();
+    // On cible spécifiquement la scène de jeu "BulletHell"
+    Scene* scene = sceneModule->GetSceneByName("BulletHell");
+    if (!scene) return;
 
     // 3. Collision avec le joueur
     GameObject* player = scene->FindGameObject("Player");

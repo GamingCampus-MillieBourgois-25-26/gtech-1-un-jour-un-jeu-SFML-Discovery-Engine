@@ -7,7 +7,7 @@ public:
     void Update(float _deltaTime) override;
     void TakeDamage(int _amount);
 
-    int currentHealth = 5;
+    int currentHealth = 10;
     float invulnerabilityDuration = 1.5f;
 
 private:

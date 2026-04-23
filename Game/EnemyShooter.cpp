@@ -13,8 +13,14 @@ void EnemyShooter::Update(float deltaTime) {
 
     if (timer >= currentDelay) {
         if (shotsFired < maxShots) {
+            // --- À REMPLACER ---
             auto* sm = Engine::GetInstance()->GetModuleManager()->GetModule<SceneModule>();
-            Scene* scene = sm->GetScenesList().front().get();
+            if (!sm) return; // Sécurité ajoutée
+
+            // On cible spécifiquement la scène de jeu
+            Scene* scene = sm->GetSceneByName("BulletHell");
+            if (!scene) return;
+            // --------------------
 
             // 1. TROUVER LE JOUEUR POUR VISER
             GameObject* player = scene->FindGameObject("Player");

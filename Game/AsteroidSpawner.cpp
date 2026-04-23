@@ -11,21 +11,29 @@
 #include "SquareCollider.h"
 #include "Assets/Texture.h"
 #include "Modules/AssetsModule.h"
+#include <iostream>
 
 void AsteroidSpawner::Update(float dt)
 {
+    if (!isEnabled) return;
+
     // --- Gestion des Timers ---
     timer += dt;
     if (canSpawnLaser) {
         laserTimer += dt;
     }
 
-    // Récupérer la scène
-    auto* sceneModule = Engine::GetInstance()->GetModuleManager()->GetModule<SceneModule>();
-    if (!sceneModule || sceneModule->GetScenesList().empty()) return;
-    Scene* scene = sceneModule->GetScenesList().front().get();
+    // 1. Récupérer le module de scène
+    auto* sm = Engine::GetInstance()->GetModuleManager()->GetModule<SceneModule>();
+    if (!sm) return;
 
-    // =========================
+    // 2. Récupérer la scène par son nom (C'est la solution la plus simple)
+    // On utilise "BulletHell" car c'est le nom qu'on a mis dans BulletHellScene.h
+    Scene* scene = sm->GetSceneByName("BulletHell");
+
+    // 3. Sécurité : si la scène n'est pas encore chargée, on sort
+    if (!scene) return;
+
     // 1. SPAWN ASTÉROÏDES
     // =========================
     if (timer >= spawnRate)
@@ -53,8 +61,7 @@ void AsteroidSpawner::Update(float dt)
         }
     }
 
-    // =========================
-    // 2. SPAWN LASER (Seulement si autorisé)
+    // 2. SPAWN LASER
     // =========================
     if (canSpawnLaser && laserTimer >= 4.0f)
     {

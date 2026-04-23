@@ -5,6 +5,7 @@
 class BulletHellSpawner : public Component
 {
 public:
+    bool isEnabled = true;
     bool canSpawnLaser = false; // Par défaut, pas de laser
     // Appelé à chaque frame par le moteur
     void Update(float _deltaTime) override;

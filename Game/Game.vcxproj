@@ -105,6 +105,12 @@
     <ClCompile Include="src\BulletHellChris\UI\BossHUDComponent.cpp" />
     <ClCompile Include="src\BulletHellChris\UI\BulletHellHUD.cpp" />
     <ClCompile Include="src\BulletHellChris\UI\PlayerHUDComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\EnemyComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\InputTowerComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\RenderTestComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\SpawnerComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\TowerComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\TowerDefenseScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\BulletHellChris\BulletHellDebug.h" />
@@ -118,6 +124,12 @@
     <ClInclude Include="include\BulletHellChris\UI\BossHUDComponent.h" />
     <ClInclude Include="include\BulletHellChris\UI\BulletHellHUD.h" />
     <ClInclude Include="include\BulletHellChris\UI\PlayerHUDComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\EnemyComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\InputTowerComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\RenderTestComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\SpawnerComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\TowerComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\TowerDefenseScene.h" />
     <ClInclude Include="Scenes\DefaultScene.h" />
   </ItemGroup>
   <ItemGroup>

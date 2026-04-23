@@ -15,6 +15,12 @@
     <Filter Include="Source Files\BulletHell">
       <UniqueIdentifier>{bd75a81d-de57-4d17-8f58-b2d86b3b0234}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TowerDefense">
+      <UniqueIdentifier>{11d4fe0f-dbef-4873-bb9e-7dc9b97a97a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense">
+      <UniqueIdentifier>{7dea0e58-f194-42d8-980f-4b47617f242a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\BulletHellChris\Components\BulletComponent.cpp">
@@ -32,9 +38,6 @@
     <ClCompile Include="src\BulletHellChris\Systems\EnemySpawner.cpp">
       <Filter>Source Files\BulletHell</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files\BulletHell</Filter>
-    </ClCompile>
     <ClCompile Include="src\BulletHellChris\Components\PlayerController.cpp">
       <Filter>Source Files\BulletHell</Filter>
     </ClCompile>
@@ -46,6 +49,27 @@
     </ClCompile>
     <ClCompile Include="src\BulletHellChris\UI\BossHUDComponent.cpp">
       <Filter>Source Files\BulletHell</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\TowerDefenseScene.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\RenderTestComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\EnemyComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\TowerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\InputTowerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\SpawnerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +108,24 @@
     </ClInclude>
     <ClInclude Include="Scenes\DefaultScene.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\TowerDefenseScene.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\RenderTestComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\EnemyComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\TowerComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\InputTowerComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\SpawnerComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

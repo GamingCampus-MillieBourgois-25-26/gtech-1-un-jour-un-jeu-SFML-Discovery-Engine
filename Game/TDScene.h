@@ -4,6 +4,8 @@
 #include <vector>
 #include "Maths/Vector2.h"
 
+class GameObject;
+
 namespace TD
 {
     class TDScene final : public Scene
@@ -11,10 +13,19 @@ namespace TD
     public:
         TDScene();
 
+        void SpawnEnemy();
+        void CreateEnemyPool();
+
+        void CreateTowerPool();
+        void PlaceTower(const Maths::Vector2f& position);
+
     private:
-        void CreateMap();
+        void CreateMapSprite();
         void CreatePath();
 
         std::vector<Maths::Vector2f> pathPoints;
+
+        std::vector<GameObject*> enemyPool;
+        std::vector<GameObject*> towerPool;
     };
 }

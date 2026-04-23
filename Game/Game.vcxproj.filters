@@ -51,6 +51,9 @@
     <ClCompile Include="CellType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GridRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Demo\Player.h">
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CellType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GridRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

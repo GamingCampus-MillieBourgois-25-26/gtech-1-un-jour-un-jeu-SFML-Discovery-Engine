@@ -97,6 +97,7 @@
   <ItemGroup>
     <ClCompile Include="BulletS.cpp" />
     <ClCompile Include="CellType.cpp" />
+    <ClCompile Include="GridRenderer.cpp" />
     <ClCompile Include="include\Demo\Tile.cpp" />
     <ClCompile Include="BulletHellSceneS.cpp" />
     <ClCompile Include="main.cpp" />
@@ -109,6 +110,7 @@
   <ItemGroup>
     <ClInclude Include="BulletS.h" />
     <ClInclude Include="CellType.h" />
+    <ClInclude Include="GridRenderer.h" />
     <ClInclude Include="include\Demo\Player.h" />
     <ClInclude Include="include\Demo\Tile.h" />
     <ClInclude Include="PlayerTD.h" />

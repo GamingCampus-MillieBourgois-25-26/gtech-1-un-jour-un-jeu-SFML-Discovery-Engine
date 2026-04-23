@@ -48,9 +48,6 @@ void Scene::Render(sf::RenderWindow* _window) const
     {
         game_object->Render(_window);
     }
-
-
-
 }
 
 void Scene::OnGUI() const

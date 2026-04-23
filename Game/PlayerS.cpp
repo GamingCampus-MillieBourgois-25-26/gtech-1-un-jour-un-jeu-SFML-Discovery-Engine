@@ -1,3 +1,4 @@
+
 #include "PlayerS.h"
 #include "Core/Component.h"
 #include "Modules/InputModule.h"
@@ -6,9 +7,7 @@
 #include "Components/SpriteRenderer.h"
 #include "BulletS.h"
 
-
-
-
+/*
 void HandleMovementS(float dt) {
     Maths::Vector2f move = Maths::Vector2f::Zero;
 
@@ -24,8 +23,9 @@ void HandleMovementS(float dt) {
         move.x /= length;
         move.y /= length;
 
-        // Application du mouvement sur le GameObject owner
+       /* // Application du mouvement sur le GameObject owner
         Maths::Vector2f currentPos = GetOwner()->GetPosition();
-        GetOwner()->SetPosition(currentPos + (move * speedS * dt));
-    }
-}
+        GetOwner()->SetPosition(currentPos + (move * speedS * dt));*/
+//    }
+    
+//}*/

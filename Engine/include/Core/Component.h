@@ -1,8 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics/RenderWindow.hpp>
-
-#include "GameObject.h"
+#include <concepts>
 #include "Module.h"
 
 class GameObject;
@@ -57,4 +56,5 @@ private:
 template <typename ComponentType>
 concept IsComponent = std::derived_from<ComponentType, Component>;
 
+#include "GameObject.h"
 #include "Component.inl"

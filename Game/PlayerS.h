@@ -1,5 +1,5 @@
 #pragma once
-
+/*
 #include "Core/Component.h"
 #include "Modules/InputModule.h"
 #include "Modules/AssetsModule.h"
@@ -82,3 +82,4 @@ namespace BulletHell {
         }
     };
 }
+*/

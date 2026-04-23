@@ -29,7 +29,7 @@ Demo::DemoScene::DemoScene(): Scene("DemoScene")
     GameObject* const& logo = CreateGameObject("SFML Logo");
     logo->CreateComponent<SpriteRenderer>(logo_texture);
 
-    for (int i = 0; i < 10; ++i)
+    for (int i = 0; i < 8; ++i)
     {
         CreateRandomTile();
     }

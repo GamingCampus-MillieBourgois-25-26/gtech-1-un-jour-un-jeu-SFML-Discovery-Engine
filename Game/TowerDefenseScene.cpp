@@ -16,3 +16,8 @@ void TowerDefenseScene::InitGrid()
 {
 }
 
+Maths::Vector2f TowerDefenseScene::GridToWorld(int x, int y) const
+{
+    return Maths::Vector2f();
+}
+

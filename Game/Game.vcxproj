@@ -96,15 +96,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Source\TowerDefense\EnemyManager.cpp" />
+    <ClCompile Include="Source\TowerDefense\Shop.cpp" />
+    <ClCompile Include="Source\TowerDefense\Enemy.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Source\TowerDefense\Player.cpp" />
     <ClCompile Include="Scenes\Demo\DemoScene.cpp" />
+    <ClCompile Include="Source\TowerDefense\TowerLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
-    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="include\TowerDefense\EnemyManager.h" />
+    <ClInclude Include="include\TowerDefense\Enemy.h" />
     <ClInclude Include="include\Demo\Player.h" />
+    <ClInclude Include="include\TowerDefense\Player.h" />
     <ClInclude Include="Scenes\Demo\DemoScene.h" />
+    <ClInclude Include="include\TowerDefense\TowerLevel.h" />
+    <ClInclude Include="include\TowerDefense\Shop.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

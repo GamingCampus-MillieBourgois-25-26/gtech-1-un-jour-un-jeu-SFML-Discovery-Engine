@@ -53,6 +53,6 @@ void Demo::DemoScene::ShouldCreateBullet()
 		shape_renderer->SetColor(sf::Color::Green);
 		shape_renderer->SetSize(Maths::Vector2f(40.f, 20.f));
 
-		bullet->CreateComponent<Bullet>(100.f, 400.f, 400.f);
+		bullet->CreateComponent<BulletHell::Bullet>(100.f, 400.f, 400.f);
 	}
 }

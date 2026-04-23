@@ -71,6 +71,9 @@
     <ClCompile Include="src\TowerDefenseChris\SpawnerComponent.cpp">
       <Filter>Source Files\TowerDefense</Filter>
     </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\GameManagerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\BulletHellChris\Components\BossComponent.h">
@@ -125,6 +128,9 @@
       <Filter>Header Files\TowerDefense</Filter>
     </ClInclude>
     <ClInclude Include="include\TowerDefenseChris\SpawnerComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\GameManagerComponent.h">
       <Filter>Header Files\TowerDefense</Filter>
     </ClInclude>
   </ItemGroup>

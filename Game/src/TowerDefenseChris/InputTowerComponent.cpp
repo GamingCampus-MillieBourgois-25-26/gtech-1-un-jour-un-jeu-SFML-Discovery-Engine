@@ -1,4 +1,5 @@
 #include "TowerDefenseChris/InputTowerComponent.h"
+#include "TowerDefenseChris/GameManagerComponent.h"
 #include "Core/Scene.h"
 #include "Core/GameObject.h"
 #include "Modules/InputModule.h"
@@ -15,6 +16,9 @@ Scene* InputTowerComponent::scene = nullptr;
 
 void InputTowerComponent::Update(float _delta_time)
 {
+    if (GameManagerComponent::gameOver || GameManagerComponent::victory)
+        return;
+
     if (!InputModule::GetMouseButtonDown(sf::Mouse::Button::Left))
         return;
 

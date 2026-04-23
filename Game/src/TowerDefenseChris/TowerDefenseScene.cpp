@@ -1,11 +1,12 @@
 #include "TowerDefenseChris/TowerDefenseScene.h"
 #include "TowerDefenseChris/InputTowerComponent.h"
 #include "TowerDefenseChris/EnemyComponent.h"
+#include "TowerDefenseChris/SpawnerComponent.h"
+#include "TowerDefenseChris/GameManagerComponent.h"
 
 #include "Core/GameObject.h"
 #include "Components/RectangleShapeRenderer.h"
 #include "Maths/Vector2.h"
-#include "TowerDefenseChris/SpawnerComponent.h"
 
 TowerDefense::TowerDefenseScene::TowerDefenseScene()
     : Scene("TowerDefenseScene")
@@ -26,21 +27,13 @@ TowerDefense::TowerDefenseScene::TowerDefenseScene()
             renderer->SetSize(Maths::Vector2f(cellSize - 2.f, cellSize - 2.f));
 
             if (y == 2)
-            {
                 renderer->SetColor(sf::Color(180, 120, 60));
-            }
             else
-            {
                 renderer->SetColor(sf::Color(60, 160, 60));
-            }
         }
     }
-    SpawnerComponent::scene = this;
 
-    GameObject* spawner = CreateGameObject("Spawner");
-    spawner->CreateComponent<SpawnerComponent>();
-
-    GameObject* enemy = CreateGameObject("Enemy");
+    GameObject* enemy = CreateGameObject("Enemy_Start");
     enemy->SetPosition(Maths::Vector2f(20.f, 2.f * cellSize + 20.f));
     enemy->SetScale(Maths::Vector2f(1.f, 1.f));
 
@@ -51,6 +44,13 @@ TowerDefense::TowerDefenseScene::TowerDefenseScene()
     enemy->CreateComponent<EnemyComponent>();
 
     InputTowerComponent::scene = this;
+    SpawnerComponent::scene = this;
+
+    GameObject* spawner = CreateGameObject("Spawner");
+    spawner->CreateComponent<SpawnerComponent>();
+
+    GameObject* gameManager = CreateGameObject("GameManager");
+    gameManager->CreateComponent<GameManagerComponent>();
 
     GameObject* inputObj = CreateGameObject("Input");
     inputObj->CreateComponent<InputTowerComponent>();

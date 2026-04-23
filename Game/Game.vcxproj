@@ -106,6 +106,7 @@
     <ClCompile Include="src\BulletHellChris\UI\BulletHellHUD.cpp" />
     <ClCompile Include="src\BulletHellChris\UI\PlayerHUDComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\EnemyComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\GameManagerComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\InputTowerComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\RenderTestComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\SpawnerComponent.cpp" />
@@ -125,6 +126,7 @@
     <ClInclude Include="include\BulletHellChris\UI\BulletHellHUD.h" />
     <ClInclude Include="include\BulletHellChris\UI\PlayerHUDComponent.h" />
     <ClInclude Include="include\TowerDefenseChris\EnemyComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\GameManagerComponent.h" />
     <ClInclude Include="include\TowerDefenseChris\InputTowerComponent.h" />
     <ClInclude Include="include\TowerDefenseChris\RenderTestComponent.h" />
     <ClInclude Include="include\TowerDefenseChris\SpawnerComponent.h" />

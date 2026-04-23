@@ -1,6 +1,7 @@
 #pragma once
 #include "Core/Component.h"
 #include "InputModule.h"
+#include "Bullet.h"
 
 namespace Demo
 {
@@ -39,6 +40,10 @@ namespace Demo
                 position.y += speed * _delta_time;
             }
 
+            if (InputModule::GetMouseButton(sf::Mouse::Button::Left)) {
+
+            }
+
             GetOwner()->SetPosition(position);
             GetOwner()->SetRotation(sf::radians(a));
 
@@ -50,4 +55,5 @@ namespace Demo
 
         float speed = 100.0f;
     };
+
 }

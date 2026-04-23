@@ -6,6 +6,8 @@
 #include "TowerDefenseSyl/EnemyAComponent.h"
 #include "TowerDefenseSyl/TowerAComponent.h"
 #include "TowerDefenseSyl/tileComponent.h"
+#include "TowerDefenseSyl/Spawner.h"
+#include "TowerDefenseSyl/ProjectileComponent.h"
 #include "Modules/WindowModule.h"
 #include "Modules/AssetsModule.h"
 
@@ -23,8 +25,11 @@ public:
 
 		CreateMap();
 		GameObject* tower = CreateGameObject("tower");
+		GameObject* spawner = CreateGameObject("spawner");
 		GameObject* enemy = CreateGameObject("enemy");
 		GameObject* player = CreateGameObject("player");
+
+		spawner->CreateComponent<Spawner>(path);
 
 		tower->SetPosition({tileSize * 2, tileSize * 2 });
 		enemy->CreateComponent<EnemyAComponent>(path);
@@ -37,7 +42,12 @@ public:
 		shape_renderer->SetColor(sf::Color::Yellow);
 		shape_renderer->SetSize(Maths::Vector2f(20.f, 20.f));
 
-
+		/*Maths::Vector2f a = { 200.f, 200.f };
+		Maths::Vector2f b = { 100.f, 100.f };
+		GameObject* projectile = CreateGameObject("projectile");
+		projectile->CreateComponent<ProjectileComponent>(a);
+		projectile->SetPosition(b);
+		projectile->CreateComponent<SpriteRenderer>(bulletTex);*/
 	}
 
 	void CreateMap()

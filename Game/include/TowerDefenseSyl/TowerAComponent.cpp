@@ -13,7 +13,7 @@ TowerAComponent::TowerAComponent()
 
 void TowerAComponent::Update(float _delta_time)
 {
-    atkSpeed += _delta_time;
+    reload += _delta_time;
     GameObject* obj = FindTarget();
     if (obj)
     {
@@ -30,7 +30,9 @@ void TowerAComponent::shot(GameObject* obj)
     std::cout << "shot" << std::endl;
     AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
     GameObject* projectile = GetOwner()->GetScene()->CreateGameObject("projectile");
-    projectile->CreateComponent<ProjectileComponent>(GetOwner()->GetPosition(), obj->GetPosition());
+    projectile->SetPosition(GetOwner()->GetPosition());
+    projectile->SetScale({ 0.25f, 0.25f });
+    projectile->CreateComponent<ProjectileComponent>(obj->GetPosition());
     projectile->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/TowerDefense/bullet.png"));
 }
 
@@ -43,8 +45,8 @@ GameObject* TowerAComponent::FindTarget()
         GameObject* obj = object.get();
         if (!obj || obj->IsMarkedForDeletion())
             continue;
-        /*if (obj->GetName().find("Enemy") == std::string::npos)
-            continue;*/
+        if (obj->GetName().find("enemy") == std::string::npos)
+            continue;
         Maths::Vector2f dir = obj->GetPosition() - owner->GetPosition();
         float distance = std::sqrt(dir.x * dir.x + dir.y * dir.y);
         if (distance <= range)

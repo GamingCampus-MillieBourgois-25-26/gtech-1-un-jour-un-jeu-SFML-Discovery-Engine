@@ -95,19 +95,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\TowerDefenseSyl\HQComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\EnemyAComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\EnemyBComponent.cpp" />
     <ClCompile Include="include\BulletHellSyl\Enemy.cpp" />
     <ClCompile Include="Scenes\BHScenesSyl\BulletHellScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="include\BulletHellSyl\BulletComponent.cpp" />
     <ClCompile Include="include\BulletHellSyl\Player.cpp" />
+    <ClCompile Include="Scenes\TDScenesSyl\TDScene.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TowerAComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TowerBComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TDPlayer.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TileComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\TowerDefenseSyl\HQComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\EnemyAComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\EnemyBComponent.h" />
     <ClInclude Include="include\BulletHellSyl\Enemy.h" />
     <ClInclude Include="Scenes\BHScenesSyl\BulletHellScene.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="Scenes\DefaultScene.h" />
     <ClInclude Include="include\BulletHellSyl\BulletComponent.h" />
     <ClInclude Include="include\BulletHellSyl\Player.h" />
+    <ClInclude Include="Scenes\TDScenesSyl\TDScene.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TowerAComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TowerBComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TDPlayer.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TileComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

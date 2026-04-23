@@ -2,6 +2,7 @@
 
 #include "BulletHellSyl/Player.h"
 #include "BulletHellSyl/Enemy.h"
+#include "BulletHellSyl/BulletComponent.h"
 #include "Assets/Texture.h"
 #include "Components/RectangleShapeRenderer.h"
 #include "Components/SpriteRenderer.h"
@@ -31,6 +32,12 @@ public:
 
 		player->CreateComponent<SpriteRenderer>(playerTex);
 		enemy->CreateComponent<SpriteRenderer>(ennemyTex);
+		for (int i = 0; i < 500; ++i)
+		{
+			GameObject* bullet = CreateGameObject("bullet");
+			bullet->SetPosition({1000, 1000});
+			bullet->CreateComponent<BulletComponent>();
+		}
 	}
 
 	GameObject* CreateDummyGameObject(const std::string& _name, const Maths::Vector2f _position)

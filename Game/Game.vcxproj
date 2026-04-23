@@ -99,6 +99,7 @@
     <ClCompile Include="include\TowerDefenseSyl\EnemyAComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\EnemyBComponent.cpp" />
     <ClCompile Include="include\BulletHellSyl\Enemy.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\ProjectileComponent.cpp" />
     <ClCompile Include="Scenes\BHScenesSyl\BulletHellScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="include\BulletHellSyl\BulletComponent.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="include\TowerDefenseSyl\EnemyAComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\EnemyBComponent.h" />
     <ClInclude Include="include\BulletHellSyl\Enemy.h" />
+    <ClInclude Include="include\TowerDefenseSyl\ProjectileComponent.h" />
     <ClInclude Include="Scenes\BHScenesSyl\BulletHellScene.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="Scenes\DefaultScene.h" />

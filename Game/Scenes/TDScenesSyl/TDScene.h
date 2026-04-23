@@ -3,8 +3,8 @@
 #include "Core/Scene.h"
 #include "Components/RectangleShapeRenderer.h"
 #include "Components/SpriteRenderer.h"
-#include "Components/SquareCollider.h"
 #include "TowerDefenseSyl/EnemyAComponent.h"
+#include "TowerDefenseSyl/TowerAComponent.h"
 #include "TowerDefenseSyl/tileComponent.h"
 #include "Modules/WindowModule.h"
 #include "Modules/AssetsModule.h"
@@ -18,13 +18,21 @@ public:
 		AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
 		Texture* tileTex = assets_module->LoadAsset<Texture>("Sylvain/TowerDefense/tile.png");
 		Texture* roadTex = assets_module->LoadAsset<Texture>("Sylvain/TowerDefense/road.png");
+		Texture* towerATex = assets_module->LoadAsset<Texture>("Sylvain/TowerDefense/towerA.png");
+		Texture* bulletTex = assets_module->LoadAsset<Texture>("Sylvain/TowerDefense/bullet.png");
 
-		CreateMap(tileTex, roadTex);
-		GameObject* tile = CreateGameObject("tile");
+		CreateMap();
+		GameObject* tower = CreateGameObject("tower");
 		GameObject* enemy = CreateGameObject("enemy");
 		GameObject* player = CreateGameObject("player");
-		enemy->SetPosition({ 0.f,32.f });
+
+		tower->SetPosition({tileSize * 2, tileSize * 2 });
 		enemy->CreateComponent<EnemyAComponent>(path);
+		tower->CreateComponent<TowerAComponent>();
+		tower->CreateComponent<SpriteRenderer>(towerATex);
+		tower->SetScale({ 0.25f,0.25f });
+
+		enemy->SetPosition(spawnPoint);
 		RectangleShapeRenderer* shape_renderer = enemy->CreateComponent<RectangleShapeRenderer>();
 		shape_renderer->SetColor(sf::Color::Yellow);
 		shape_renderer->SetSize(Maths::Vector2f(20.f, 20.f));
@@ -32,14 +40,15 @@ public:
 
 	}
 
-	void CreateMap(Texture* tileTex, Texture* roadTex)
+	void CreateMap()
 	{
+		AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
 		for (int y = 0; y < height; ++y)
 		{
 			for (int x = 0; x < width; ++x)
 			{
 				GameObject* tile = CreateGameObject("tile");
-				tile->CreateComponent<SpriteRenderer>(tileTex);
+				tile->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/TowerDefense/tile.png"));
 				tile->SetPosition({ x * tileSize, y * tileSize });
 				tile->SetScale({ 0.25f,0.25f });
 			}
@@ -47,16 +56,26 @@ public:
 		for (int i = 0; i < roads.size(); ++i)
 		{
 			GameObject* road = CreateGameObject("road");
-			road->CreateComponent<SpriteRenderer>(roadTex);
+			road->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/TowerDefense/road.png"));
 			road->SetPosition(roads[i]);
 			road->SetScale({ 0.25f,0.25f });
 		}
 	};
 
 	Maths::Vector2u window_size = Engine::GetInstance()->GetModuleManager()->GetModule<WindowModule>()->GetSize();
-	int height = 19;
-	int width = 19;
+	int height = 20;
+	int width = 20;
 	float tileSize = 32.f;
+	Maths::Vector2f spawnPoint = { -16.f, 32.f };
+	std::vector<Maths::Vector2f> path = {
+		{tileSize * 1.f,tileSize * 1.f},
+		{tileSize * 1.f,tileSize * 9.f},
+		{tileSize * 7.f,tileSize * 9.f},
+		{tileSize * 7.f,tileSize * 2.f},
+		{tileSize * 11.f,tileSize * 2.f},
+		{tileSize * 11.f,tileSize * 15.f},
+		{tileSize * 2.f,tileSize * 15.f},
+	};
 	std::vector<Maths::Vector2f> roads = {
 		{ 0 * tileSize, 1 * tileSize },
 		{ 1 * tileSize, 1 * tileSize },
@@ -107,14 +126,5 @@ public:
 		{ 4 * tileSize, 15 * tileSize },
 		{ 3 * tileSize, 15 * tileSize },
 		{ 2 * tileSize, 15 * tileSize },
-	};
-	std::vector<Maths::Vector2f> path = {
-		{tileSize * 1.f,tileSize * 1.f},
-		{tileSize * 1.f,tileSize * 9.f},
-		{tileSize * 7.f,tileSize * 9.f},
-		{tileSize * 7.f,tileSize * 2.f},
-		{tileSize * 11.f,tileSize * 2.f},
-		{tileSize * 11.f,tileSize * 15.f},
-		{tileSize * 2.f,tileSize * 15.f},
 	};
 };

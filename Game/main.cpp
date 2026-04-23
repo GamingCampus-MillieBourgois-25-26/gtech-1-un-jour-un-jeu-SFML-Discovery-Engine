@@ -1,7 +1,7 @@
 #include "Engine.h"
 #include "Modules/SceneModule.h"
 #include "BulletHellAlice/Scenes/GameScene.h"
-
+#include <iostream>
 
 int main(int argc, char* argv[])
 {

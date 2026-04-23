@@ -2,15 +2,12 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="BulletHellAlice\Scenes\GameScene.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="BulletHellAlice\PlayerController.cpp" />
     <ClCompile Include="BulletHellLeo\Bullet.cpp" />
     <ClCompile Include="BulletHellLeo\BulletHellPlayer.cpp" />
     <ClCompile Include="BulletHellLeo\BulletHellScene.cpp" />
     <ClCompile Include="BulletHellLeo\BulletSpawner.cpp" />
     <ClCompile Include="BulletHellLeo\Enemy.cpp" />
     <ClCompile Include="BulletHellLeo\Game.cpp" />
-    <ClCompile Include="pch.cpp" />
     <ClCompile Include="ClickerLeo\AnimalData.cpp" />
     <ClCompile Include="ClickerLeo\ClickArea.cpp" />
     <ClCompile Include="ClickerLeo\ClickComponent.cpp" />
@@ -19,6 +16,19 @@
     <ClCompile Include="ClickerLeo\MainScene.cpp" />
     <ClCompile Include="ClickerLeo\ShopItem.cpp" />
     <ClCompile Include="ClickerLeo\ShopPanel.cpp" />
+    <ClCompile Include="BulletHellAlice\PlayerController.cpp" />
+    <ClCompile Include="BulletHellAlice\Enemy\FanShooter.cpp" />
+    <ClCompile Include="BulletHellAlice\Enemy\CurtainSpawner.cpp" />
+    <ClCompile Include="BulletHellAlice\Enemy\EasySentry.cpp" />
+    <ClCompile Include="BulletHellAlice\HitboxRenderer.cpp" />
+    <ClCompile Include="BulletHellAlice\HealthBarRenderer.cpp" />
+    <ClCompile Include="TowerDefense\Towers\Tower.cpp" />
+    <ClCompile Include="TowerDefense\Scenes\TDScene.cpp" />
+    <ClCompile Include="TowerDefense\Ennemis\EnemyMovement.cpp" />
+    <ClCompile Include="TowerDefense\Ennemis\EnemySpawner.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="BulletHellAlice\Enemy\Projectile.cpp" />
+    <ClCompile Include="BulletHellAlice\ProgressionManager.cpp" />
     <ClCompile Include="TowerDefenseLeo\EnemyComponent.cpp" />
     <ClCompile Include="TowerDefenseLeo\InputComponent.cpp" />
     <ClCompile Include="TowerDefenseLeo\ProjectileComponent.cpp" />
@@ -26,11 +36,22 @@
     <ClCompile Include="TowerDefenseLeo\TowerComponent.cpp" />
     <ClCompile Include="TowerDefenseLeo\UIComponent.cpp" />
     <ClCompile Include="TowerDefenseLeo\WaveManagerComponent.cpp" />
+    <ClCompile Include="pch.cpp" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <ClInclude Include="BulletHellAlice\PlayerController.h" />
     <ClInclude Include="BulletHellAlice\Scenes\GameScene.h" />
+    <ClInclude Include="BulletHellAlice\Enemy\Projectile.h" />
+    <ClInclude Include="BulletHellAlice\Enemy\FanShooter.h" />
+    <ClInclude Include="BulletHellAlice\Enemy\CurtainSpawner.h" />
+    <ClInclude Include="BulletHellAlice\ProgressionManager.h" />
+    <ClInclude Include="BulletHellAlice\Enemy\EasySentry.h" />
+    <ClInclude Include="BulletHellAlice\HitboxRenderer.h" />
+    <ClInclude Include="BulletHellAlice\HealthBarRenderer.h" />
+    <ClInclude Include="TowerDefense\Towers\Tower.h" />
+    <ClInclude Include="TowerDefense\Scenes\TDScene.h" />
+    <ClInclude Include="TowerDefense\Ennemis\EnemyMovement.h" />
+    <ClInclude Include="TowerDefense\Ennemis\EnemySpawner.h" />
     <ClInclude Include="BulletHellLeo\Bullet.h" />
     <ClInclude Include="BulletHellLeo\BulletHellPlayer.h" />
     <ClInclude Include="BulletHellLeo\BulletHellScene.h" />
@@ -52,66 +73,5 @@
     <ClInclude Include="TowerDefenseLeo\TowerComponent.h" />
     <ClInclude Include="TowerDefenseLeo\UIComponent.h" />
     <ClInclude Include="TowerDefenseLeo\WaveManagerComponent.h" />
-=======
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellAlice\PlayerController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellAlice\Scenes\GameScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellAlice\Enemy\Projectile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellAlice\Enemy\FanShooter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellAlice\Enemy\CurtainSpawner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellAlice\ProgressionManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellAlice\Enemy\EasySentry.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellAlice\HitboxRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletHellAlice\HealthBarRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BulletHellAlice\PlayerController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletHellAlice\Scenes\GameScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletHellAlice\Enemy\Projectile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletHellAlice\Enemy\FanShooter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletHellAlice\Enemy\CurtainSpawner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletHellAlice\ProgressionManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletHellAlice\Enemy\EasySentry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletHellAlice\HitboxRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletHellAlice\HealthBarRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
->>>>>>> 8d4c27a (bullethellbien)
   </ItemGroup>
 </Project>

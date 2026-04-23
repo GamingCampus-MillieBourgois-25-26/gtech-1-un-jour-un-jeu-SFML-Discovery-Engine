@@ -8,6 +8,11 @@ namespace Demo
     {
     public:
         DemoScene();
+
+        
+
+        float minSize = 100.f;
+        float maxSize = 300.f;
     };
 }
 

@@ -8,9 +8,13 @@ class MenuScene final : public Scene {
 
 public:
 
-    MenuScene();
+    MenuScene();    
 
 private:
 
-    void CreateButton(const std::string& name, const Maths::Vector2f& pos);
+ 
+   void CreateButton(const std::string& name, const Maths::Vector2f& pos);
+
+   bool isActive = true;
+
 };

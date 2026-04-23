@@ -31,6 +31,8 @@ public:
     template <typename T>
     Scene* SetScene();
 
+    Scene* activeScene = nullptr;
+
     const std::vector<std::unique_ptr<Scene>>& GetScenesList() const;
 
     template <typename SceneType> requires IsScene<SceneType>

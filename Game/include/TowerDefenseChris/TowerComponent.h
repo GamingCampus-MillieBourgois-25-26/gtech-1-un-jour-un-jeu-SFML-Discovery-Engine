@@ -15,6 +15,7 @@ public:
     bool IsActive() const;
 
     static std::vector<TowerComponent*> towers;
+    static int GetActiveCount();
 
 private:
     float range = 120.f;

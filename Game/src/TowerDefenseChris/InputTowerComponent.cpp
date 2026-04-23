@@ -49,6 +49,8 @@ void InputTowerComponent::Update(float _delta_time)
     float px = x * cellSize + 16.f;
     float py = y * cellSize + 16.f;
 
+    if (TowerComponent::GetActiveCount() >= 3)
+        return;
     for (TowerComponent* tower : TowerComponent::towers)
     {
         if (tower != nullptr && !tower->IsActive())

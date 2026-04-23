@@ -9,6 +9,20 @@
 
 std::vector<TowerComponent*> TowerComponent::towers;
 
+int TowerComponent::GetActiveCount()
+{
+    int count = 0;
+
+    for (TowerComponent* tower : towers)
+    {
+        if (tower != nullptr && tower->IsActive())
+            count++;
+    }
+
+    return count;
+}
+
+
 TowerComponent::TowerComponent()
 {
     towers.push_back(this);

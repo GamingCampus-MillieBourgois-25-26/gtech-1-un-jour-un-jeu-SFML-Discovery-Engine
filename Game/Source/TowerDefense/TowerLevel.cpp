@@ -28,9 +28,6 @@ TowerDefense::TowerLevel::TowerLevel() : Scene("TowerLevel")
 	GameObject* player = CreateGameObject("Player");
 	player->CreateComponent<Player>(100);
 
-	GameObject* enemyManager = CreateGameObject("EnemyManager");
-	enemyManager->CreateComponent<EnemyManager>();
-
 	// ENEMY
 
 	for (int i = 0; i < 3; i++)

@@ -96,23 +96,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Source\TowerDefense\EnemyManager.cpp" />
+    <ClCompile Include="Source\Clicker\ShopUpgrade.cpp" />
+    <ClCompile Include="Source\Clicker\Donut.cpp" />
+    <ClCompile Include="Source\Clicker\Score.cpp" />
+    <ClCompile Include="Source\Clicker\ClickerLevel.cpp" />
     <ClCompile Include="Source\TowerDefense\Shop.cpp" />
     <ClCompile Include="Source\TowerDefense\Enemy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\TowerDefense\Player.cpp" />
     <ClCompile Include="Scenes\Demo\DemoScene.cpp" />
     <ClCompile Include="Source\TowerDefense\TowerLevel.cpp" />
+    <ClCompile Include="Source\Clicker\Upgrade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
-    <ClInclude Include="include\TowerDefense\EnemyManager.h" />
+    <ClInclude Include="include\Clicker\Donut.h" />
+    <ClInclude Include="include\Clicker\ClickerLevel.h" />
     <ClInclude Include="include\TowerDefense\Enemy.h" />
     <ClInclude Include="include\Demo\Player.h" />
     <ClInclude Include="include\TowerDefense\Player.h" />
     <ClInclude Include="Scenes\Demo\DemoScene.h" />
     <ClInclude Include="include\TowerDefense\TowerLevel.h" />
     <ClInclude Include="include\TowerDefense\Shop.h" />
+    <ClInclude Include="include\Clicker\Score.h" />
+    <ClInclude Include="include\Clicker\Upgrade.h" />
+    <ClInclude Include="include\Clicker\ShopUpgrade.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

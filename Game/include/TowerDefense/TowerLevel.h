@@ -2,11 +2,10 @@
 #include "Core/Scene.h"
 #include <AssetsModule.h>
 #include <SpriteRenderer.h>
-#include <Texture.h>
 #include <TowerDefense/Shop.h>
-#include <SquareCollider.h>
 #include <TowerDefense/Enemy.h>
-#include "EnemyManager.h"
+#include <Texture.h>
+#include <SquareCollider.h>
 
 namespace TowerDefense 
 {

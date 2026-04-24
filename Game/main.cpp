@@ -1,6 +1,6 @@
 #include "Engine.h"
 #include "SceneModule.h"
-#include "TowerDefense/TowerLevel.h"
+#include "Clicker/ClickerLevel.h"
 
 int main(const int _argc, const char** _argv)
 {
@@ -8,7 +8,7 @@ int main(const int _argc, const char** _argv)
 
     engine->Init(_argc, _argv);
 
-    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<TowerDefense::TowerLevel>();
+    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<Clicker::ClickerLevel>();
 
     engine->Run();
 

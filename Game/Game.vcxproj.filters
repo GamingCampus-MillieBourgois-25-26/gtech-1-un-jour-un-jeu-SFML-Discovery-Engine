@@ -36,7 +36,19 @@
     <ClCompile Include="Source\TowerDefense\Shop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\TowerDefense\EnemyManager.cpp">
+    <ClCompile Include="Source\Clicker\ClickerLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Clicker\Score.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Clicker\Donut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Clicker\Upgrade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Clicker\ShopUpgrade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,7 +74,19 @@
     <ClInclude Include="include\TowerDefense\Shop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\TowerDefense\EnemyManager.h">
+    <ClInclude Include="include\Clicker\ClickerLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Clicker\Score.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Clicker\Donut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Clicker\Upgrade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Clicker\ShopUpgrade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

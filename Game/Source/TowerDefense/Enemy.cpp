@@ -11,17 +11,12 @@ TowerDefense::Enemy::Enemy(float _speed, int _health, int _damage, int _coin)
 
 void TowerDefense::Enemy::Update(float _delta_time)
 {
-	Scene* scene = GetOwner()->GetScene();
 	float speed = 100 * _delta_time;
 
-	for (int i = 0; i < 3; i++)
-	{
-		GameObject* target = scene->FindGameObject("soldierGreen" + std::to_string(i));
-		float targetPositionX = target->GetPosition().x;
-		float targetPositionY = target->GetPosition().y;
+	float targetPositionX = GetOwner()->GetPosition().x;
+	float targetPositionY = GetOwner()->GetPosition().y;
 
-		MovementPattern(target, targetPositionX, targetPositionY, speed);
-	}
+	MovementPattern(GetOwner(), targetPositionX, targetPositionY, speed);
 }
 
 void TowerDefense::Enemy::MovementPattern(GameObject* target, float targetPositionX, float targetPositionY, float speed)

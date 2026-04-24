@@ -74,6 +74,15 @@
     <ClCompile Include="src\TowerDefenseChris\GameManagerComponent.cpp">
       <Filter>Source Files\TowerDefense</Filter>
     </ClCompile>
+    <ClCompile Include="src\ClickerChris\ClickerScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ClickerChris\ClickerController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ClickerChris\ClickerButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\BulletHellChris\Components\BossComponent.h">
@@ -133,11 +142,15 @@
     <ClInclude Include="include\TowerDefenseChris\GameManagerComponent.h">
       <Filter>Header Files\TowerDefense</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Midl Include="src\ClickerChris\ViewModel.idl">
-      <Filter>Source Files</Filter>
-    </Midl>
+    <ClInclude Include="include\ClickerChris\ClickerScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ClickerChris\ClickerController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ClickerChris\ClickerButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

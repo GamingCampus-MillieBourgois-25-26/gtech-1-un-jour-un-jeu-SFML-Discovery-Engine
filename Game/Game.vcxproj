@@ -96,17 +96,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ClickerChris\ClickerButton.cpp" />
+    <ClCompile Include="src\ClickerChris\ClickerController.cpp" />
+    <ClCompile Include="src\ClickerChris\ClickerScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\BulletHellChris\Components\BossComponent.cpp" />
     <ClCompile Include="src\BulletHellChris\Components\BulletComponent.cpp" />
-    <ClCompile Include="src\BulletHellChris\Components\EnemyComponent.cpp" />
+    <ClCompile Include="src\BulletHellChris\Components\EnemyComponent.cpp">
+      <ObjectFileName>$(IntDir)BulletHell_EnemyComponent.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="src\BulletHellChris\Components\PlayerController.cpp" />
     <ClCompile Include="src\BulletHellChris\Scenes\BulletHellScene.cpp" />
     <ClCompile Include="src\BulletHellChris\Systems\EnemySpawner.cpp" />
     <ClCompile Include="src\BulletHellChris\UI\BossHUDComponent.cpp" />
     <ClCompile Include="src\BulletHellChris\UI\BulletHellHUD.cpp" />
     <ClCompile Include="src\BulletHellChris\UI\PlayerHUDComponent.cpp" />
-    <ClCompile Include="src\TowerDefenseChris\EnemyComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\EnemyComponent.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)TowerDefense_EnemyComponent.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="src\TowerDefenseChris\GameManagerComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\InputTowerComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\RenderTestComponent.cpp" />
@@ -115,6 +123,9 @@
     <ClCompile Include="src\TowerDefenseChris\TowerDefenseScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ClickerChris\ClickerButton.h" />
+    <ClInclude Include="include\ClickerChris\ClickerController.h" />
+    <ClInclude Include="include\ClickerChris\ClickerScene.h" />
     <ClInclude Include="include\BulletHellChris\BulletHellDebug.h" />
     <ClInclude Include="include\BulletHellChris\BulletHellTypes.h" />
     <ClInclude Include="include\BulletHellChris\Components\BossComponent.h" />
@@ -126,7 +137,9 @@
     <ClInclude Include="include\BulletHellChris\UI\BossHUDComponent.h" />
     <ClInclude Include="include\BulletHellChris\UI\BulletHellHUD.h" />
     <ClInclude Include="include\BulletHellChris\UI\PlayerHUDComponent.h" />
-    <ClInclude Include="include\TowerDefenseChris\EnemyComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\EnemyComponent.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="include\TowerDefenseChris\GameManagerComponent.h" />
     <ClInclude Include="include\TowerDefenseChris\InputTowerComponent.h" />
     <ClInclude Include="include\TowerDefenseChris\RenderTestComponent.h" />
@@ -139,11 +152,6 @@
     <ProjectReference Include="..\Engine\Engine.vcxproj">
       <Project>{fae7003c-61cf-41e6-9b58-70e97d3f7878}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Midl Include="src\ClickerChris\ViewModel.idl">
-      <SubType>Designer</SubType>
-    </Midl>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

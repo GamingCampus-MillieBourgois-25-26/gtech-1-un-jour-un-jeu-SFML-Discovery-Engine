@@ -134,4 +134,12 @@
       <Filter>Header Files\TowerDefense</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Midl Include="src\ClickerChris\ViewModel.idl">
+      <Filter>Source Files</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

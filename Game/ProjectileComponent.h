@@ -1,18 +1,19 @@
-#pragma once
+﻿#pragma once
 #include "Core/Component.h"
-#include "EnemyComponent.h"
+#include <string>
 
 namespace TowerDefence {
 
     class ProjectileComponent : public Component
     {
     public:
-        void Init(EnemyComponent* target, float damage, float speed);
-        void Update(float dt) override;
-        void Render(sf::RenderWindow* window) override;
+        void Init(const std::string& targetName, float damage, float speed);
+        void Update(float dt)              override;
+        void Render(sf::RenderWindow* w)   override;
+        void Present()                     override; // ← destruction ici
 
     private:
-        EnemyComponent* target = nullptr;
+        std::string targetName;
         float damage = 20.f;
         float speed = 300.f;
         bool  done = false;

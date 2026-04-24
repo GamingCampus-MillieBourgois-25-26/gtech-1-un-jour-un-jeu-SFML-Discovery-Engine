@@ -1,13 +1,14 @@
 ﻿#include "ProjectileComponent.h"
+#include "EnemyComponent.h"
 #include "Core/GameObject.h"
 #include "Core/Scene.h"
 #include <cmath>
 
 namespace TowerDefence {
 
-    void ProjectileComponent::Init(EnemyComponent* t, float dmg, float spd)
+    void ProjectileComponent::Init(const std::string& name, float dmg, float spd)
     {
-        target = t;
+        targetName = name;
         damage = dmg;
         speed = spd;
     }
@@ -16,27 +17,32 @@ namespace TowerDefence {
     {
         if (done) return;
 
-        // Cible morte ou arrivée → on se détruit
-        if (!target || target->IsDead() || target->IsFinished())
+        Scene* scene = GetOwner()->GetScene();
+        GameObject* targetObj = scene->FindGameObject(targetName);
+
+        if (!targetObj || targetObj->IsMarkedForDeletion())
         {
             done = true;
-            GetOwner()->GetScene()->DestroyGameObject(GetOwner());
+            return; // Present() s'occupera de la destruction
+        }
+
+        auto* enemy = targetObj->GetComponent<EnemyComponent>();
+        if (!enemy || enemy->IsDead() || enemy->IsFinished())
+        {
+            done = true;
             return;
         }
 
         Maths::Vector2f pos = GetOwner()->GetPosition();
-        Maths::Vector2f tgtPos = target->GetOwner()->GetPosition();
-
+        Maths::Vector2f tgtPos = targetObj->GetPosition();
         float dx = tgtPos.x - pos.x;
         float dy = tgtPos.y - pos.y;
         float dist = std::sqrt(dx * dx + dy * dy);
 
         if (dist <= speed * dt)
         {
-            // Impact
-            target->TakeDamage(damage);
+            enemy->TakeDamage(damage); // TakeDamage pose juste un flag, ne détruit rien
             done = true;
-            GetOwner()->GetScene()->DestroyGameObject(GetOwner());
         }
         else
         {
@@ -49,12 +55,18 @@ namespace TowerDefence {
         }
     }
 
+    void ProjectileComponent::Present()
+    {
+        // C'est ici, hors itération, qu'on détruit en sécurité
+        if (done)
+            GetOwner()->MarkForDeletion();
+    }
+
     void ProjectileComponent::Render(sf::RenderWindow* window)
     {
         if (done) return;
 
         Maths::Vector2f pos = GetOwner()->GetPosition();
-
         sf::CircleShape dot(4.f);
         dot.setFillColor(sf::Color::Yellow);
         dot.setOrigin(sf::Vector2f(4.f, 4.f));

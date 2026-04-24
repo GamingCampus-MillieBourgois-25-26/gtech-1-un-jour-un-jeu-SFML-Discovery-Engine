@@ -12,9 +12,9 @@ namespace TowerDefence {
 
         TowerDefenseScene();
 
-        static constexpr int   GRID_WIDTH = 20;
+        static constexpr int   GRID_WIDTH  = 20;
         static constexpr int   GRID_HEIGHT = 12;
-        static constexpr float CELL_SIZE = 50.f;
+        static constexpr float CELL_SIZE   = 50.f;
 
     private:
 

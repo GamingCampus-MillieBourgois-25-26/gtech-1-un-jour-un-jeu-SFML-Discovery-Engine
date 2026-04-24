@@ -12,7 +12,7 @@ namespace TowerDefence {
         void SetPath(const std::vector<Maths::Vector2i>& path, float cellSize);
         void Update(float dt) override;
         void Render(sf::RenderWindow* window) override;
-
+        void Present() override;
         void  TakeDamage(float amount);
         bool  IsFinished() const;
         bool  IsDead()     const;

@@ -1,19 +1,25 @@
-#include "WaveManager.h"
+ï»¿#include "WaveManager.h"
+#include "SpawnQueue.h"
 #include "Core/GameObject.h"
 #include "Core/Scene.h"
 
 namespace TowerDefence {
 
-    void WaveManager::Init(const std::vector<Maths::Vector2i>& path, float cs)
+    void WaveManager::SetConfig(const std::vector<Maths::Vector2i>& path, float cs)
     {
         enemyPath = path;
         cellSize = cs;
+    }
+
+    void WaveManager::Start()
+    {
         spawnTimer = spawnInterval;
+        started = true;
     }
 
     void WaveManager::Update(float dt)
     {
-        if (allWavesDone) return;
+        if (!started || allWavesDone) return;
 
         if (wavePending)
         {
@@ -34,7 +40,7 @@ namespace TowerDefence {
             if (spawnTimer >= spawnInterval)
             {
                 spawnTimer = 0.f;
-                SpawnEnemy();
+                pendingSpawns++;
                 enemiesSpawned++;
             }
         }
@@ -50,13 +56,27 @@ namespace TowerDefence {
         }
     }
 
-    void WaveManager::SpawnEnemy()
+    void WaveManager::Present()
     {
-        // Récupère la scène via le GameObject owner
-        Scene* scene = GetOwner()->GetScene();
-        GameObject* obj = scene->CreateGameObject("Enemy");
-        auto* enemy = obj->CreateComponent<EnemyComponent>();
-        enemy->SetPath(enemyPath, cellSize);
+        while (pendingSpawns > 0)
+        {
+            pendingSpawns--;
+
+            Scene* scene = GetOwner()->GetScene();
+            std::vector<Maths::Vector2i> path = enemyPath;
+            float                        cs = cellSize;
+
+            // ID unique pour que FindGameObject distingue chaque ennemi
+            static int enemyId = 0;
+            std::string name = "Enemy_" + std::to_string(enemyId++);
+
+            SpawnQueue::Get().Push([scene, path, cs, name]()
+                {
+                    GameObject* obj = scene->CreateGameObject(name);
+                    auto* enemy = obj->CreateComponent<EnemyComponent>();
+                    enemy->SetPath(path, cs);
+                });
+        }
     }
 
 }

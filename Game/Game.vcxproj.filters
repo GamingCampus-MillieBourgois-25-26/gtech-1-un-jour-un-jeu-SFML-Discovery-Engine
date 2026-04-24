@@ -19,6 +19,9 @@
     <Filter Include="Bullet Hell">
       <UniqueIdentifier>{6b201399-890a-4660-90f4-bc19139606a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Clicker">
+      <UniqueIdentifier>{6470955a-c6f0-495a-b3f3-4129bdfc1c82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,6 +72,15 @@
     <ClCompile Include="ProjectileComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SpawnQueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnFlusher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClickerComponent.cpp">
+      <Filter>Clicker</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Demo\Player.h">
@@ -98,9 +110,6 @@
     <ClInclude Include="TowerDefenseScene.h">
       <Filter>Tower Defence</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MenuScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -117,6 +126,18 @@
       <Filter>Tower Defence</Filter>
     </ClInclude>
     <ClInclude Include="ProjectileComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnFlusher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClickerComponent.h">
+      <Filter>Clicker</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

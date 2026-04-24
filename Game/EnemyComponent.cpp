@@ -85,7 +85,7 @@ namespace TowerDefence {
         circle.setPosition(sf::Vector2f(pos.x, pos.y));
         window->draw(circle);
 
-        // Barre de vie (fond gris + vert)
+        // Barre de vie 
         float barW = cellSize * 0.8f;
         float barH = 5.f;
         float barX = pos.x - barW * 0.5f;
@@ -102,6 +102,14 @@ namespace TowerDefence {
         hpBar.setPosition(sf::Vector2f(barX, barY));
         window->draw(hpBar);
     }
+
+
+    void EnemyComponent::Present()
+    {
+        if (dead || finished)
+            GetOwner()->MarkForDeletion();
+    }
+
 
     bool EnemyComponent::IsFinished() const { return finished; }
     bool EnemyComponent::IsDead()     const { return dead; }

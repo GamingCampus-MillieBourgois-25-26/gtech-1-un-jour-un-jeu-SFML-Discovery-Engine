@@ -137,17 +137,19 @@ void SceneModule::Present()
 {
     Module::Present();
 
-    if (activeScene)
-        activeScene->Present();
+    if (activeScene)  activeScene->Present();
 
-    // ← BLOC MANQUANT : appliquer le changement de scène
-    if (nextFrameScene != nullptr)
-    {
+    
+    if (nextFrameScene != nullptr) {
+
         if (activeScene != nullptr)
-            activeScene->MarkForDeletion();  // supprime MenuScene
+            activeScene->MarkForDeletion();
 
-        activeScene = nextFrameScene;        // active TowerDefenseScene
+        activeScene = nextFrameScene;
         nextFrameScene = nullptr;
+
+        activeScene->Awake();
+        activeScene->Start();
     }
 
     DeleteMarkedScenes();

@@ -1,15 +1,18 @@
-#pragma once
+﻿#pragma once
 #include "Core/Component.h"
 #include "EnemyComponent.h"
 #include <vector>
+#include <queue>
 
 namespace TowerDefence {
 
     class WaveManager : public Component
     {
     public:
-        void Init(const std::vector<Maths::Vector2i>& path, float cellSize);
+        void SetConfig(const std::vector<Maths::Vector2i>& path, float cellSize);
+        void Start()          override;
         void Update(float dt) override;
+        void Present()        override; // ← spawn ici, pas dans Update
 
         int   maxWaves = 3;
         int   enemiesPerWave = 5;
@@ -31,6 +34,9 @@ namespace TowerDefence {
         float waveCooldownTimer = 0.f;
         bool  wavePending = false;
         bool  allWavesDone = false;
+        bool  started = false;
+
+        int   pendingSpawns = 0; // ← file d'attente de spawns
     };
 
 }

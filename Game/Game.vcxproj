@@ -98,6 +98,7 @@
     <ClCompile Include="BulletS.cpp" />
     <ClCompile Include="ButtonComponent.cpp" />
     <ClCompile Include="CellType.cpp" />
+    <ClCompile Include="ClickerComponent.cpp" />
     <ClCompile Include="EnemyComponent.cpp" />
     <ClCompile Include="GridRenderer.cpp" />
     <ClCompile Include="include\Demo\Tile.cpp" />
@@ -107,6 +108,8 @@
     <ClCompile Include="ProjectileComponent.cpp" />
     <ClCompile Include="Scenes\Demo\DemoScene.cpp" />
     <ClCompile Include="PlayerS.cpp" />
+    <ClCompile Include="SpawnFlusher.cpp" />
+    <ClCompile Include="SpawnQueue.cpp" />
     <ClCompile Include="TowerComponent.cpp" />
     <ClCompile Include="TowerDefenseScene.cpp" />
     <ClCompile Include="TowerPlacementSystem.cpp" />
@@ -116,6 +119,7 @@
     <ClInclude Include="BulletS.h" />
     <ClInclude Include="ButtonComponent.h" />
     <ClInclude Include="CellType.h" />
+    <ClInclude Include="ClickerComponent.h" />
     <ClInclude Include="EnemyComponent.h" />
     <ClInclude Include="GridRenderer.h" />
     <ClInclude Include="include\Demo\Player.h" />
@@ -125,6 +129,8 @@
     <ClInclude Include="Scenes\Demo\DemoScene.h" />
     <ClInclude Include="BulletHellSceneS.h" />
     <ClInclude Include="PlayerS.h" />
+    <ClInclude Include="SpawnFlusher.h" />
+    <ClInclude Include="SpawnQueue.h" />
     <ClInclude Include="TowerComponent.h" />
     <ClInclude Include="TowerDefenseScene.h" />
     <ClInclude Include="TowerPlacementSystem.h" />

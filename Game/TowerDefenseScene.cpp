@@ -1,4 +1,5 @@
-#include "TowerDefenseScene.h"
+﻿#include "TowerDefenseScene.h"
+#include "SpawnFlusher.h"
 
 namespace TowerDefence {
 
@@ -12,10 +13,8 @@ namespace TowerDefence {
         gridRenderer->height = GRID_HEIGHT;
         gridRenderer->cellSize = CELL_SIZE;
 
-        // Grille logique
         InitGrid();
 
-        // Chemin des ennemis
         enemyPath = {
             {0,2},{1,2},{2,2},{3,2},{4,2},
             {5,2},{6,2},{7,2},{8,2},{9,2},
@@ -24,15 +23,20 @@ namespace TowerDefence {
             {15,7},{16,7},{17,7},{18,7},{19,7}
         };
 
-        // WaveManager comme component
+        // WaveManager
         GameObject* waveObj = CreateGameObject("WaveManager");
         auto* waveManager = waveObj->CreateComponent<WaveManager>();
-        waveManager->Init(enemyPath, CELL_SIZE);
+        waveManager->SetConfig(enemyPath, CELL_SIZE);
 
-        // TowerPlacementSystem comme component
+        // TowerPlacementSystem
         GameObject* placementObj = CreateGameObject("PlacementSystem");
         auto* placement = placementObj->CreateComponent<TowerPlacementSystem>();
-        placement->Init(&grid, enemyPath, GRID_WIDTH, GRID_HEIGHT, CELL_SIZE);
+        placement->SetConfig(&grid, enemyPath, GRID_WIDTH, GRID_HEIGHT, CELL_SIZE);
+
+        // SpawnFlusher — doit être le DERNIER GameObject créé
+        // pour que son Present() s'exécute après tous les autres
+        GameObject* flusherObj = CreateGameObject("SpawnFlusher");
+        flusherObj->CreateComponent<SpawnFlusher>();
     }
 
     void TowerDefenseScene::InitGrid()

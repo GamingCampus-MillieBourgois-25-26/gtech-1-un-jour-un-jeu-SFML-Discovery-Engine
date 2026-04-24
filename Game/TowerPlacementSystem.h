@@ -6,20 +6,24 @@
 
 namespace TowerDefence {
 
-    class TowerPlacementSystem : public Component
-    {
+    class TowerPlacementSystem : public Component {
+
     public:
-        void Init(
+
+        void SetConfig(
             std::vector<std::vector<CellType>>* grid,
             const std::vector<Maths::Vector2i>& enemyPath,
             int gridWidth, int gridHeight, float cellSize
         );
 
         void Update(float dt) override;
+        void Present() override;
 
     private:
+
         bool CanPlace(int gx, int gy) const;
         void PlaceTower(int gx, int gy);
+
         Maths::Vector2f GridToWorld(int gx, int gy) const;
 
         std::vector<std::vector<CellType>>* grid = nullptr;
@@ -30,6 +34,10 @@ namespace TowerDefence {
         float cellSize = 50.f;
 
         bool wasClickedLastFrame = false;
+        bool pendingPlacement = false;
+
+        int  pendingGx = 0;
+        int  pendingGy = 0;
     };
 
 }

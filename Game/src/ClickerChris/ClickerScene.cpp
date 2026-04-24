@@ -15,29 +15,31 @@
 ClickerChris::ClickerScene::ClickerScene()
     : Scene("ClickerScene")
 {
-    // 🔹 Récupération du module d’assets
     AssetsModule* assets = Engine::GetInstance()
         ->GetModuleManager()
         ->GetModule<AssetsModule>();
 
-    // 🔹 Chargement du sprite du bouton
+    Texture* backgroundTexture = assets->LoadAsset<Texture>(
+        "ClickerChris/clickerbg.png"
+    );
+
     Texture* buttonTexture = assets->LoadAsset<Texture>(
         "ClickerChris/Tiles/Large tiles/Thick outline/tile_0000.png"
     );
 
-    // 🔹 Controller
+    GameObject* backgroundObj = CreateGameObject("Background");
+    backgroundObj->SetPosition(Maths::Vector2f(0.f, 0.f));
+    backgroundObj->SetScale(Maths::Vector2f(6.f, 6.f));
+    backgroundObj->CreateComponent<SpriteRenderer>(backgroundTexture);
+
     GameObject* controllerObj = CreateGameObject("ClickerController");
     ClickerController* controller = controllerObj->CreateComponent<ClickerController>();
 
-    // 🔹 Bouton
     GameObject* buttonObj = CreateGameObject("Button");
     buttonObj->SetPosition(Maths::Vector2f(100.f, 100.f));
     buttonObj->SetScale(Maths::Vector2f(4.f, 4.f));
-
-    // Sprite
     buttonObj->CreateComponent<SpriteRenderer>(buttonTexture);
 
-    // Logique clic
     ClickerButton* button = buttonObj->CreateComponent<ClickerButton>();
     button->SetController(controller);
 }

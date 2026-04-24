@@ -12,8 +12,7 @@ public:
 
 private:
 	ClickerController* controller = nullptr;
-	Maths::Vector2f position = Maths::Vector2f(100.f, 100.f);
-	Maths::Vector2f size = Maths::Vector2f(130.f,130.f);
+	Maths::Vector2f size = Maths::Vector2f(130.f, 130.f);
 
 };
 

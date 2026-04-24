@@ -1,21 +1,28 @@
 #include "Pink.h"
-#include <iostream>
 
-Pink::Pink(InputModule* inpu, WindowModule* windo)
+Pink::Pink(InputModule* inpu, unsigned int* scor)
 {
-	window = windo;
+	score = scor;
 	input = inpu;
-	//GetOwner()->SetPosition({ (float)window->GetSize().x, (float)size / 2 });
 }
 
 void Pink::Update(float _delta_time)
 {
-	if (input->GetMouseButtonDown(sf::Mouse::Button::Left))
+	timer -= _delta_time;
+	if (IsUnderCursor() && input->GetMouseButtonDown(sf::Mouse::Button::Left))
 	{
-		if (IsUnderCursor())
+		if (*score >= cost)
 		{
-			std::cout << "pink: " << std::endl;
+			level++;
+			*score -= cost;
+			cost *= 1.5f;
 		}
+
+	}
+	if (timer <= 0)
+	{
+		*score += 2 * level;
+		timer = 1.f;
 	}
 }
 

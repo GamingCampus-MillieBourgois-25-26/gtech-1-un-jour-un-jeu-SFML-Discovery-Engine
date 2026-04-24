@@ -92,6 +92,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\ClickerSyl\Cursor.cpp" />
+    <ClCompile Include="include\ClickerSyl\PriceDisplay.cpp" />
     <ClCompile Include="include\ClickerSyl\Pink.cpp" />
     <ClCompile Include="Scenes\ClickerScenesSyl\ClickerScene.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\HQComponent.cpp" />
@@ -110,8 +112,11 @@
     <ClCompile Include="include\TowerDefenseSyl\TileComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\Spawner.cpp" />
     <ClCompile Include="include\ClickerSyl\Square.cpp" />
+    <ClCompile Include="include\ClickerSyl\ScoreDisplay.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ClickerSyl\Cursor.h" />
+    <ClInclude Include="include\ClickerSyl\PriceDisplay.h" />
     <ClInclude Include="include\ClickerSyl\Pink.h" />
     <ClInclude Include="Scenes\ClickerScenesSyl\ClickerScene.h" />
     <ClInclude Include="include\TowerDefenseSyl\HQComponent.h" />
@@ -131,6 +136,7 @@
     <ClInclude Include="include\TowerDefenseSyl\TileComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\Spawner.h" />
     <ClInclude Include="include\ClickerSyl\Square.h" />
+    <ClInclude Include="include\ClickerSyl\ScoreDisplay.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

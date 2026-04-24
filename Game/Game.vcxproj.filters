@@ -66,6 +66,15 @@
     <ClCompile Include="include\ClickerSyl\Square.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="include\ClickerSyl\Cursor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ClickerSyl\ScoreDisplay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ClickerSyl\PriceDisplay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="include\ClickerSyl\Pink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -123,6 +132,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ClickerSyl\Square.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ClickerSyl\Cursor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ClickerSyl\ScoreDisplay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ClickerSyl\PriceDisplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ClickerSyl\Pink.h">

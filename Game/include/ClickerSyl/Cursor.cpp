@@ -1,9 +1,9 @@
-#include "Square.h"
-#include "Core/Scene.h"
-#include <iostream>
+#include "Cursor.h"
+#include "Components/TextRenderer.h"
 #include "Components/RectangleShapeRenderer.h"
+#include <iostream>
 
-Square::Square(InputModule* inpu, WindowModule* windo, unsigned int* scor, unsigned int* clic)
+Cursor::Cursor(InputModule* inpu, WindowModule* windo, unsigned int* scor, unsigned int* clic)
 {
 	window = windo;
 	input = inpu;
@@ -11,25 +11,25 @@ Square::Square(InputModule* inpu, WindowModule* windo, unsigned int* scor, unsig
 	click = clic;
 }
 
-void Square::Update(float _delta_time)
+void Cursor::Update(float _delta_time)
 {
-	if (IsUnderCursor())
+	if (input->GetMouseButtonDown(sf::Mouse::Button::Left))
 	{
-		if (input->GetMouseButtonDown(sf::Mouse::Button::Left))
+		if (IsUnderCursor())
 		{
-			*score += *click;
-			std::cout << "score: " << *score << std::endl;
-		}
-		if (input->GetMouseButton(sf::Mouse::Button::Left))
-			GetOwner()->SetScale({ 1.1f, 1.1f });
-		else
-		{
-			GetOwner()->SetScale({ 1.f, 1.f });
+			if (*score >= cost)
+			{
+				*score -= cost;
+				*click += 1;
+				float newCost = cost * 1.5f;
+				cost = newCost;
+				std::cout << "clic +1" << std::endl;
+			}
 		}
 	}
 }
 
-bool Square::IsUnderCursor()
+bool Cursor::IsUnderCursor()
 {
 	const Maths::Vector2f mouse_position = static_cast<Maths::Vector2f>(InputModule::GetMousePosition());
 

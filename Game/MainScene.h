@@ -1,15 +1,15 @@
 ﻿#pragma once
 
-#include "Scene.h"
+#include "Core/Scene.h"
 
 class MainScene : public Scene
 {
 public:
-    MainScene() : Scene("MainScene") {}
+    MainScene();
 
-    void Start() const;                 // ✅ signature correcte
-    void Update(float deltaTime) const; // ✅ signature correcte
+    void Update(float deltaTime) const; 
 
 private:
-    mutable int points = 0; // ⚠️ obligatoire car fonctions const
+    mutable int points = 0;
+    mutable bool canClick = true;
 };

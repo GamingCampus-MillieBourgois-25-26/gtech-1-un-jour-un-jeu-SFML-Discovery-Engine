@@ -1,22 +1,60 @@
 ﻿#include "MainScene.h"
-#include "ClickArea.h"
-#include "ShopPanel.h"
-#include <iostream>
+#include "Core/GameObject.h"
+#include "RectangleShapeRenderer.h"
+#include "ClickComponent.h"
+#include "SpriteRenderer.h"
+#include "AssetsModule.h"
+#include "Engine.h"
+#include "TextRenderer.h"
 
-void MainScene::Start() const
+MainScene::MainScene() : Scene("MainScene")
 {
-    std::cout << "MainScene Start\n";
+    AssetsModule* assets = Engine::GetInstance()
+        ->GetModuleManager()
+        ->GetModule<AssetsModule>();
 
-    // 🎯 Zone de clic
-    GameObject* clickGO = CreateGameObject("ClickArea");
-    clickGO->CreateComponent<ClickArea>();
+    // 🟦 ZONE GAUCHE
+    {
+        GameObject* leftZone = CreateGameObject("LeftZone");
 
-    // 🎯 Shop
-    GameObject* shopGO = CreateGameObject("ShopPanel");
-    shopGO->CreateComponent<ShopPanel>();
-}
+        auto* rect = leftZone->CreateComponent<RectangleShapeRenderer>();
+        rect->SetSize(Maths::Vector2f(1000.f, 800.f));
+        rect->SetColor(sf::Color(0, 0, 255, 100));
 
-void MainScene::Update(float deltaTime) const
-{
-    // Pour l’instant vide
+        leftZone->SetPosition({ 0.f, 0.f });
+    }
+
+    // 🟥 ZONE DROITE
+    {
+        GameObject* rightZone = CreateGameObject("RightZone");
+
+        auto* rect = rightZone->CreateComponent<RectangleShapeRenderer>();
+        rect->SetSize(Maths::Vector2f(500.f, 800.f));
+        rect->SetColor(sf::Color(0, 0, 255, 100));
+
+        rightZone->SetPosition({ 1000.f, 0.f });
+    }
+
+    // 🟡 CLICKER SPRITE
+    {
+        GameObject* clicker = CreateGameObject("Clicker");
+
+        auto* sprite = clicker->CreateComponent<SpriteRenderer>(
+            assets->LoadAsset<Texture>("clicker.png") // 👉 mets ton image ici
+        );
+
+        clicker->SetPosition({ 500.f, 400.f }); // centre gauche
+
+        // 👉 logique de clic
+        clicker->CreateComponent<ClickComponent>();
+    }
+    // 🟡 SCORE UI (EN HAUT GAUCHE)
+    {
+        GameObject* text = CreateGameObject("TEST");
+
+        auto* txt = text->CreateComponent<TextRenderer>("HELLO");
+        txt->SetColor(sf::Color::Red);
+
+        text->SetPosition({ 500.f, 400.f });
+    }
 }

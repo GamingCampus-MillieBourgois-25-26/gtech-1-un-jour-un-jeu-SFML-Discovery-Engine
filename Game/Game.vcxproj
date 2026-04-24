@@ -94,6 +94,8 @@
   <ItemGroup>
     <ClCompile Include="AnimalData.cpp" />
     <ClCompile Include="ClickArea.cpp" />
+    <ClCompile Include="ClickComponent.cpp" />
+    <ClCompile Include="FloatingTextComponent.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="include\Demo\Tile.cpp" />
     <ClCompile Include="include\Demo\TileSpawner.cpp" />
@@ -106,6 +108,8 @@
   <ItemGroup>
     <ClInclude Include="AnimalData.h" />
     <ClInclude Include="ClickArea.h" />
+    <ClInclude Include="ClickComponent.h" />
+    <ClInclude Include="FloatingTextComponent.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="include\Demo\Player.h" />
     <ClInclude Include="include\Demo\Tile.h" />

@@ -95,6 +95,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Scenes\ClickerScenesSyl\ClickerScene.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\HQComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\EnemyAComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\EnemyBComponent.cpp" />
@@ -110,8 +111,11 @@
     <ClCompile Include="include\TowerDefenseSyl\TDPlayer.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\TileComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\Spawner.cpp" />
+    <ClCompile Include="include\ClickerSyl\Square.cpp" />
+    <ClCompile Include="include\ClickerSyl\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Scenes\ClickerScenesSyl\ClickerScene.h" />
     <ClInclude Include="include\TowerDefenseSyl\HQComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\EnemyAComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\EnemyBComponent.h" />
@@ -128,6 +132,8 @@
     <ClInclude Include="include\TowerDefenseSyl\TDPlayer.h" />
     <ClInclude Include="include\TowerDefenseSyl\TileComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\Spawner.h" />
+    <ClInclude Include="include\ClickerSyl\Square.h" />
+    <ClInclude Include="include\ClickerSyl\UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

@@ -7,6 +7,8 @@
 #include "Modules/AssetsModule.h"
 #include "Modules/InputModule.h"
 #include "ClickerSyl/Square.h"
+#include "Components/TextRenderer.h"
+#include "ClickerSyl/Pink.h"
 
 class ClickerScene final : public Scene
 {
@@ -18,14 +20,24 @@ public:
 		// load textures
 		AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
 		Texture* squareTex = assets_module->LoadAsset<Texture>("Sylvain/Clicker/square.png");
+		Texture* faceATex = assets_module->LoadAsset<Texture>("Sylvain/Clicker/face_a.png");
+		Texture* pinkTex = assets_module->LoadAsset<Texture>("Sylvain/Clicker/pink.png");
 
 		//window size
 		Maths::Vector2u window_size = window->GetSize();
+		GameObject* text = CreateGameObject("text");
+		TextRenderer* b = text->CreateComponent<TextRenderer>("Score");
+		b->SetColor(sf::Color::White);
 
 		GameObject* square = CreateGameObject("square");
 		square->CreateComponent<Square>(input, window);
 		square->SetPosition({ (float)window_size.x / 2, (float)window_size.y / 2});
 		square->CreateComponent<SpriteRenderer>(squareTex);
+		square->CreateComponent<SpriteRenderer>(faceATex);
+
+		GameObject* pink = CreateGameObject("pink");
+		pink->CreateComponent<Pink>(input, window);
+		pink->CreateComponent<SpriteRenderer>(pinkTex);
 	}
 
 	InputModule* input;

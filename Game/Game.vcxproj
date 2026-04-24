@@ -44,20 +44,17 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-
   <PropertyGroup>
     <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
     <ExternalIncludePath>$(SolutionDir)include;$(ExternalIncludePath)</ExternalIncludePath>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
-
   <ItemDefinitionGroup>
     <Link>
       <AdditionalOptions>/IGNORE:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
-  
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -95,6 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\ClickerSyl\Pink.cpp" />
     <ClCompile Include="Scenes\ClickerScenesSyl\ClickerScene.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\HQComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\EnemyAComponent.cpp" />
@@ -112,9 +110,9 @@
     <ClCompile Include="include\TowerDefenseSyl\TileComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\Spawner.cpp" />
     <ClCompile Include="include\ClickerSyl\Square.cpp" />
-    <ClCompile Include="include\ClickerSyl\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ClickerSyl\Pink.h" />
     <ClInclude Include="Scenes\ClickerScenesSyl\ClickerScene.h" />
     <ClInclude Include="include\TowerDefenseSyl\HQComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\EnemyAComponent.h" />
@@ -133,7 +131,6 @@
     <ClInclude Include="include\TowerDefenseSyl\TileComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\Spawner.h" />
     <ClInclude Include="include\ClickerSyl\Square.h" />
-    <ClInclude Include="include\ClickerSyl\UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

@@ -27,7 +27,7 @@ void Clicker::ShopUpgrade::BuyUpgrade(std::string typeUpgrade)
 	{
 		Logger::Log(ELogLevel::Info, "Upgrade : DonutBrown");
 		Texture* texture = assets_module->GetAsset<Texture>("Clicker/donut_brown.png");
-		GetOwner()->RemoveComponent(GetOwner()->GetComponent<SpriteRenderer>());
+		// GetOwner()->RemoveComponent(GetOwner()->GetComponent<SpriteRenderer>());
 		GetOwner()->CreateComponent<SpriteRenderer>(texture);
 
 		GetOwner()->GetScene()->FindGameObject("Donut")->GetComponent<Upgrade>()->SetDonutTypeUpgrade(0);
@@ -41,7 +41,7 @@ void Clicker::ShopUpgrade::BuyUpgrade(std::string typeUpgrade)
 		GameObject* donut = GetOwner()->GetScene()->FindGameObject("Donut");
 		Texture* texture = assets_module->GetAsset<Texture>("Clicker/donut_black.png");
 
-		donut->RemoveComponent(GetOwner()->GetComponent<SpriteRenderer>());
+		// donut->RemoveComponent(GetOwner()->GetComponent<SpriteRenderer>());
 		donut->CreateComponent<SpriteRenderer>(texture);
 
 		GetOwner()->GetScene()->FindGameObject("Donut")->GetComponent<Upgrade>()->SetDonutTypeUpgrade(1);

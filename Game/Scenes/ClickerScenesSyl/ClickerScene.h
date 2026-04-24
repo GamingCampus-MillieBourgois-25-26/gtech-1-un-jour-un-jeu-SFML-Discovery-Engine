@@ -80,11 +80,6 @@ public:
 		GameObject* redPrice = CreateGameObject("display");
 		redPrice->SetPosition({ (float)window_size.x - 200.f , 413.f });
 		redPrice->CreateComponent<PriceDisplay>(&redComp->cost);
-
-		/*GameObject* clickDisplay = CreateGameObject("display");
-		clickDisplay->CreateComponent<ClickerDisplay>();
-		TextRenderer* test = clickDisplay->CreateComponent<TextRenderer>("test");
-		test->SetColor(sf::Color::Green);*/
 	}
 
 	unsigned int score = 0;

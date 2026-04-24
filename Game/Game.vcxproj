@@ -92,9 +92,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\ClickerSyl\ClickerDisplay.cpp" />
+    <ClCompile Include="include\ClickerSyl\ClickDisplay.cpp" />
     <ClCompile Include="include\ClickerSyl\Cursor.cpp" />
     <ClCompile Include="include\ClickerSyl\PriceDisplay.cpp" />
     <ClCompile Include="include\ClickerSyl\Pink.cpp" />
+    <ClCompile Include="include\ClickerSyl\Red.cpp" />
     <ClCompile Include="Scenes\ClickerScenesSyl\ClickerScene.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\HQComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\EnemyAComponent.cpp" />
@@ -115,9 +118,12 @@
     <ClCompile Include="include\ClickerSyl\ScoreDisplay.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ClickerSyl\ClickerDisplay.h" />
+    <ClInclude Include="include\ClickerSyl\ClickDisplay.h" />
     <ClInclude Include="include\ClickerSyl\Cursor.h" />
     <ClInclude Include="include\ClickerSyl\PriceDisplay.h" />
     <ClInclude Include="include\ClickerSyl\Pink.h" />
+    <ClInclude Include="include\ClickerSyl\Red.h" />
     <ClInclude Include="Scenes\ClickerScenesSyl\ClickerScene.h" />
     <ClInclude Include="include\TowerDefenseSyl\HQComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\EnemyAComponent.h" />

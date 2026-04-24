@@ -10,8 +10,11 @@
 #include "Components/TextRenderer.h"
 #include "ClickerSyl/Cursor.h"
 #include "ClickerSyl/Pink.h"
+#include "ClickerSyl/Red.h"
 #include "ClickerSyl/ScoreDisplay.h"
 #include "ClickerSyl/PriceDisplay.h"
+#include "ClickerSyl/ClickDisplay.h"
+#include "ClickerSyl/ClickerDisplay.h"
 
 class ClickerScene final : public Scene
 {
@@ -25,8 +28,10 @@ public:
 		Texture* cursorTex = assets_module->LoadAsset<Texture>("Sylvain/Clicker/cursor.png");
 		Texture* squareTex = assets_module->LoadAsset<Texture>("Sylvain/Clicker/square.png");
 		Texture* pinkTex = assets_module->LoadAsset<Texture>("Sylvain/Clicker/pink.png");
+		Texture* redTex = assets_module->LoadAsset<Texture>("Sylvain/Clicker/red.png");
 		Texture* faceATex = assets_module->LoadAsset<Texture>("Sylvain/Clicker/face_a.png");
 		Texture* faceBTex = assets_module->LoadAsset<Texture>("Sylvain/Clicker/face_b.png");
+		Texture* faceCTex = assets_module->LoadAsset<Texture>("Sylvain/Clicker/face_c.png");
 
 		//window size
 		Maths::Vector2u window_size = window->GetSize();
@@ -50,6 +55,12 @@ public:
 		pink->CreateComponent<SpriteRenderer>(pinkTex);
 		pink->CreateComponent<SpriteRenderer>(faceBTex);
 
+		GameObject* red = CreateGameObject("red");
+		red->SetPosition({ (float)window_size.x - 130.f , 365.f });
+		Red* redComp = red->CreateComponent<Red>(input, &score);
+		red->CreateComponent<SpriteRenderer>(redTex);
+		red->CreateComponent<SpriteRenderer>(faceCTex);
+
 		GameObject* upgrade = CreateGameObject("display");
 		upgrade->SetPosition({ (float)window_size.x - 200.f , 10.f });
 		TextRenderer* text = upgrade->CreateComponent<TextRenderer>("Upgrades");
@@ -64,7 +75,16 @@ public:
 
 		GameObject* pinkPrice = CreateGameObject("display");
 		pinkPrice->SetPosition({ (float)window_size.x - 200.f , 270.f });
-		pinkPrice->CreateComponent<PriceDisplay>(&pinkComp->cost);
+		pinkPrice->CreateComponent<PriceDisplay>(&pinkComp->cost);;
+
+		GameObject* redPrice = CreateGameObject("display");
+		redPrice->SetPosition({ (float)window_size.x - 200.f , 413.f });
+		redPrice->CreateComponent<PriceDisplay>(&redComp->cost);
+
+		/*GameObject* clickDisplay = CreateGameObject("display");
+		clickDisplay->CreateComponent<ClickerDisplay>();
+		TextRenderer* test = clickDisplay->CreateComponent<TextRenderer>("test");
+		test->SetColor(sf::Color::Green);*/
 	}
 
 	unsigned int score = 0;

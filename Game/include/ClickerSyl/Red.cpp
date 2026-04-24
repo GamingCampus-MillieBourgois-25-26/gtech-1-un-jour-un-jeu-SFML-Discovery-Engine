@@ -1,12 +1,12 @@
-#include "Pink.h"
+#include "Red.h"
 
-Pink::Pink(InputModule* inpu, unsigned int* scor)
+Red::Red(InputModule* inpu, unsigned int* scor)
 {
 	score = scor;
 	input = inpu;
 }
 
-void Pink::Update(float _delta_time)
+void Red::Update(float _delta_time)
 {
 	timer -= _delta_time;
 	if (IsUnderCursor() && input->GetMouseButtonDown(sf::Mouse::Button::Left))
@@ -21,12 +21,12 @@ void Pink::Update(float _delta_time)
 	}
 	if (timer <= 0)
 	{
-		*score += 1 * level;
-		timer = 0.5f;
+		*score += 10 * level;
+		timer = 1.f;
 	}
 }
 
-bool Pink::IsUnderCursor()
+bool Red::IsUnderCursor()
 {
 	const Maths::Vector2f mouse_position = static_cast<Maths::Vector2f>(InputModule::GetMousePosition());
 

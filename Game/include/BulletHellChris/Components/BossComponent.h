@@ -84,7 +84,7 @@ namespace bulletHell
         float shootTimer = 0.0f;
         int phaseBurstCounter = 0;
 
-        Maths::Vector2f basePosition = Maths::Vector2f(225.0f, 50.0f);
+        Maths::Vector2f basePosition = Maths::Vector2f(400.0f, 120.0f);
 
         BossPhaseSettings phase1Settings;
         BossPhaseSettings phase2Settings;

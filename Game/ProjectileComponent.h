@@ -10,11 +10,11 @@ namespace TowerDefence {
         void Init(const std::string& targetName, float damage, float speed);
         void Update(float dt)              override;
         void Render(sf::RenderWindow* w)   override;
-        void Present()                     override; // ← destruction ici
+        void Present()                     override; //  destruction ici
 
     private:
         std::string targetName;
-        float damage = 20.f;
+        float damage = 50.f;
         float speed = 300.f;
         bool  done = false;
     };

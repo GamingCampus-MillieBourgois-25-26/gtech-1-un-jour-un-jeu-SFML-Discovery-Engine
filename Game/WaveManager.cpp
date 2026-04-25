@@ -72,17 +72,27 @@ namespace TowerDefence {
         {
             pendingSpawns--;
             Scene* scene = GetOwner()->GetScene();
-            auto        path = enemyPath;
-            float       cs = cellSize;
-
+            auto   path = enemyPath;
+            float  cs = cellSize;
+            int    wave = currentWave;   // capture le numéro de vague
             static int enemyId = 0;
             std::string name = "Enemy_" + std::to_string(enemyId++);
 
-            SpawnQueue::Get().Push([scene, path, cs, name]()
+            SpawnQueue::Get().Push([scene, path, cs, name, wave]()
                 {
                     GameObject* obj = scene->CreateGameObject(name);
                     auto* enemy = obj->CreateComponent<EnemyComponent>();
                     enemy->SetPath(path, cs);
+
+                    // Stats qui augmentent avec la vague
+                    float hpScale = 1.f + (wave - 1) * 0.75f;  // vague1=x1, vague2=x1.75, vague3=x2.5
+                    float speedScale = 1.f + (wave - 1) * 0.2f;   // vague1=x1, vague2=x1.2,  vague3=x1.4
+                    int   rewardScale = 1 + (wave - 1);            // vague1=25, vague2=50,     vague3=75
+
+                    enemy->maxHP = 100.f * hpScale;
+                    enemy->hp = enemy->maxHP;
+                    enemy->reward = 25 * rewardScale;
+                    // La vitesse est privée — ajoute un setter ou rends-la publique
                 });
         }
     }

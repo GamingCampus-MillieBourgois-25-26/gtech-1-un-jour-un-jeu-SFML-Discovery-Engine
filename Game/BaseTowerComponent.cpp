@@ -48,4 +48,4 @@ namespace TowerDefence {
         window->draw(hpBar);
     }
 
-} // namespace TowerDefence
+} 

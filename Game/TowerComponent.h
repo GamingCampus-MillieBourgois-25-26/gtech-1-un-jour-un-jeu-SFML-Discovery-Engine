@@ -16,7 +16,7 @@ namespace TowerDefence {
         void Present() override;
 
         float cellSize = 50.f;
-        float range = 80.f;
+        float range = 100.f;
         float fireRate = 1.f;
         float damage = 20.f;
 

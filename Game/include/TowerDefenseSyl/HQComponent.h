@@ -1,6 +1,17 @@
 #pragma once
-class HQComponent
+#include "Core/Component.h"
+
+class HQComponent : public Component
 {
-	int life = 10;
+public:
+	HQComponent();
+	void TakeDamage();
+	void Init();
+	void Update(float _delta_time) override;
+
+	int hp = 3;
+	bool init = false;
+	GameObject* life;
+	GameObject* final = nullptr;
 };
 

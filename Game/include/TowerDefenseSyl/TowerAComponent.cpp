@@ -27,12 +27,11 @@ void TowerAComponent::Update(float _delta_time)
 
 void TowerAComponent::shot(GameObject* obj)
 {
-    std::cout << "shot" << std::endl;
     AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
     GameObject* projectile = GetOwner()->GetScene()->CreateGameObject("projectile");
     projectile->SetPosition(GetOwner()->GetPosition());
     projectile->SetScale({ 0.25f, 0.25f });
-    projectile->CreateComponent<ProjectileComponent>(obj->GetPosition());
+    projectile->CreateComponent<ProjectileComponent>(obj);
     projectile->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/TowerDefense/bullet.png"));
 }
 
@@ -45,7 +44,7 @@ GameObject* TowerAComponent::FindTarget()
         GameObject* obj = object.get();
         if (!obj || obj->IsMarkedForDeletion())
             continue;
-        if (obj->GetName().find("enemy") == std::string::npos)
+        if (obj->GetName().find("enemy") == std::string::npos && !obj->IsMarkedForDeletion())
             continue;
         Maths::Vector2f dir = obj->GetPosition() - owner->GetPosition();
         float distance = std::sqrt(dir.x * dir.x + dir.y * dir.y);

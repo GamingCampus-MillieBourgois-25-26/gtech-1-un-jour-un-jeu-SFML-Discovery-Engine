@@ -4,10 +4,11 @@
 class ProjectileComponent : public Component
 {
 public:
-	ProjectileComponent(Maths::Vector2f inTarget);
+	ProjectileComponent(GameObject* obj);
 	void Update(float _delta_time) override;
 
 private:
-	float speed = 20.f;
-	Maths::Vector2f target;
+	float speed = 400.f;
+	GameObject* target;
+	Maths::Vector2f pos;
 };

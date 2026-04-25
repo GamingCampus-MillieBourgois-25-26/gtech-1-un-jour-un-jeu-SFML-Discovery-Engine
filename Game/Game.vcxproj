@@ -92,12 +92,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\TowerDefenseSyl\Container.cpp" />
     <ClCompile Include="include\ClickerSyl\ClickerDisplay.cpp" />
     <ClCompile Include="include\ClickerSyl\ClickDisplay.cpp" />
     <ClCompile Include="include\ClickerSyl\Cursor.cpp" />
     <ClCompile Include="include\ClickerSyl\PriceDisplay.cpp" />
     <ClCompile Include="include\ClickerSyl\Pink.cpp" />
     <ClCompile Include="include\ClickerSyl\Red.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\LifeDisplay.cpp" />
     <ClCompile Include="Scenes\ClickerScenesSyl\ClickerScene.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\HQComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\EnemyAComponent.cpp" />
@@ -116,14 +118,18 @@
     <ClCompile Include="include\TowerDefenseSyl\Spawner.cpp" />
     <ClCompile Include="include\ClickerSyl\Square.cpp" />
     <ClCompile Include="include\ClickerSyl\ScoreDisplay.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\SelectedTower.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TowerASelection.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\TowerDefenseSyl\Container.h" />
     <ClInclude Include="include\ClickerSyl\ClickerDisplay.h" />
     <ClInclude Include="include\ClickerSyl\ClickDisplay.h" />
     <ClInclude Include="include\ClickerSyl\Cursor.h" />
     <ClInclude Include="include\ClickerSyl\PriceDisplay.h" />
     <ClInclude Include="include\ClickerSyl\Pink.h" />
     <ClInclude Include="include\ClickerSyl\Red.h" />
+    <ClInclude Include="include\TowerDefenseSyl\LifeDisplay.h" />
     <ClInclude Include="Scenes\ClickerScenesSyl\ClickerScene.h" />
     <ClInclude Include="include\TowerDefenseSyl\HQComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\EnemyAComponent.h" />
@@ -143,6 +149,8 @@
     <ClInclude Include="include\TowerDefenseSyl\Spawner.h" />
     <ClInclude Include="include\ClickerSyl\Square.h" />
     <ClInclude Include="include\ClickerSyl\ScoreDisplay.h" />
+    <ClInclude Include="include\TowerDefenseSyl\SelectedTower.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TowerASelection.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

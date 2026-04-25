@@ -11,8 +11,8 @@ public:
 	void shot(GameObject* obj);
 
 	int damage = 1;
-	float atkSpeed = 0.5f;
-	float reload = 0.f;
-	float range = 200.f;
+	float atkSpeed = 1.6f;
+	float reload = atkSpeed;
+	float range = 150.f;
 };
 

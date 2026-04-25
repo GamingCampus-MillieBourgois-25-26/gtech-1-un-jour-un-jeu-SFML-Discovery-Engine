@@ -1,26 +1,23 @@
 #pragma once
 #include "Core/Component.h"
-#include "BulletS.h"
-#include "Modules/AssetsModule.h"
-#include <cmath>
+#include "Maths/Vector2.h"
 
 namespace BulletHell {
 
-    class BulletS : public Component {
-
+    class BulletS : public Component
+    {
     public:
-        Maths::Vector2f direction;
-        float speed = 600.0f;
+        Maths::Vector2f direction = { 0.f, -1.f };
+        float           speed = 600.f;
+        bool            isEnemy = false;   // true = balle ennemie
+        float           radius = 5.f;
 
-        void Update(float dt) override {
-            // Déplacement
-            Maths::Vector2f pos = GetOwner()->GetPosition();
-            GetOwner()->SetPosition(pos + (direction * speed * dt));
+        void Update(float dt) override;
+        void Render(sf::RenderWindow* window) override;
+        void Present() override;
 
-            // Destruction si hors écran (600x600 selon ton WindowModule)
-            if (pos.x < -50 || pos.x > 650 || pos.y < -50 || pos.y > 650) {
-                GetOwner()->MarkForDeletion();
-            }
-        }
+    private:
+        bool done = false;
     };
+
 }

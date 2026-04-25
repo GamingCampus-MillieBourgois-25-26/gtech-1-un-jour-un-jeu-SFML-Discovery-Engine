@@ -49,33 +49,47 @@ namespace TowerDefence {
                 enemiesSpawned++;
             }
         }
+        else if (currentWave >= maxWaves)
+        {
+            // Toutes les vagues spawned — attend que tous les ennemis soient morts
+            allWavesDone = true;
+        }
         else
         {
-            if (currentWave >= maxWaves)
-            {
-                allWavesDone = true;
-                // Victoire seulement si le joueur est encore en vie
-                if (!GameState::Get().gameOver)
-                    GameState::Get().victory = true;
-            }
-            else
-            {
-                wavePending = true;
-                waveCooldownTimer = waveCooldown;
-            }
+            wavePending = true;
+            waveCooldownTimer = waveCooldown;
         }
     }
 
     void WaveManager::Present()
     {
+        // Vérifie la victoire : toutes vagues terminées + aucun ennemi vivant
+        if (allWavesDone && !GameState::Get().gameOver && !GameState::Get().victory)
+        {
+            Scene* scene = GetOwner()->GetScene();
+            bool anyAlive = false;
+            for (const auto& go : scene->GetGameObjects())
+            {
+                auto* enemy = go->GetComponent<EnemyComponent>();
+                if (enemy && !enemy->IsDead() && !enemy->IsFinished())
+                {
+                    anyAlive = true;
+                    break;
+                }
+            }
+            if (!anyAlive)
+                GameState::Get().victory = true;
+        }
+
+        // Spawn des ennemis en attente
         while (pendingSpawns > 0)
         {
             pendingSpawns--;
             Scene* scene = GetOwner()->GetScene();
-            auto   path = enemyPath;
-            float  cs = cellSize;
-            int    wave = currentWave;   // capture le numéro de vague
-            static int enemyId = 0;
+            auto        path = enemyPath;
+            float       cs = cellSize;
+            int         wave = currentWave;
+            static int  enemyId = 0;
             std::string name = "Enemy_" + std::to_string(enemyId++);
 
             SpawnQueue::Get().Push([scene, path, cs, name, wave]()
@@ -84,21 +98,15 @@ namespace TowerDefence {
                     auto* enemy = obj->CreateComponent<EnemyComponent>();
                     enemy->SetPath(path, cs);
 
-                    // Stats qui augmentent avec la vague
-                    float hpScale = 1.f + (wave - 1) * 0.75f;  // vague1=x1, vague2=x1.75, vague3=x2.5
-                    float speedScale = 1.f + (wave - 1) * 0.2f;   // vague1=x1, vague2=x1.2,  vague3=x1.4
-                    int   rewardScale = 1 + (wave - 1);            // vague1=25, vague2=50,     vague3=75
+                    float hpScale = 1.f + (wave - 1) * 0.75f;
+                    float speedScale = 1.f + (wave - 1) * 0.2f;
 
                     enemy->maxHP = 100.f * hpScale;
                     enemy->hp = enemy->maxHP;
-                    enemy->reward = 25 * rewardScale;
-                    // La vitesse est privée — ajoute un setter ou rends-la publique
+                    enemy->speed = 120.f * speedScale;
+                    enemy->reward = 25 * wave;
                 });
         }
     }
-
-    void WaveManager::SpawnEnemy()
-    {
-    }
-
+ void WaveManager::SpawnEnemy(){}
 }

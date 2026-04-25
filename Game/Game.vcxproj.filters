@@ -69,26 +69,26 @@
     <ClCompile Include="ButtonComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ProjectileComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpawnQueue.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpawnFlusher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ClickerComponent.cpp">
       <Filter>Clicker</Filter>
     </ClCompile>
+    <ClCompile Include="SpawnQueue.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnFlusher.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileComponent.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
     <ClCompile Include="HUDComponent.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Tower Defence</Filter>
     </ClCompile>
     <ClCompile Include="GameState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Tower Defence</Filter>
     </ClCompile>
     <ClCompile Include="BaseTowerComponent.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Tower Defence</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -134,29 +134,29 @@
     <ClInclude Include="WaveManager.h">
       <Filter>Tower Defence</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectileComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpawnQueue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpawnFlusher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ClickerComponent.h">
       <Filter>Clicker</Filter>
     </ClInclude>
     <ClInclude Include="ButtonComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SpawnQueue.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnFlusher.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileComponent.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
     <ClInclude Include="HUDComponent.h">
-      <Filter>Header Files</Filter>
+      <Filter>Tower Defence</Filter>
     </ClInclude>
     <ClInclude Include="GameState.h">
-      <Filter>Header Files</Filter>
+      <Filter>Tower Defence</Filter>
     </ClInclude>
     <ClInclude Include="BaseTowerComponent.h">
-      <Filter>Header Files</Filter>
+      <Filter>Tower Defence</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

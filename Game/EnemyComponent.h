@@ -22,7 +22,7 @@ namespace TowerDefence {
         float maxHP = 100.f;
         float hp = 100.f;
         int   reward = 25;       // argent donné à la mort
-        int   damage = 1;        // dégâts au joueur si arrivé au bout
+        int   damage = 3;        // dégâts au joueur si arrivé au bout
         float speed = 120.f;
 
     private:

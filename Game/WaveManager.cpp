@@ -87,4 +87,8 @@ namespace TowerDefence {
         }
     }
 
+    void WaveManager::SpawnEnemy()
+    {
+    }
+
 }

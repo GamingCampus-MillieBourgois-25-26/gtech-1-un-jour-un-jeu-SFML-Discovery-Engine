@@ -1,4 +1,5 @@
 #include "Clicker/Score.h"
+#include <TextRenderer.h>
 
 Clicker::Score::Score(float _points)
 {
@@ -13,6 +14,7 @@ void Clicker::Score::Start()
 
 void Clicker::Score::Update(float _delta_time)
 {
+	GetOwner()->GetComponent<TextRenderer>()->SetText("Points : " + std::to_string(points));
 	bool isClicked = donutComponent->GetIsClicked();
 	if (isClicked == true) {
 		donutComponent->ToggleIsClicked();

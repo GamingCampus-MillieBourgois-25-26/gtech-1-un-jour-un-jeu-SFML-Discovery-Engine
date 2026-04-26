@@ -1,4 +1,5 @@
 #include "Clicker/ClickerLevel.h"
+#include <TextRenderer.h>
 
 Clicker::ClickerLevel::ClickerLevel() : Scene("TowerLevel")
 {
@@ -15,29 +16,28 @@ Clicker::ClickerLevel::ClickerLevel() : Scene("TowerLevel")
 	float spriteSize = 264.f;
 
 	donut->CreateComponent<SpriteRenderer>(textureDonut_Base);
+	donut->SetPosition({ 400.f - (spriteSize / 2.5f), 400.f - (spriteSize / 2.5f) });
 	donut->SetScale({ 0.5f, 0.5f });
-	donut->SetPosition({ 400.f - (spriteSize / 1.5f), 400.f - (spriteSize / 1.5f) });
 	donut->CreateComponent<Donut>();
 	donut->CreateComponent<Upgrade>();
-	donut->GetComponent<SquareCollider>();
 
 	GameObject* brownDonut = CreateGameObject("brownDonut");
 	brownDonut->CreateComponent<SpriteRenderer>(textureDonut_Brown);
 	brownDonut->CreateComponent<ShopUpgrade>("DonutBrown");
 	brownDonut->SetScale({ 0.2f, 0.2f });
-	brownDonut->SetPosition({ 150.f - (spriteSize / 1.8f), 150.f - (spriteSize / 1.8f) });
+	brownDonut->SetPosition({ 120.f - (spriteSize / 2.8f), 120.f - (spriteSize / 2.8f) });
 
 	GameObject* blackDonut = CreateGameObject("blackDonut");
 	blackDonut->CreateComponent<SpriteRenderer>(textureDonut_Black);
 	blackDonut->CreateComponent<ShopUpgrade>("DonutBlack");
 	blackDonut->SetScale({ 0.2f, 0.2f });
-	blackDonut->SetPosition({ 150.f + 60.f * 1 - (spriteSize / 1.8f), 150.f - (spriteSize / 1.8f) });
+	blackDonut->SetPosition({ 120.f + 60.f * 1 - (spriteSize / 2.8f), 120.f - (spriteSize / 2.8f) });
 
 	GameObject* greenGlazing = CreateGameObject("greenGlazing");
 	greenGlazing->CreateComponent<SpriteRenderer>(textureGlazing_Green);
 	greenGlazing->CreateComponent<ShopUpgrade>("greenGlazing");
 	greenGlazing->SetScale({ 0.2f, 0.2f });
-	greenGlazing->SetPosition({ 150.f + 60.f * 2 - (spriteSize / 1.8f), 150.f - (spriteSize / 1.8f) });
+	greenGlazing->SetPosition({ 120.f + 60.f * 2 - (spriteSize / 2.8f), 120.f - (spriteSize / 2.8f) });
 
 	GameObject* greenGlazingDonut = CreateGameObject("greenGlazingDonut");
 	greenGlazingDonut->CreateComponent<SpriteRenderer>(textureGlazing_Green);
@@ -46,4 +46,9 @@ Clicker::ClickerLevel::ClickerLevel() : Scene("TowerLevel")
 
 	GameObject* score = CreateGameObject("Score");
 	score->CreateComponent<Score>(0);
+	score->CreateComponent<TextRenderer>("Engine/Inter-VariableFont_opsz,wght.ttf");
+	score->GetComponent<TextRenderer>()->SetCharacterSize(24);
+	score->GetComponent<TextRenderer>()->SetText("Points : 0");
+	score->GetComponent<TextRenderer>()->SetColor(sf::Color::White);
+	score->SetPosition({ donut->GetPosition().x - 100.f, donut->GetPosition().y - 100.f });
 }

@@ -22,18 +22,3 @@ void Clicker::Donut::ToggleIsClicked()
 {
 	isClicked = !isClicked;
 }
-
-//void Clicker::Donut::TestUpgrade()
-//{
-//	// Condition à utiliser et modifier :
-//	// leftClickPressed && mousePositionX >= 300.f && mousePositionX <= 475.f && mousePositionY >= 300.f && mousePositionY <= 475.f
-//	if (InputModule::GetKeyDown(sf::Keyboard::Key::A)) 
-//	{
-//		AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
-//		Texture* texture = assets_module->GetAsset<Texture>("Clicker/donut_brown.png");
-//		GetOwner()->RemoveComponent(GetOwner()->GetComponent<SpriteRenderer>());
-//		GetOwner()->CreateComponent<SpriteRenderer>(texture);
-//
-//		GetOwner()->GetComponent<Upgrade>()->DonutTypeUpgrade(0);
-//	}
-//}

@@ -100,11 +100,9 @@ namespace TowerDefence {
 
                     float hpScale = 1.f + (wave - 1) * 0.75f;
                     float speedScale = 1.f + (wave - 1) * 0.2f;
+                    int   reward = 25 * wave;
 
-                    enemy->maxHP = 100.f * hpScale;
-                    enemy->hp = enemy->maxHP;
-                    enemy->speed = 120.f * speedScale;
-                    enemy->reward = 25 * wave;
+                    enemy->SetStats(100.f * hpScale, 120.f * speedScale, reward);
                 });
         }
     }

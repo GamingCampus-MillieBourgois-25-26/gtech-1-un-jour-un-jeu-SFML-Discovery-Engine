@@ -1,15 +1,15 @@
 #pragma once
 #include "Core/Component.h"
-#include "InputModule.h"
-#include "Engine.h"
-#include "SceneModule.h"
-#include "TowerDefenseScene.h"
+
+enum class ButtonTarget { TowerDefense, BulletHell };
 
 class ButtonComponent : public Component
 {
 public:
     void Update(float dt) override;
     void OnClick();
+
+    ButtonTarget target = ButtonTarget::TowerDefense;
 
     sf::FloatRect bounds;
 };

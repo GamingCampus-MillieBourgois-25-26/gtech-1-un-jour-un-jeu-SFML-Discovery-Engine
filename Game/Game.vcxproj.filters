@@ -90,6 +90,21 @@
     <ClCompile Include="BaseTowerComponent.cpp">
       <Filter>Tower Defence</Filter>
     </ClCompile>
+    <ClCompile Include="BHGameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BHWaveManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BHCollisionSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BHHUD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Demo\Player.h">
@@ -157,6 +172,21 @@
     </ClInclude>
     <ClInclude Include="BaseTowerComponent.h">
       <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="BHGameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BHWaveManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BHCollisionSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BHHUD.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

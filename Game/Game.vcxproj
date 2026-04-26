@@ -96,11 +96,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseTowerComponent.cpp" />
+    <ClCompile Include="BHCollisionSystem.cpp" />
+    <ClCompile Include="BHGameState.cpp" />
+    <ClCompile Include="BHHUD.cpp" />
+    <ClCompile Include="BHWaveManager.cpp" />
     <ClCompile Include="BulletS.cpp" />
     <ClCompile Include="ButtonComponent.cpp" />
     <ClCompile Include="CellType.cpp" />
     <ClCompile Include="ClickerComponent.cpp" />
     <ClCompile Include="EnemyComponent.cpp" />
+    <ClCompile Include="EnemyS.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GridRenderer.cpp" />
     <ClCompile Include="HUDComponent.cpp" />
@@ -120,11 +125,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseTowerComponent.h" />
+    <ClInclude Include="BHCollisionSystem.h" />
+    <ClInclude Include="BHGameState.h" />
+    <ClInclude Include="BHHUD.h" />
+    <ClInclude Include="BHWaveManager.h" />
     <ClInclude Include="BulletS.h" />
     <ClInclude Include="ButtonComponent.h" />
     <ClInclude Include="CellType.h" />
     <ClInclude Include="ClickerComponent.h" />
     <ClInclude Include="EnemyComponent.h" />
+    <ClInclude Include="EnemyS.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GridRenderer.h" />
     <ClInclude Include="HUDComponent.h" />

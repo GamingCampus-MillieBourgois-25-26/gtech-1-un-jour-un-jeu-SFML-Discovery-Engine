@@ -1,20 +1,19 @@
 #pragma once
-#include "MenuScene.h"
-#include "RectangleShapeRenderer.h"
-#include "ButtonComponent.h"
 #include "Core/Scene.h"
+#include "Components/RectangleShapeRenderer.h"
+#include "ButtonComponent.h"
 
-class MenuScene final : public Scene {
+enum class ButtonTarget { TowerDefense, BulletHell };
+
+class MenuScene : public Scene {
 
 public:
 
-    MenuScene();    
+    MenuScene();
 
 private:
 
- 
-   void CreateButton(const std::string& name, const Maths::Vector2f& pos);
-
-   bool isActive = true;
-
+    void CreateButton(const std::string& name,
+        const Maths::Vector2f& pos,
+        ButtonTarget target);
 };

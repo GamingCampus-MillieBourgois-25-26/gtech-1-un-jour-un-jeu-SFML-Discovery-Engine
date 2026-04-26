@@ -25,6 +25,14 @@ namespace TowerDefence {
         int   damage = 3;        // dégâts au joueur si arrivé au bout
         float speed = 120.f;
 
+        void SetStats(float _maxHp, float _speed, int _reward) {
+
+            maxHP = _maxHp;
+            hp = _maxHp;
+            speed = _speed;
+            reward = _reward;
+        }
+
     private:
         std::vector<Maths::Vector2i> path;
         float cellSize = 50.f;

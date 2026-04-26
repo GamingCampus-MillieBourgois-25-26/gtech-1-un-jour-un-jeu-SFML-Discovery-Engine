@@ -3,15 +3,30 @@
 #include "SpriteRenderer.h"
 #include "WindowModule.h"
 #include "Engine.h"
-#include <SFML/Window/Mouse.hpp>
-#include <iostream>
 #include "TextRenderer.h"
 #include "Scene.h"
-TextRenderer* ClickComponent::scoreText = nullptr;
+#include "GameManager.h"
+#include "FloatingTextComponent.h"
+#include <iostream>
+
+#include <SFML/Window/Mouse.hpp>
 
 void ClickComponent::Update(float deltaTime)
 {
-    
+    std::cout << "CLICK VALUE: " << GameManager::Get().GetClickValue() << std::endl;
+    // 🔥 créer le texte UNE FOIS
+    if (!textCreated)
+    {
+        GameObject* textGO = GetOwner()->GetScene()->CreateGameObject("ScoreText");
+
+        scoreText = textGO->CreateComponent<TextRenderer>("Score: 0");
+        scoreText->SetColor(sf::Color::White);
+
+        textGO->SetPosition({ 20.f, 20.f });
+
+        textCreated = true;
+    }
+
     auto* sprite = GetOwner()->GetComponent<SpriteRenderer>();
     if (!sprite) return;
 
@@ -25,7 +40,6 @@ void ClickComponent::Update(float deltaTime)
     auto pos = GetOwner()->GetPosition();
     auto size = sprite->GetSize();
 
-    // sprite centré
     pos.x -= size.x / 2;
     pos.y -= size.y / 2;
 
@@ -39,15 +53,28 @@ void ClickComponent::Update(float deltaTime)
                 mouse.y > pos.y &&
                 mouse.y < pos.y + size.y)
             {
-                score++;
-                std::cout << "score\n";
+                // 💰 points
+                GameManager::Get().AddPoints(
+                    GameManager::Get().GetClickValue()
+                );
 
+                // 🔄 update texte
                 if (scoreText)
                 {
-                    scoreText->SetText("Score: " + std::to_string(score));
+                    scoreText->SetText(
+                        "Score: " + std::to_string(GameManager::Get().GetPoints())
+                    );
                 }
 
-                // 💥 effet zoom
+                // 💥 floating text
+                GameObject* text = GetOwner()->GetScene()->CreateGameObject("FloatingText");
+
+                text->SetPosition(GetOwner()->GetPosition());
+
+                auto* comp = text->CreateComponent<FloatingTextComponent>();
+                comp->Init("+" + std::to_string(GameManager::Get().GetClickValue()));
+
+                // 💥 zoom
                 targetScale = 1.2f;
             }
 
@@ -59,32 +86,16 @@ void ClickComponent::Update(float deltaTime)
         canClick = true;
     }
 
-    // 🎯 RETOUR PROGRESSIF
+    // 🎯 animation scale
     float speed = 5.f;
 
-    // interpolation vers 1.0
     currentScale += (1.f - currentScale) * speed * deltaTime;
 
-    // si clic → boost
     if (targetScale > 1.f)
     {
         currentScale = targetScale;
         targetScale = 1.f;
     }
 
-    // appliquer scale
     GetOwner()->SetScale({ currentScale, currentScale });
-
-
 }
-
-void ClickComponent::Start()
-{
-    GameObject* textGO = GetOwner()->GetScene()->CreateGameObject("ScoreText");
-
-    scoreText = textGO->CreateComponent<TextRenderer>("Score: 0");
-    scoreText->SetColor(sf::Color::White);
-
-    textGO->SetPosition({ 20.f, 20.f });
-}
-

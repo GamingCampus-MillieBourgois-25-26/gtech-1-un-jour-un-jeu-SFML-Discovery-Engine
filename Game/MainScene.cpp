@@ -5,7 +5,9 @@
 #include "SpriteRenderer.h"
 #include "AssetsModule.h"
 #include "Engine.h"
-#include "TextRenderer.h"
+#include "Components/TextRenderer.h"
+#include "TextRenderer.h" 
+#include "ShopPanel.h"
 
 MainScene::MainScene() : Scene("MainScene")
 {
@@ -13,40 +15,45 @@ MainScene::MainScene() : Scene("MainScene")
         ->GetModuleManager()
         ->GetModule<AssetsModule>();
 
-    // 🟦 ZONE GAUCHE
+    // 🟦 zone gauche
     {
         GameObject* leftZone = CreateGameObject("LeftZone");
 
         auto* rect = leftZone->CreateComponent<RectangleShapeRenderer>();
-        rect->SetSize(Maths::Vector2f(1000.f, 800.f));
-        rect->SetColor(sf::Color(0, 0, 255, 100));
+        rect->SetSize({ 1000.f, 800.f });
+        rect->SetColor(sf::Color(0, 0, 0, 0));
 
         leftZone->SetPosition({ 0.f, 0.f });
     }
 
-    // 🟥 ZONE DROITE
+    // 🟥 zone droite
     {
         GameObject* rightZone = CreateGameObject("RightZone");
 
         auto* rect = rightZone->CreateComponent<RectangleShapeRenderer>();
-        rect->SetSize(Maths::Vector2f(500.f, 800.f));
-        rect->SetColor(sf::Color(0, 0, 255, 100));
+        rect->SetSize({ 500.f, 800.f });
+        rect->SetColor(sf::Color(255, 0, 0, 100));
 
         rightZone->SetPosition({ 1000.f, 0.f });
     }
 
-    // 🟡 CLICKER SPRITE
+    // 🟡 clicker
     {
         GameObject* clicker = CreateGameObject("Clicker");
 
-        auto* sprite = clicker->CreateComponent<SpriteRenderer>(
-            assets->LoadAsset<Texture>("clicker.png") // 👉 mets ton image ici
+        clicker->CreateComponent<SpriteRenderer>(
+            assets->LoadAsset<Texture>("clicker.png")
         );
 
-        clicker->SetPosition({ 500.f, 400.f }); // centre gauche
+        clicker->SetPosition({ 500.f, 400.f });
 
-        // 👉 logique de clic
         clicker->CreateComponent<ClickComponent>();
+
+    }
+
+    {
+        GameObject* shop = CreateGameObject("Shop");
+        shop->CreateComponent<ShopPanel>();
     }
 
 }

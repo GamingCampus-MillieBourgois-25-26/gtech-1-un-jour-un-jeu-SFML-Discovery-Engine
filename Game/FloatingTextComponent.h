@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Core/Component.h"
 #include "TextRenderer.h"
@@ -13,6 +13,8 @@ public:
 
 private:
     TextRenderer* textRenderer = nullptr;
-    float lifetime = 1.0f; // dur�e en secondes
-    float speed = 50.f;    // vitesse vers le haut
+    std::string displayText = "+1"; // 🔥 stocke le vrai texte
+
+    float lifetime = 1.0f;
+    float speed = 50.f;
 };

@@ -25,6 +25,8 @@ void TextRenderer::Render(sf::RenderWindow* _window)
     sfmlText->setRotation(GetOwner()->GetRotation());
     sfmlText->setScale(static_cast<sf::Vector2f>(GetOwner()->GetScale()));
     sfmlText->setOrigin(static_cast<sf::Vector2f>(GetPivot()));
+
+    _window->draw(*sfmlText);
 }
 
 std::string TextRenderer::GetText() const

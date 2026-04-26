@@ -10,6 +10,8 @@
 #include "Core/GameObject.h"
 #include "Core/Scene.h"
 #include "Modules/AssetsModule.h"
+#include "Modules/WindowModule.h"
+#include "Modules/InputModule.h"
 #include <vector>
 
 class BulletHellScene final : public Scene
@@ -17,27 +19,34 @@ class BulletHellScene final : public Scene
 public:
 	BulletHellScene() : Scene("BulletHellScene")
 	{
-		GameObject* player = CreateDummyGameObject("Player", { 250.f, 400.f });
-		player->CreateComponent<Player>();
-
-		GameObject* enemy = CreateDummyGameObject("Enemy", { 100.f, 250.f });
-		enemy->CreateComponent<Enemy>();
-
-		//GameObject* enemy2 = CreateDummyGameObject("Enemy2", { 0.f, 50.f }, sf::Color::Yellow);
-
 		AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
+		Maths::Vector2u window_size = Engine::GetInstance()->GetModuleManager()->GetModule<WindowModule>()->GetSize();
+		InputModule* input = Engine::GetInstance()->GetModuleManager()->GetModule<InputModule>();
+
+		// Textures
 		Texture* playerTex = assets_module->LoadAsset<Texture>("Sylvain/BulletHell/playerShip.png");
 		Texture* ennemyTex = assets_module->LoadAsset<Texture>("Sylvain/BulletHell/ufoRed.png");
-		Texture* laserBlue = assets_module->LoadAsset<Texture>("Sylvain/BulletHell/laserBlue.png");
+		Texture* bulletTex = assets_module->LoadAsset<Texture>("Sylvain/BulletHell/bullet.png");
 
-		player->CreateComponent<SpriteRenderer>(playerTex);
+		// GameObjects
+		GameObject* player = CreateGameObject("Player");
+		SpriteRenderer* tex = player->CreateComponent<SpriteRenderer>(playerTex);
+		//tex->SetPivot();
+		player->CreateComponent<Player>();
+		SquareCollider* collider = player->CreateComponent<SquareCollider>();
+		collider->SetWidth({70.f});
+		collider->SetHeight({50.f});
+		player->SetPosition({ 250.f, 400.f });
+		player->SetScale({ 0.3f, 0.3f });
+		RectangleShapeRenderer* shape = player->CreateComponent<RectangleShapeRenderer>();
+		shape->SetColor(sf::Color::Red);
+		shape->SetSize({ 70.f, 50.f });
+
+		GameObject* enemy = CreateGameObject("Enemy");
 		enemy->CreateComponent<SpriteRenderer>(ennemyTex);
-		for (int i = 0; i < 500; ++i)
-		{
-			GameObject* bullet = CreateGameObject("bullet");
-			bullet->SetPosition({1000, 1000});
-			bullet->CreateComponent<BulletComponent>();
-		}
+		enemy->CreateComponent<Enemy>();
+		enemy->SetScale({ 0.5f, 0.5f });
+		enemy->SetPosition({ (float)window_size.x / 2.f, (float)window_size.y / 2.f });
 	}
 
 	GameObject* CreateDummyGameObject(const std::string& _name, const Maths::Vector2f _position)
@@ -55,6 +64,4 @@ public:
 
 		return game_object;
 	}
-
-	std::vector<GameObject*> bullets;
 };

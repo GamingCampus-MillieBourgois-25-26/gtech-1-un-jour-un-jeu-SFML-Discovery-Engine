@@ -10,6 +10,12 @@ BulletComponent::BulletComponent()
 
 void BulletComponent::Update(float _delta_time)
 {
+    lifeTime -= _delta_time;
+    if (lifeTime <= 0)
+    {
+        GetOwner()->MarkForDeletion();
+        return;
+    }
     Maths::Vector2f position = GetOwner()->GetPosition();
     position += direction * speed * _delta_time;
     GetOwner()->SetPosition(position);

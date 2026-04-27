@@ -28,16 +28,20 @@ namespace Match3 {
         void Update(float _delta_time) override;
 
         void SetPool(std::map<CandyType, std::vector<GameObject*>>* _pool) { pool = _pool; }
-
+        void SetSelector(GameObject* _selector) { selectorVisual = _selector; }
         CandyType GetCandyAt(int x, int y) const;
         Maths::Vector2f GetWorldPosition(int x, int y) const;
         GameState GetState() const { return currentState; }
+        void DebugPrintGrid();
+
 
     private:
         int width = 8;
         int height = 8;
         float cellSize = 64.f;
-
+        float timer = 0.f;
+        void ProcessGameLoop();
+        GameObject* selectorVisual = nullptr;
         GameState currentState = GameState::IDLE;
         std::vector<std::vector<CandyType>> grid;
         std::map<CandyType, std::vector<GameObject*>>* pool = nullptr;
@@ -49,12 +53,12 @@ namespace Match3 {
         void Swap(Maths::Vector2i a, Maths::Vector2i b);
 
         bool CheckMatches();
+        void ClearMatches();
         void ResolveMatches();
         void ApplyGravity();
 
         void UpdateVisuals();
         void SpawnCandyVisual(CandyType _type, int _x, int _y);
 		void RefillGrid();
-        void DebugPrintGrid();
     };
 }

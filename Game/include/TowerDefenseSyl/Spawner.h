@@ -1,6 +1,7 @@
 #pragma once
 #include "Core/Component.h"
 #include "TowerDefenseSyl/HQComponent.h"
+#include "Maths/vector2.h"
 
 class Spawner : public Component
 {

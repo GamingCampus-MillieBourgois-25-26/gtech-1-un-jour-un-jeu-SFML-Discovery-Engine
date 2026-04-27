@@ -1,6 +1,8 @@
 #pragma once
 #include "Core/Component.h"
 #include "TowerDefenseSyl/HQComponent.h"
+#include "Maths/vector2.h"
+#include "Core/GameObject.h"
 
 class EnemyAComponent : public Component
 {

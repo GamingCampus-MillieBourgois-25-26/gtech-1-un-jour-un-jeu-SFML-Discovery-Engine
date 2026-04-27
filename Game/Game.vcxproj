@@ -137,7 +137,6 @@
     <ClCompile Include="include\BulletHellSyl\Enemy.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\ProjectileComponent.cpp" />
     <ClCompile Include="Scenes\BHScenesSyl\BulletHellScene.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="include\BulletHellSyl\BulletComponent.cpp" />
     <ClCompile Include="include\BulletHellSyl\Player.cpp" />
     <ClCompile Include="Scenes\TDScenesSyl\TDScene.cpp" />

@@ -1,6 +1,7 @@
 #pragma once
 #include "Modules/InputModule.h"
 #include "Core/Component.h"
+#include "Core/GameObject.h"
 
 class Red : public Component
 {

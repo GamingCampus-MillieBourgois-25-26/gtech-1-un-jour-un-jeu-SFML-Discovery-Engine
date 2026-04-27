@@ -21,7 +21,10 @@
     <Filter Include="Header Files\TowerDefense">
       <UniqueIdentifier>{7dea0e58-f194-42d8-980f-4b47617f242a}</UniqueIdentifier>
     </Filter>
+
+    <Filter Include="Demo" />
   </ItemGroup>
+
   <ItemGroup>
     <ClCompile Include="src\BulletHellChris\Components\BulletComponent.cpp">
       <Filter>Source Files\BulletHell</Filter>
@@ -51,6 +54,7 @@
       <Filter>Source Files\BulletHell</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+    <ClCompile Include="*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\BHScenesSyl\BulletHellScene.cpp">
@@ -163,6 +167,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+
   <ItemGroup>
     <ClInclude Include="include\BulletHellChris\Components\BossComponent.h">
       <Filter>Header Files\BulletHell</Filter>
@@ -255,6 +260,19 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\TowerDefenseSyl\TowerBComponent.h">
+    <ClCompile Include="include\Demo\*">
+      <Filter>Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Demo\*">
+      <Filter>Demo</Filter>
+    </ClCompile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClInclude Include="include\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\*.inl">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\TowerDefenseSyl\HQComponent.h">

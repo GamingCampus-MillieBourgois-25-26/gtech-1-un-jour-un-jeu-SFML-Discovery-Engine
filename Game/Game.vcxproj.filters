@@ -21,7 +21,10 @@
     <Filter Include="Header Files\TowerDefense">
       <UniqueIdentifier>{7dea0e58-f194-42d8-980f-4b47617f242a}</UniqueIdentifier>
     </Filter>
+
+    <Filter Include="Demo" />
   </ItemGroup>
+
   <ItemGroup>
     <ClCompile Include="src\BulletHellChris\Components\BulletComponent.cpp">
       <Filter>Source Files\BulletHell</Filter>
@@ -163,6 +166,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+
   <ItemGroup>
     <ClInclude Include="include\BulletHellChris\Components\BossComponent.h">
       <Filter>Header Files\BulletHell</Filter>

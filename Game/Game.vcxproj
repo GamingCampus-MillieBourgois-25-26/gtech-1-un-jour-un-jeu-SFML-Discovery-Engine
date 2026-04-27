@@ -16,6 +16,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
       <ForcedIncludeFiles />
     </ClCompile>
+    <ClCompile Include="include\BulletHellSyl\Star.cpp" />
   </ItemGroup>
   <ItemGroup Label="Demo">
     <ClCompile Include="include\Demo\Tile.cpp" />
@@ -29,6 +30,7 @@
     <ClInclude Include="include\Demo\TileSpawner.h" />
     <ClInclude Include="include\pch.h" />
     <ClInclude Include="Scenes\Demo\DemoScene.h" />
+    <ClInclude Include="include\BulletHellSyl\Star.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

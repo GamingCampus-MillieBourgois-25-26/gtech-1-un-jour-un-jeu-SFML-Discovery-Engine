@@ -52,6 +52,7 @@
     <ClCompile Include="src\TowerDefenseChris\SpawnerComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\TowerComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\TowerDefenseScene.cpp" />
+    <ClCompile Include="include\BulletHellSyl\Star.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Demo\Player.h" />
@@ -109,6 +110,7 @@
     <ClInclude Include="include\ClickerSyl\ScoreDisplay.h" />
     <ClInclude Include="include\TowerDefenseSyl\SelectedTower.h" />
     <ClInclude Include="include\TowerDefenseSyl\TowerASelection.h" />
+    <ClInclude Include="include\BulletHellSyl\Star.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

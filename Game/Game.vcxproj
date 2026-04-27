@@ -45,33 +45,31 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)include;$(SolutionDir)Engine\include;$(IncludePath)</IncludePath>
+  <PropertyGroup>
+    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
     <ExternalIncludePath>$(SolutionDir)include;$(ExternalIncludePath)</ExternalIncludePath>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)include;$(SolutionDir)Engine\include;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)include;$(ExternalIncludePath)</ExternalIncludePath>
-    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
-  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalOptions>/IGNORE:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC;SFML_STATIC;SFML_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engine\include;$(SolutionDir)include\ImGUI-SFML;$(SolutionDir)include\ImGUI;$(SolutionDir)include;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <EnableModules>true</EnableModules>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\ImGUI-SFML;$(SolutionDir)include\ImGUI;$(SolutionDir)include;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\Debug;$(SolutionDir)lib;$(ProjectDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetyped.lib;winmm.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -82,9 +80,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC;SFML_STATIC;SFML_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engine\include;$(SolutionDir)include\ImGUI-SFML;$(SolutionDir)include\ImGUI;$(SolutionDir)include;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <BuildStlModules>true</BuildStlModules>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\ImGUI-SFML;$(SolutionDir)include\ImGUI;$(SolutionDir)include;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -96,6 +93,52 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\TowerDefenseSyl\Container.cpp" />
+    <ClCompile Include="include\ClickerSyl\ClickerDisplay.cpp" />
+    <ClCompile Include="include\ClickerSyl\ClickDisplay.cpp" />
+    <ClCompile Include="include\ClickerSyl\Cursor.cpp" />
+    <ClCompile Include="include\ClickerSyl\PriceDisplay.cpp" />
+    <ClCompile Include="include\ClickerSyl\Pink.cpp" />
+    <ClCompile Include="include\ClickerSyl\Red.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\LifeDisplay.cpp" />
+    <ClCompile Include="Scenes\ClickerScenesSyl\ClickerScene.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\HQComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\EnemyAComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\EnemyBComponent.cpp" />
+    <ClCompile Include="include\BulletHellSyl\Enemy.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\ProjectileComponent.cpp" />
+    <ClCompile Include="Scenes\BHScenesSyl\BulletHellScene.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="include\BulletHellSyl\BulletComponent.cpp" />
+    <ClCompile Include="include\BulletHellSyl\Player.cpp" />
+    <ClCompile Include="Scenes\TDScenesSyl\TDScene.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TowerAComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TowerBComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TDPlayer.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TileComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\Spawner.cpp" />
+    <ClCompile Include="include\ClickerSyl\Square.cpp" />
+    <ClCompile Include="include\ClickerSyl\ScoreDisplay.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\SelectedTower.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TowerASelection.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\TowerDefenseSyl\Container.h" />
+    <ClInclude Include="include\ClickerSyl\ClickerDisplay.h" />
+    <ClInclude Include="include\ClickerSyl\ClickDisplay.h" />
+    <ClInclude Include="include\ClickerSyl\Cursor.h" />
+    <ClInclude Include="include\ClickerSyl\PriceDisplay.h" />
+    <ClInclude Include="include\ClickerSyl\Pink.h" />
+    <ClInclude Include="include\ClickerSyl\Red.h" />
+    <ClInclude Include="include\TowerDefenseSyl\LifeDisplay.h" />
+    <ClInclude Include="Scenes\ClickerScenesSyl\ClickerScene.h" />
+    <ClInclude Include="include\TowerDefenseSyl\HQComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\EnemyAComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\EnemyBComponent.h" />
+    <ClInclude Include="include\BulletHellSyl\Enemy.h" />
+    <ClInclude Include="include\TowerDefenseSyl\ProjectileComponent.h" />
+    <ClInclude Include="Scenes\BHScenesSyl\BulletHellScene.h" />
+    <ClInclude Include="include\Player.h" />
     <ClCompile Include="src\ClickerChris\ClickerButton.cpp" />
     <ClCompile Include="src\ClickerChris\ClickerController.cpp" />
     <ClCompile Include="src\ClickerChris\ClickerScene.cpp" />
@@ -147,6 +190,18 @@
     <ClInclude Include="include\TowerDefenseChris\TowerComponent.h" />
     <ClInclude Include="include\TowerDefenseChris\TowerDefenseScene.h" />
     <ClInclude Include="Scenes\DefaultScene.h" />
+    <ClInclude Include="include\BulletHellSyl\BulletComponent.h" />
+    <ClInclude Include="include\BulletHellSyl\Player.h" />
+    <ClInclude Include="Scenes\TDScenesSyl\TDScene.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TowerAComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TowerBComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TDPlayer.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TileComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\Spawner.h" />
+    <ClInclude Include="include\ClickerSyl\Square.h" />
+    <ClInclude Include="include\ClickerSyl\ScoreDisplay.h" />
+    <ClInclude Include="include\TowerDefenseSyl\SelectedTower.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TowerASelection.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

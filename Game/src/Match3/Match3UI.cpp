@@ -15,21 +15,21 @@ void Match3UI::Init(Scene* scene)
 
     m_scoreText = m_scoreObject->CreateComponent<TextRenderer>("Score: 0");
     m_scoreText->SetCharacterSize(24);
-    m_scoreText->SetColor(sf::Color::White);
+    m_scoreText->SetColor(sf::Color::Black);
 
     m_timerObject = scene->CreateGameObject("TimerText");
     m_timerObject->SetPosition(Maths::Vector2f(20.f, 60.f));
 
     m_timerText = m_timerObject->CreateComponent<TextRenderer>("Time: 60");
     m_timerText->SetCharacterSize(24);
-    m_timerText->SetColor(sf::Color::White);
+    m_timerText->SetColor(sf::Color::Black);
 
     m_endObject = scene->CreateGameObject("EndText");
-    m_endObject->SetPosition(Maths::Vector2f(300.f, 300.f));
+    m_endObject->SetPosition(Maths::Vector2f(180.f, 20.f));
 
     m_endText = m_endObject->CreateComponent<TextRenderer>("Game Over");
     m_endText->SetCharacterSize(48);
-    m_endText->SetColor(sf::Color::White);
+    m_endText->SetColor(sf::Color::Red);
 
     m_endObject->Disable();
 }

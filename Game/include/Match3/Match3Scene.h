@@ -8,5 +8,6 @@ namespace Match3
     {
     public:
         Match3Scene();
+        void CreateBackground();
     };
 }

@@ -18,9 +18,9 @@ int main(const int _argc, const char** _argv)
     engine->GetModuleManager()->GetModule<SceneModule>()
         /*->SetScene<TowerDefense::TowerDefenseScene>();*/
         /*->SetScene<BullethellChris::BulletHell>();*/
-        /*->SetScene<BulletHellScene>();*/
+        ->SetScene<BulletHellScene>();
         /*->SetScene<TDScene>();*/
-        ->SetScene<ClickerScene>();
+        //->SetScene<ClickerScene>();
         /*->SetScene<ClickerChris::ClickerScene>();*/
 
     engine->Run();

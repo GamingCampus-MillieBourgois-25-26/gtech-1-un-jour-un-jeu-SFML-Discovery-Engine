@@ -29,12 +29,13 @@ void Enemy::CreateBullet(Maths::Vector2f _position)
 	GameObject* bullet = GetOwner()->GetScene()->CreateGameObject("bullet");
 	bullet->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/BulletHell/bullet.png"));
 	bullet->CreateComponent<BulletComponent>();
-	/*SquareCollider* collider = bullet->CreateComponent<SquareCollider>();
+	SquareCollider* collider = bullet->CreateComponent<SquareCollider>();
 	collider->SetHeight({ 25.f });
-	collider->SetWidth({ 25.f });*/
+	collider->SetWidth({ 25.f });
 	bullet->SetPosition(_position);
 	bullet->SetScale({ 0.7f, 0.7f });
-	RectangleShapeRenderer* shape = bullet->CreateComponent<RectangleShapeRenderer>();
+	/*RectangleShapeRenderer* shape = bullet->CreateComponent<RectangleShapeRenderer>();
 	shape->SetColor(sf::Color::Blue);
-	shape->SetSize({ 25, 25 });
+	shape->SetSize({ 25, 25 });*/
+	//shape->SetPivot({ 10.f, 10.f });
 }

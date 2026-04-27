@@ -79,10 +79,8 @@ void Player::CreateDisplayer()
 
 bool Player::CheckCollision()
 {
-    GameObject* owner = GetOwner();
-    Maths::Vector2f pos = owner->GetPosition();
-
-    const auto& objects = owner->GetScene()->GetGameObjects();
+    Maths::Vector2f pos = GetOwner()->GetPosition();
+    const auto& objects = GetOwner()->GetScene()->GetGameObjects();
 
     for (const auto& objPtr : objects)
     {
@@ -90,15 +88,25 @@ bool Player::CheckCollision()
 
         if (!obj || obj->IsMarkedForDeletion())
             continue;
-        if (obj->GetName().find("bullet") == std::string::npos)
-            continue;
-        auto posObj = obj->GetPosition();
-        auto sizeObj = obj->GetComponent<RectangleShapeRenderer>()->GetSize();
-        auto pos = GetOwner()->GetPosition();
-        /*if (pos.x < posObj.x + sizeObj->GetWidth())
+        /*if (obj->GetName().find("bullet") == std::string::npos)
+            continue;*/
+        if (obj->GetName() == "bullet")
         {
-
-        }*/
+            auto posObj = obj->GetPosition();
+            //auto sizeObj = obj->GetComponent<RectangleShapeRenderer>()->GetSize();
+            auto pos = GetOwner()->GetPosition();
+            pos.x -= 40.f;
+            posObj.x -= 40.f;
+            //auto size = GetOwner()->GetComponent<RectangleShapeRenderer>()->GetSize();
+            /*if (pos.x < posObj.x + (sizeObj.x/2) && pos.x + (size.x/2) > posObj.x &&
+                pos.y < posObj.y + (sizeObj.y/2) && pos.y + (size.y/2) > posObj.y )
+            {*/
+            if (pos.x < posObj.x + 20.f && pos.x + 25.f > posObj.x &&
+                pos.y < posObj.y + 20.f && pos.y + 25.f > posObj.y )
+            {
+                return true;
+            }
+        }
 
     }
     return false;

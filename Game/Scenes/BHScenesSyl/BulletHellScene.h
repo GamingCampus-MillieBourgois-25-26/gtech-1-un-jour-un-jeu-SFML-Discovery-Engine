@@ -37,9 +37,10 @@ public:
 		collider->SetHeight({50.f});*/
 		player->SetPosition({ 250.f, 400.f });
 		player->SetScale({ 0.3f, 0.3f });
-		RectangleShapeRenderer* shape = player->CreateComponent<RectangleShapeRenderer>();
+		/*RectangleShapeRenderer* shape = player->CreateComponent<RectangleShapeRenderer>();
 		shape->SetColor(sf::Color::Red);
-		shape->SetSize({ 70.f, 50.f });
+		shape->SetSize({ 70.f, 50.f });*/
+		//shape->SetPivot({ 10.f, 8.f });
 
 		GameObject* enemy = CreateGameObject("Enemy");
 		enemy->CreateComponent<SpriteRenderer>(ennemyTex);

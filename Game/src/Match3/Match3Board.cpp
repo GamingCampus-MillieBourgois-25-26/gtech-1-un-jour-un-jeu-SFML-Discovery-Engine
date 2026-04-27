@@ -1,6 +1,7 @@
 #include "Match3/Match3Board.h"
 
 #include <cstdlib>
+#include <cmath>
 
 void Match3Board::Init(int width, int height)
 {
@@ -20,57 +21,6 @@ void Match3Board::Init(int width, int height)
             m_grid[y][x].type = RandomCandy();
             m_grid[y][x].marked = false;
         }
-    }
-}
-
-CandyType Match3Board::GetCandy(int x, int y) const
-{
-    if (!IsInside(x, y))
-    {
-        return CandyType::Empty;
-    }
-
-    return m_grid[y][x].type;
-}
-
-int Match3Board::GetWidth() const
-{
-    return m_width;
-}
-
-int Match3Board::GetHeight() const
-{
-    return m_height;
-}
-
-int Match3Board::GetScore() const
-{
-    return m_score;
-}
-
-bool Match3Board::IsInside(int x, int y) const
-{
-    return x >= 0 && x < m_width && y >= 0 && y < m_height;
-}
-
-CandyType Match3Board::RandomCandy() const
-{
-    int value = std::rand() % 5;
-
-    switch (value)
-    {
-    case 0:
-        return CandyType::Red;
-    case 1:
-        return CandyType::Blue;
-    case 2:
-        return CandyType::Green;
-    case 3:
-        return CandyType::Yellow;
-    case 4:
-        return CandyType::Purple;
-    default:
-        return CandyType::Red;
     }
 }
 
@@ -102,31 +52,12 @@ bool Match3Board::Swap(int x1, int y1, int x2, int y2)
     return true;
 }
 
-bool Match3Board::AreNeighbors(int x1, int y1, int x2, int y2) const
-{
-    int dx = std::abs(x1 - x2);
-    int dy = std::abs(y1 - y2);
-
-    return dx + dy == 1;
-}
-void Match3Board::ClearMarks()
-{
-    for (int y = 0; y < m_height; ++y)
-    {
-        for (int x = 0; x < m_width; ++x)
-        {
-            m_grid[y][x].marked = false;
-        }
-    }
-}
-
 bool Match3Board::FindMatches()
 {
     ClearMarks();
 
     bool foundMatch = false;
 
-    // Horizontal
     for (int y = 0; y < m_height; ++y)
     {
         int count = 1;
@@ -167,7 +98,6 @@ bool Match3Board::FindMatches()
         }
     }
 
-    // Vertical
     for (int x = 0; x < m_width; ++x)
     {
         int count = 1;
@@ -209,6 +139,13 @@ bool Match3Board::FindMatches()
     }
 
     return foundMatch;
+}
+
+void Match3Board::ResolveMatches()
+{
+    RemoveMatches();
+    ApplyGravity();
+    Refill();
 }
 
 void Match3Board::RemoveMatches()
@@ -266,9 +203,82 @@ void Match3Board::Refill()
     }
 }
 
-void Match3Board::ResolveMatches()
+CandyType Match3Board::GetCandy(int x, int y) const
 {
-    RemoveMatches();
-    ApplyGravity();
-    Refill();
+    if (!IsInside(x, y))
+    {
+        return CandyType::Empty;
+    }
+
+    return m_grid[y][x].type;
+}
+
+bool Match3Board::IsMarked(int x, int y) const
+{
+    if (!IsInside(x, y))
+    {
+        return false;
+    }
+
+    return m_grid[y][x].marked;
+}
+
+int Match3Board::GetWidth() const
+{
+    return m_width;
+}
+
+int Match3Board::GetHeight() const
+{
+    return m_height;
+}
+
+int Match3Board::GetScore() const
+{
+    return m_score;
+}
+
+bool Match3Board::IsInside(int x, int y) const
+{
+    return x >= 0 && x < m_width && y >= 0 && y < m_height;
+}
+
+bool Match3Board::AreNeighbors(int x1, int y1, int x2, int y2) const
+{
+    int dx = std::abs(x1 - x2);
+    int dy = std::abs(y1 - y2);
+
+    return dx + dy == 1;
+}
+
+CandyType Match3Board::RandomCandy() const
+{
+    int value = std::rand() % 5;
+
+    switch (value)
+    {
+    case 0:
+        return CandyType::Red;
+    case 1:
+        return CandyType::Blue;
+    case 2:
+        return CandyType::Green;
+    case 3:
+        return CandyType::Yellow;
+    case 4:
+        return CandyType::Purple;
+    default:
+        return CandyType::Red;
+    }
+}
+
+void Match3Board::ClearMarks()
+{
+    for (int y = 0; y < m_height; ++y)
+    {
+        for (int x = 0; x < m_width; ++x)
+        {
+            m_grid[y][x].marked = false;
+        }
+    }
 }

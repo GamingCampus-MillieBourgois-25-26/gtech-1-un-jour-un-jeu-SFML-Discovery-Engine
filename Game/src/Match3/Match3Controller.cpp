@@ -11,8 +11,6 @@
 #include "Components/SpriteRenderer.h"
 #include "Components/RectangleShapeRenderer.h"
 
-#include "Maths/Vector2.h"
-
 #include <SFML/Window/Mouse.hpp>
 #include <SFML/Graphics/Color.hpp>
 
@@ -44,7 +42,32 @@ namespace Match3
                 gameFinished = true;
             }
 
-            HandleInput();
+            if (waitingResolve)
+            {
+                resolveTimer -= deltaTime;
+
+                if (resolveTimer <= 0.f)
+                {
+                    waitingResolve = false;
+
+                    waitingDestroy = true;
+                    destroyTimer = 0.25f;
+                }
+            }
+            else if (waitingDestroy)
+            {
+                destroyTimer -= deltaTime;
+
+                if (destroyTimer <= 0.f)
+                {
+                    waitingDestroy = false;
+                    ResolveBoard();
+                }
+            }
+            else
+            {
+                HandleInput();
+            }
         }
 
         UpdateTiles();
@@ -71,7 +94,7 @@ namespace Match3
 
         GameObject* bg = scene->CreateGameObject("Match3Background");
 
-        bg->SetPosition(Maths::Vector2f(400.f, 300.f));
+        bg->SetPosition(Maths::Vector2f(0.f, 0.f));
         bg->SetScale(Maths::Vector2f(0.5f, 0.5f));
 
         bg->CreateComponent<SpriteRenderer>(bgTexture);
@@ -160,16 +183,22 @@ namespace Match3
 
         if (board.Swap(selectedX, selectedY, x, y))
         {
-            board.ResolveMatches();
-
-            while (board.FindMatches())
-            {
-                board.ResolveMatches();
-            }
+            waitingResolve = true;
+            resolveTimer = 0.15f;
         }
 
         selectedX = -1;
         selectedY = -1;
+    }
+
+    void Match3Controller::ResolveBoard()
+    {
+        board.ResolveMatches();
+
+        while (board.FindMatches())
+        {
+            board.ResolveMatches();
+        }
     }
 
     void Match3Controller::UpdateTiles()
@@ -193,7 +222,14 @@ namespace Match3
 
                     candy->Enable();
 
-                    if (x == selectedX && y == selectedY)
+                    if (waitingDestroy && board.IsMarked(x, y))
+                    {
+                        candy->SetScale(Maths::Vector2f(
+                            candyScale.x * 1.35f,
+                            candyScale.y * 1.35f
+                        ));
+                    }
+                    else if (x == selectedX && y == selectedY)
                     {
                         candy->SetScale(Maths::Vector2f(
                             candyScale.x * 1.15f,
@@ -222,12 +258,19 @@ namespace Match3
     {
         switch (type)
         {
-        case CandyType::Red: return 0;
-        case CandyType::Blue: return 1;
-        case CandyType::Green: return 2;
-        case CandyType::Yellow: return 3;
-        case CandyType::Purple: return 4;
-        default: return -1;
+        case CandyType::Red:
+            return 0;
+        case CandyType::Blue:
+            return 1;
+        case CandyType::Green:
+            return 2;
+        case CandyType::Yellow:
+            return 3;
+        case CandyType::Purple:
+            return 4;
+        case CandyType::Empty:
+        default:
+            return -1;
         }
     }
 }

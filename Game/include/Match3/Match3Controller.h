@@ -3,12 +3,14 @@
 #include "Core/Component.h"
 #include "Match3/Match3Board.h"
 #include "Match3/Match3UI.h"
+#include "Maths/Vector2.h"
 
-#include <vector>
 #include <array>
+#include <vector>
 
 class Texture;
 class GameObject;
+class Scene;
 
 namespace Match3
 {
@@ -38,6 +40,12 @@ namespace Match3
         float timer = 60.f;
         bool gameFinished = false;
 
+        bool waitingResolve = false;
+        float resolveTimer = 0.f;
+
+        bool waitingDestroy = false;
+        float destroyTimer = 0.f;
+
         float tileSize = 48.f;
         float offsetX = 100.f;
         float offsetY = 100.f;
@@ -49,8 +57,11 @@ namespace Match3
         void CreateBackground();
         void CreateTiles();
         GameObject* CreateCandyObject(Scene* scene, Texture* texture, float px, float py);
+
         void HandleInput();
+        void ResolveBoard();
         void UpdateTiles();
+
         int GetCandyIndex(CandyType type) const;
     };
 }

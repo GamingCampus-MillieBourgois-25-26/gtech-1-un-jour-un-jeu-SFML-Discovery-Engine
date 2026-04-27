@@ -1,0 +1,58 @@
+#include "TowerAComponent.h"
+#include "ProjectileComponent.h"
+#include "Components/SpriteRenderer.h"
+#include "Modules/AssetsModule.h"
+#include "Core/GameObject.h"
+#include "Core/Scene.h"
+#include <iostream>
+
+TowerAComponent::TowerAComponent()
+{
+
+}
+
+void TowerAComponent::Update(float _delta_time)
+{
+    reload += _delta_time;
+    GameObject* obj = FindTarget();
+    if (obj)
+    {
+        if (reload >= atkSpeed)
+        {
+            reload = 0.f;
+            shot(obj);
+        }
+    }
+}
+
+void TowerAComponent::shot(GameObject* obj)
+{
+    AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
+    GameObject* projectile = GetOwner()->GetScene()->CreateGameObject("projectile");
+    projectile->SetPosition(GetOwner()->GetPosition());
+    projectile->SetScale({ 0.25f, 0.25f });
+    projectile->CreateComponent<ProjectileComponent>(obj);
+    projectile->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/TowerDefense/bullet.png"));
+}
+
+GameObject* TowerAComponent::FindTarget()
+{
+    GameObject* owner = GetOwner();
+    const auto& objects = owner->GetScene()->GetGameObjects();
+    for (const auto& object : objects)
+    {
+        GameObject* obj = object.get();
+        if (!obj || obj->IsMarkedForDeletion())
+            continue;
+        if (obj->GetName().find("enemy") == std::string::npos && !obj->IsMarkedForDeletion())
+            continue;
+        Maths::Vector2f dir = obj->GetPosition() - owner->GetPosition();
+        float distance = std::sqrt(dir.x * dir.x + dir.y * dir.y);
+        if (distance <= range)
+        {
+            //setRotation
+            return obj;
+        }
+    }
+    return nullptr;
+}

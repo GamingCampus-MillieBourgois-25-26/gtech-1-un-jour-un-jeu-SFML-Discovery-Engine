@@ -17,7 +17,6 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
       <ForcedIncludeFiles />
     </ClCompile>
-    <ClCompile Include="main.cpp" />
   </ItemGroup>
 
   <ItemGroup Label="Demo">

@@ -2,6 +2,7 @@
 #include "Core/Component.h"
 #include "ClickerController.h"
 #include "Maths/Vector2.h"
+#include "Core/GameObject.h"
 
 
 class ClickerButton : public Component

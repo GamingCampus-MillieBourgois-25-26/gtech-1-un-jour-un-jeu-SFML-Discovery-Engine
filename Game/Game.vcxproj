@@ -119,6 +119,8 @@
     <ClCompile Include="ClickerAlice\ClickerComponent.cpp" />
     <ClCompile Include="ClickerAlice\Scenes\ClickerScene.cpp" />
     <ClCompile Include="ClickerAlice\UpgradeComponent.cpp" />
+    <ClCompile Include="Match3\Scene\GameScene.cpp" />
+    <ClCompile Include="Match3\GridManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TowerDefenseAlice\Ennemis\EnemyMovement.cpp" />
     <ClCompile Include="TowerDefenseAlice\Ennemis\EnemySpawner.cpp" />
@@ -150,6 +152,8 @@
     <ClInclude Include="ClickerLeo\MainScene.h" />
     <ClInclude Include="ClickerLeo\ShopItem.h" />
     <ClInclude Include="ClickerLeo\ShopPanel.h" />
+    <ClInclude Include="Match3\Scene\GameScene.h" />
+    <ClInclude Include="Match3\GridManager.h" />
     <ClInclude Include="include\Demo\Player.h" />
     <ClInclude Include="include\Demo\Tile.h" />
     <ClInclude Include="TowerDefenseLeo\EnemyComponent.h" />

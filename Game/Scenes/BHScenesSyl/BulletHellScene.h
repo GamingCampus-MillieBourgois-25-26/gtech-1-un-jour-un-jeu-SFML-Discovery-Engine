@@ -32,36 +32,17 @@ public:
 		GameObject* player = CreateGameObject("Player");
 		SpriteRenderer* tex = player->CreateComponent<SpriteRenderer>(playerTex);
 		player->CreateComponent<Player>();
-		/*SquareCollider* collider = player->CreateComponent<SquareCollider>();
-		collider->SetWidth({70.f});
-		collider->SetHeight({50.f});*/
+		SquareCollider* collider = player->CreateComponent<SquareCollider>();
+		collider->SetWidth({90.f});
+		collider->SetHeight({60.f});
+		collider->SetPivot({ 45.f, 30.f });
 		player->SetPosition({ 250.f, 400.f });
 		player->SetScale({ 0.3f, 0.3f });
-		/*RectangleShapeRenderer* shape = player->CreateComponent<RectangleShapeRenderer>();
-		shape->SetColor(sf::Color::Red);
-		shape->SetSize({ 70.f, 50.f });*/
-		//shape->SetPivot({ 10.f, 8.f });
 
 		GameObject* enemy = CreateGameObject("Enemy");
 		enemy->CreateComponent<SpriteRenderer>(ennemyTex);
 		enemy->CreateComponent<Enemy>();
 		enemy->SetScale({ 0.5f, 0.5f });
 		enemy->SetPosition({ (float)window_size.x / 2.f, (float)window_size.y / 2.f });
-	}
-
-	GameObject* CreateDummyGameObject(const std::string& _name, const Maths::Vector2f _position)
-	{
-		GameObject* game_object = CreateGameObject(_name);
-		game_object->SetPosition(_position);
-
-		SquareCollider* square_collider = game_object->CreateComponent<SquareCollider>();
-		square_collider->SetWidth(20.f);
-		square_collider->SetHeight(20.f);
-
-		RectangleShapeRenderer* shape_renderer = game_object->CreateComponent<RectangleShapeRenderer>();
-		//shape_renderer->SetColor(_color);
-		shape_renderer->SetSize(Maths::Vector2f(20.f, 20.f));
-
-		return game_object;
 	}
 };

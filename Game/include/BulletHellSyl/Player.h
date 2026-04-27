@@ -14,7 +14,7 @@ public:
 
     float speed = 200.0f;
     Maths::Vector2u window_size;
-    int life = 100;
+    int life = 3;
     GameObject* lifeDisplayer = nullptr;
     float invunerabilityTime = 1.f;
 };

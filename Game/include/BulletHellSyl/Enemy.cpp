@@ -32,6 +32,7 @@ void Enemy::CreateBullet(Maths::Vector2f _position)
 	SquareCollider* collider = bullet->CreateComponent<SquareCollider>();
 	collider->SetHeight({ 25.f });
 	collider->SetWidth({ 25.f });
+	collider->SetPivot({ 12.5f, 12.5f });
 	bullet->SetPosition(_position);
 	bullet->SetScale({ 0.7f, 0.7f });
 	/*RectangleShapeRenderer* shape = bullet->CreateComponent<RectangleShapeRenderer>();

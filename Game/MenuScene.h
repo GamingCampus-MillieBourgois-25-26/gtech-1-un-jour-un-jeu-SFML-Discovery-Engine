@@ -1,9 +1,7 @@
 #pragma once
 #include "Core/Scene.h"
 #include "Components/RectangleShapeRenderer.h"
-#include "ButtonComponent.h"
-
-enum class ButtonTarget { TowerDefense, BulletHell };
+#include "ButtonComponent.h"  
 
 class MenuScene : public Scene {
 

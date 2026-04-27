@@ -9,9 +9,17 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Header Files\BulletHell">
+      <UniqueIdentifier>{c9b33cb0-23c0-484b-9d82-1c99b4dcaefe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BulletHell">
+      <UniqueIdentifier>{bd75a81d-de57-4d17-8f58-b2d86b3b0234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense">
+      <UniqueIdentifier>{11d4fe0f-dbef-4873-bb9e-7dc9b97a97a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense">
+      <UniqueIdentifier>{7dea0e58-f194-42d8-980f-4b47617f242a}</UniqueIdentifier>
     </Filter>
 
     <Filter Include="Demo" />
@@ -21,85 +29,34 @@
     <ClCompile Include="*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\BHScenesSyl\BulletHellScene.cpp">
+    <ClCompile Include="src\TowerDefenseChris\TowerDefenseScene.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\RenderTestComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\EnemyComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\TowerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\InputTowerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\SpawnerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\GameManagerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ClickerChris\ClickerScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\BulletHellSyl\BulletComponent.cpp">
+    <ClCompile Include="src\ClickerChris\ClickerController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\BulletHellSyl\Enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\BulletHellSyl\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\TDScenesSyl\TDScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\EnemyAComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\EnemyBComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\TowerAComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\TowerBComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\HQComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\TDPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\TileComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\ProjectileComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\Spawner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\ClickerScenesSyl\ClickerScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\ClickerSyl\Square.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\ClickerSyl\Cursor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\ClickerSyl\ScoreDisplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\ClickerSyl\PriceDisplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\ClickerSyl\Pink.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\ClickerSyl\Red.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\ClickerSyl\ClickDisplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\ClickerSyl\ClickerDisplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\Container.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\SelectedTower.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\TowerASelection.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\TowerDefenseSyl\LifeDisplay.cpp">
+    <ClCompile Include="src\ClickerChris\ClickerButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -201,5 +158,8 @@
     <ClInclude Include="include\TowerDefenseSyl\LifeDisplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

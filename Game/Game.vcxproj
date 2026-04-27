@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -16,7 +17,6 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
       <ForcedIncludeFiles />
     </ClCompile>
-    <ClCompile Include="main.cpp" />
   </ItemGroup>
 
   <ItemGroup Label="Demo">
@@ -180,13 +180,75 @@
     <ClInclude Include="include\ClickerSyl\ScoreDisplay.h" />
     <ClInclude Include="include\TowerDefenseSyl\SelectedTower.h" />
     <ClInclude Include="include\TowerDefenseSyl\TowerASelection.h" />
+    <ClCompile Include="src\ClickerChris\ClickerButton.cpp" />
+    <ClCompile Include="src\ClickerChris\ClickerController.cpp" />
+    <ClCompile Include="src\ClickerChris\ClickerScene.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\BulletHellChris\Components\BossComponent.cpp" />
+    <ClCompile Include="src\BulletHellChris\Components\BulletComponent.cpp" />
+    <ClCompile Include="src\BulletHellChris\Components\EnemyComponent.cpp">
+      <ObjectFileName>$(IntDir)BulletHell_EnemyComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="src\BulletHellChris\Components\PlayerController.cpp" />
+    <ClCompile Include="src\BulletHellChris\Scenes\BulletHellScene.cpp" />
+    <ClCompile Include="src\BulletHellChris\Systems\EnemySpawner.cpp" />
+    <ClCompile Include="src\BulletHellChris\UI\BossHUDComponent.cpp" />
+    <ClCompile Include="src\BulletHellChris\UI\BulletHellHUD.cpp" />
+    <ClCompile Include="src\BulletHellChris\UI\PlayerHUDComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\EnemyComponent.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)TowerDefense_EnemyComponent.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\GameManagerComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\InputTowerComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\RenderTestComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\SpawnerComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\TowerComponent.cpp" />
+    <ClCompile Include="src\TowerDefenseChris\TowerDefenseScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\ClickerChris\ClickerButton.h" />
+    <ClInclude Include="include\ClickerChris\ClickerController.h" />
+    <ClInclude Include="include\ClickerChris\ClickerScene.h" />
+    <ClInclude Include="include\BulletHellChris\BulletHellDebug.h" />
+    <ClInclude Include="include\BulletHellChris\BulletHellTypes.h" />
+    <ClInclude Include="include\BulletHellChris\Components\BossComponent.h" />
+    <ClInclude Include="include\BulletHellChris\Components\BulletComponent.h" />
+    <ClInclude Include="include\BulletHellChris\Components\EnemyComponent.h" />
+    <ClInclude Include="include\BulletHellChris\Components\PlayerController.h" />
+    <ClInclude Include="include\BulletHellChris\Scenes\BulletHellScene.h" />
+    <ClInclude Include="include\BulletHellChris\Systems\EnemySpawner.h" />
+    <ClInclude Include="include\BulletHellChris\UI\BossHUDComponent.h" />
+    <ClInclude Include="include\BulletHellChris\UI\BulletHellHUD.h" />
+    <ClInclude Include="include\BulletHellChris\UI\PlayerHUDComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\EnemyComponent.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\GameManagerComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\InputTowerComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\RenderTestComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\SpawnerComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\TowerComponent.h" />
+    <ClInclude Include="include\TowerDefenseChris\TowerDefenseScene.h" />
+    <ClInclude Include="Scenes\DefaultScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
       <Project>{fae7003c-61cf-41e6-9b58-70e97d3f7878}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets'))" />
+  </Target>
 </Project>
-

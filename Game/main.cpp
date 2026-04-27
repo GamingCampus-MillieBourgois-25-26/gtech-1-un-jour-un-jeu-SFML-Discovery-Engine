@@ -1,8 +1,9 @@
 #include "Engine.h"
 #include "SceneModule.h"
-#include "Scenes/BHScenesSyl/BulletHellScene.h"
-#include "Scenes/TDScenesSyl/TDScene.h"
-#include "Scenes/ClickerScenesSyl/ClickerScene.h"
+#include "BulletHellChris/Scenes/BulletHellScene.h"
+#include "TowerDefenseChris/TowerDefenseScene.h"
+#include "ClickerChris/ClickerScene.h"
+
 
 int main(const int _argc, const char** _argv)
 {
@@ -10,7 +11,10 @@ int main(const int _argc, const char** _argv)
 
     engine->Init(_argc, _argv);
 
-    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<BulletHellScene>();
+    engine->GetModuleManager()->GetModule<SceneModule>()
+        ->SetScene<TowerDefense::TowerDefenseScene>();
+     /*->SetScene<bulletHell::BulletHellScene>();  */
+       /*->SetScene<ClickerChris::ClickerScene>();*/
 
     engine->Run();
 

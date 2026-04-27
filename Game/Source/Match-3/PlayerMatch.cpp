@@ -38,12 +38,38 @@ void PlayerMatch::Update(float deltaTime)
     {
         Maths::Vector2i currentMouse = InputModule::GetMousePosition();
         float draggingX = currentMouse.x - clickPosition.x;
+        float draggingY = currentMouse.y - clickPosition.y;
 
         Logger::Log(ELogLevel::Debug, "dragging X = {}", draggingX);
+        Logger::Log(ELogLevel::Debug, "dragging Y = {}", draggingY);
 
         if (draggingX < -20.f)
         {
             Logger::Log(ELogLevel::Debug, "Drag vers la gauche detecte");
+
+            // Action match-3 ici
+            isDragging = false;
+        }
+
+        else if (draggingX > 20.f)
+        {
+            Logger::Log(ELogLevel::Debug, "Drag vers la droite detecte");
+
+            // Action match-3 ici
+            isDragging = false;
+        }
+
+        else if (draggingY < -20.f)
+        {
+            Logger::Log(ELogLevel::Debug, "Drag vers le haut detecte");
+
+            // Action match-3 ici
+            isDragging = false;
+        }
+
+        else if (draggingY > 20.f)
+        {
+            Logger::Log(ELogLevel::Debug, "Drag vers le bas detecte");
 
             // Action match-3 ici
             isDragging = false;

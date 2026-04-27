@@ -8,8 +8,8 @@
 class PlayerMatch : public Component
 {
 private:
-	SquareCollider* ownerCollider;
-	Scene* sceneOwner;
+	SquareCollider* ownerCollider = nullptr;
+	Scene* sceneOwner = nullptr;
 	int id = 0;
 	const int BOARD_SIZE = 2;
 

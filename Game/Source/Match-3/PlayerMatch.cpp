@@ -8,8 +8,8 @@ void PlayerMatch::Start()
 
 void PlayerMatch::Update(float deltaTime)
 {
-	float mousePositionX = InputModule::GetMousePosition().x;
-	float mousePositionY = InputModule::GetMousePosition().y;
+	int mousePositionX = InputModule::GetMousePosition().x;
+	int mousePositionY = InputModule::GetMousePosition().y;
 
 	GetOwner()->SetPosition({ mousePositionX - 40.f, mousePositionY - 40.f });
 
@@ -38,22 +38,22 @@ void PlayerMatch::Update(float deltaTime)
     if (isDragging && InputModule::GetMouseButton(sf::Mouse::Button::Left))
     {
         Maths::Vector2i currentMouse = InputModule::GetMousePosition();
-        float draggingX = currentMouse.x - clickPosition.x;
-        float draggingY = currentMouse.y - clickPosition.y;
+        int draggingX = currentMouse.x - clickPosition.x;
+        int draggingY = currentMouse.y - clickPosition.y;
 
         Logger::Log(ELogLevel::Debug, "dragging X = {}", draggingX);
         Logger::Log(ELogLevel::Debug, "dragging Y = {}", draggingY);
 
-        if (draggingX < -20.f && index_I > 0)
+        if (draggingX < -20 && index_I > 0)
         {
             Logger::Log(ELogLevel::Debug, "Drag vers la gauche detecte");
 
-            swapPosition(index_I - 1, index_J);
+            swapPosition(index_I, index_J - 1);
             // Action match-3 ici
             isDragging = false;
         }
 
-        else if (draggingX > 20.f && index_I < BOARD_SIZE)
+        else if (draggingX > 20 && index_I < BOARD_SIZE - 1)
         {
             Logger::Log(ELogLevel::Debug, "Drag vers la droite detecte");
 
@@ -62,7 +62,7 @@ void PlayerMatch::Update(float deltaTime)
             isDragging = false;
         }
 
-        else if (draggingY < -20.f && index_J > 0)
+        else if (draggingY < -20 && index_J > 0)
         {
             Logger::Log(ELogLevel::Debug, "Drag vers le haut detecte");
 
@@ -71,7 +71,7 @@ void PlayerMatch::Update(float deltaTime)
             isDragging = false;
         }
 
-        else if (draggingY > 20.f && index_J < BOARD_SIZE)
+        else if (draggingY > 20 && index_J < BOARD_SIZE - 1)
         {
             Logger::Log(ELogLevel::Debug, "Drag vers le bas detecte");
 
@@ -95,6 +95,8 @@ SquareCollider* PlayerMatch::ReturnTileName(int id)
 	return sceneOwner->FindGameObject("Tile" + std::to_string(id))->GetComponent<SquareCollider>();
 }
 
+
+// à débugger
 void PlayerMatch::swapPosition(int i, int j)
 {
     GameObject* TileMatchComponent = GetOwner()->GetScene()->FindGameObject("TileMatch");
@@ -110,6 +112,9 @@ void PlayerMatch::swapPosition(int i, int j)
     tempPosition = TileSelectedPosition;
     TileSelectedPosition = otherTilePosition;
     otherTilePosition = tempPosition;
+
+    TileSelected->SetPosition(TileSelectedPosition);
+    otherTile->SetPosition(otherTilePosition);
 
     // Swap dans le tableau
 

@@ -12,7 +12,7 @@ namespace Match_3
 		void Update(float deltaTime) override;
 		void Render(sf::RenderWindow* window) override;
 
-		auto GetTiles() { return Tiles; }
+		auto& GetTiles() { return Tiles; }
 	private:
 		GameObject* Tiles[BOARD_SIZE][BOARD_SIZE];
 	};

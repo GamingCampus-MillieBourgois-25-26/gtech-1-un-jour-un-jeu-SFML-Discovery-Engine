@@ -13,20 +13,15 @@ bool SquareCollider::IsColliding(const SquareCollider& _collider_a, const Square
         y;
 }
 
-void SquareCollider::DebugRender(sf::RenderWindow* _window) //ajout
+void SquareCollider::DebugRender(sf::RenderWindow* _window)
 {
-    // On crée une forme rectangulaire SFML
     sf::RectangleShape shape;
     shape.setSize(sf::Vector2f(width, height));
 
-    // On la rend transparente à l'intérieur avec un contour vert
     shape.setFillColor(sf::Color::Transparent);
-    shape.setOutlineColor(sf::Color::Green); // Vert = Hitbox active
+    shape.setOutlineColor(sf::Color::Green);
     shape.setOutlineThickness(2.0f);
 
-    // IMPORTANT : Aligner la hitbox avec la position du GameObject
-    // Si tes sprites sont centrés, n'oublie pas de décaler le dessin de la hitbox
-    // pour qu'elle soit centrée aussi (origine au milieu)
     shape.setOrigin(sf::Vector2f(width * 0.5f, height * 0.5f));
 
     shape.setPosition(static_cast<sf::Vector2f>(GetOwner()->GetPosition()));

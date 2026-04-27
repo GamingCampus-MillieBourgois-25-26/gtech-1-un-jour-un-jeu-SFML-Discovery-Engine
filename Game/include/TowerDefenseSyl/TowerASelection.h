@@ -2,6 +2,7 @@
 #include "Core/Component.h"
 #include "TowerDefenseSyl/SelectedTower.h"
 #include "Components/RectangleShapeRenderer.h"
+#include "Core/GameObject.h"
 
 class TowerASelection : public Component
 {

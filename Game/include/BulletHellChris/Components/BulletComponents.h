@@ -5,7 +5,7 @@
 
 namespace bulletHell
 {
-    class BulletComponent final : public Component
+    class BulletComponents final : public Component
     {
     public:
         void Update(float _delta_time) override;

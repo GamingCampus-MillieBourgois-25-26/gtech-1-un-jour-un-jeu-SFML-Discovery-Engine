@@ -7,7 +7,7 @@
 
 #include "InputModule.h"
 #include "Components/RectangleShapeRenderer.h"
-#include "BulletHellChris/Components/BulletComponent.h"
+#include "BulletHellChris/Components/BulletComponents.h"
 #include "BulletHellChris/BulletHellDebug.h"
 
 namespace bulletHell
@@ -244,7 +244,7 @@ namespace bulletHell
                 continue;
             }
 
-            BulletComponent* bulletComponent = bulletObject->GetComponent<BulletComponent>();
+            BulletComponents* bulletComponent = bulletObject->GetComponent<BulletComponents>();
             if (bulletComponent == nullptr || !bulletComponent->IsActive())
             {
                 continue;
@@ -287,7 +287,7 @@ namespace bulletHell
                 continue;
             }
 
-            BulletComponent* bullet = bulletObject->GetComponent<BulletComponent>();
+            BulletComponents* bullet = bulletObject->GetComponent<BulletComponents>();
             if (bullet == nullptr || bullet->IsActive())
             {
                 continue;

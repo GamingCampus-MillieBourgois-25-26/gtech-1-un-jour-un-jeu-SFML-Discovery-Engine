@@ -7,7 +7,7 @@
 #include "Components/RectangleShapeRenderer.h"
 
 #include "BulletHellChris/Components/PlayerController.h"
-#include "BulletHellChris/Components/BulletComponent.h"
+#include "BulletHellChris/Components/BulletComponents.h"
 #include "BulletHellChris/Components/BossComponent.h"
 #include "BulletHellChris/UI/BossHUDComponent.h"
 #include "BulletHellChris/UI/PlayerHUDComponent.h"
@@ -107,7 +107,7 @@ namespace bulletHell
                 renderer->SetSize(Maths::Vector2f(4.0f, 12.0f));
             }
 
-            bullet->CreateComponent<BulletComponent>();
+            bullet->CreateComponent<BulletComponents>();
             playerBullets.push_back(bullet);
         }
 
@@ -142,7 +142,7 @@ namespace bulletHell
                 renderer->SetSize(Maths::Vector2f(10.0f, 10.0f));
             }
 
-            bullet->CreateComponent<BulletComponent>();
+            bullet->CreateComponent<BulletComponents>();
             enemyBullets.push_back(bullet);
         }
 

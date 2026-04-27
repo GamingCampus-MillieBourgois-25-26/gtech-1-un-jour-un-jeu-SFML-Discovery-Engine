@@ -1,3 +1,4 @@
+
 #include "Engine.h"
 #include "SceneModule.h"
 #include "BulletHellChris/Scenes/BulletHellScene.h"
@@ -19,8 +20,8 @@ int main(const int _argc, const char** _argv)
         /*->SetScene<BullethellChris::BulletHell>();*/
         /*->SetScene<BulletHellScene>();*/
         /*->SetScene<TDScene>();*/
-        /*->SetScene<ClickerScene>();*/
-        ->SetScene<ClickerChris::ClickerScene>();
+        ->SetScene<ClickerScene>();
+        /*->SetScene<ClickerChris::ClickerScene>();*/
 
     engine->Run();
 

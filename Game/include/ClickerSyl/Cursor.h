@@ -2,6 +2,7 @@
 #include "Core/Component.h"
 #include "Modules/WindowModule.h"
 #include "Modules/InputModule.h"
+#include "Core/GameObject.h"
 
 class Cursor : public Component
 {

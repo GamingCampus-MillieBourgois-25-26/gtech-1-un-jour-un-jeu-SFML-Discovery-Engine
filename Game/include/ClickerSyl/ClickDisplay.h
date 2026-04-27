@@ -1,5 +1,7 @@
 #pragma once
 #include "Core/Component.h"
+#include "Maths/vector2.h"
+#include "Core/GameObject.h"
 
 class ClickDisplay : Component
 {

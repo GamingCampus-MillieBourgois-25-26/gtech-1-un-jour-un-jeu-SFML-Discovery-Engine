@@ -1,10 +1,10 @@
-#include "BulletHellChris/Components/BulletComponent.h"
+#include "BulletHellChris/Components/BulletComponents.h"
 
 #include "Components/RectangleShapeRenderer.h"
 
 namespace bulletHell
 {
-    void BulletComponent::Update(float _delta_time)
+    void BulletComponents::Update(float _delta_time)
     {
         GameObject* owner = GetOwner();
         if (owner == nullptr)
@@ -33,7 +33,7 @@ namespace bulletHell
         }
     }
 
-    void BulletComponent::Fire(const Maths::Vector2f& _startPosition,
+    void BulletComponents::Fire(const Maths::Vector2f& _startPosition,
         const Maths::Vector2f& _direction,
         float _speed)
     {
@@ -49,7 +49,7 @@ namespace bulletHell
         owner->SetPosition(_startPosition);
     }
 
-    void BulletComponent::Activate(const Maths::Vector2f& _direction,
+    void BulletComponents::Activate(const Maths::Vector2f& _direction,
         float _speed,
         const Maths::Vector2f& _visualSize)
     {
@@ -70,7 +70,7 @@ namespace bulletHell
         }
     }
 
-    void BulletComponent::Deactivate()
+    void BulletComponents::Deactivate()
     {
         GameObject* owner = GetOwner();
         if (owner == nullptr)
@@ -83,7 +83,7 @@ namespace bulletHell
         owner->SetPosition({ -10000.0f, -10000.0f });
     }
 
-    bool BulletComponent::IsActive() const
+    bool BulletComponents::IsActive() const
     {
         return active;
     }

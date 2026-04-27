@@ -1,5 +1,6 @@
 #pragma once
 #include "Core/Component.h"
+#include "Maths/vector2.h"
 
 class Enemy : public Component
 {

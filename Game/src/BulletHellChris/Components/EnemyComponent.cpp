@@ -7,7 +7,7 @@
 #include "imgui.h"
 
 #include "BulletHellChris/BulletHellDebug.h"
-#include "BulletHellChris/Components/BulletComponent.h"
+#include "BulletHellChris/Components/BulletComponents.h"
 
 namespace bulletHell
 {
@@ -169,7 +169,7 @@ namespace bulletHell
                 continue;
             }
 
-            BulletComponent* bulletComponent = bulletObject->GetComponent<BulletComponent>();
+            BulletComponents* bulletComponent = bulletObject->GetComponent<BulletComponents>();
             if (bulletComponent == nullptr || bulletComponent->IsActive())
             {
                 continue;

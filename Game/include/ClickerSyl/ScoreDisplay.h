@@ -1,6 +1,7 @@
 #pragma once
 #include "Core/Component.h"
 #include <string>
+#include "Core/GameObject.h"
 
 class ScoreDisplay : public Component
 {

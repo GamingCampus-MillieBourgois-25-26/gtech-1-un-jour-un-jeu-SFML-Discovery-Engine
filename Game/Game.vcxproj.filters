@@ -9,12 +9,47 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Header Files\BulletHell">
+      <UniqueIdentifier>{c9b33cb0-23c0-484b-9d82-1c99b4dcaefe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BulletHell">
+      <UniqueIdentifier>{bd75a81d-de57-4d17-8f58-b2d86b3b0234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense">
+      <UniqueIdentifier>{11d4fe0f-dbef-4873-bb9e-7dc9b97a97a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense">
+      <UniqueIdentifier>{7dea0e58-f194-42d8-980f-4b47617f242a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\BulletHellChris\Components\BulletComponent.cpp">
+      <Filter>Source Files\BulletHell</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BulletHellChris\UI\BulletHellHUD.cpp">
+      <Filter>Source Files\BulletHell</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BulletHellChris\Scenes\BulletHellScene.cpp">
+      <Filter>Source Files\BulletHell</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BulletHellChris\Components\EnemyComponent.cpp">
+      <Filter>Source Files\BulletHell</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BulletHellChris\Systems\EnemySpawner.cpp">
+      <Filter>Source Files\BulletHell</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BulletHellChris\Components\PlayerController.cpp">
+      <Filter>Source Files\BulletHell</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BulletHellChris\UI\PlayerHUDComponent.cpp">
+      <Filter>Source Files\BulletHell</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BulletHellChris\Components\BossComponent.cpp">
+      <Filter>Source Files\BulletHell</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BulletHellChris\UI\BossHUDComponent.cpp">
+      <Filter>Source Files\BulletHell</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -97,14 +132,102 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="include\TowerDefenseSyl\LifeDisplay.cpp">
+    <ClCompile Include="src\TowerDefenseChris\TowerDefenseScene.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\RenderTestComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\EnemyComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\TowerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\InputTowerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\SpawnerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TowerDefenseChris\GameManagerComponent.cpp">
+      <Filter>Source Files\TowerDefense</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ClickerChris\ClickerScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ClickerChris\ClickerController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ClickerChris\ClickerButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\BulletHellChris\Components\BossComponent.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHellChris\UI\BossHUDComponent.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHellChris\Components\BulletComponent.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHellChris\BulletHellDebug.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHellChris\UI\BulletHellHUD.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHellChris\Scenes\BulletHellScene.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHellChris\BulletHellTypes.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHellChris\Components\EnemyComponent.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHellChris\Systems\EnemySpawner.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHellChris\Components\PlayerController.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletHellChris\UI\PlayerHUDComponent.h">
+      <Filter>Header Files\BulletHell</Filter>
+    </ClInclude>
     <ClInclude Include="Scenes\DefaultScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Player.h">
+    <ClInclude Include="include\TowerDefenseChris\TowerDefenseScene.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\RenderTestComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\EnemyComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\TowerComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\InputTowerComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\SpawnerComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerDefenseChris\GameManagerComponent.h">
+      <Filter>Header Files\TowerDefense</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ClickerChris\ClickerScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ClickerChris\ClickerController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ClickerChris\ClickerButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\BHScenesSyl\BulletHellScene.h">
@@ -188,5 +311,8 @@
     <ClInclude Include="include\TowerDefenseSyl\LifeDisplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

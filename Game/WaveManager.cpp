@@ -1,6 +1,7 @@
 #include "WaveManager.h"
 
-
+#include "Core/GameObject.h"
+#include "Core/Module.h"
 
 
 

@@ -3,6 +3,7 @@
 #include <chrono>
 #include <cstdint>
 #include <random>
+#include "Vector2.h"
 class WaveManager : public Component
 {
 public:

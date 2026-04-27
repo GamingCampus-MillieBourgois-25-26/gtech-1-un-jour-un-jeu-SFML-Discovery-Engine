@@ -14,6 +14,7 @@
     <ClCompile Include="include\BulletHell\Shooter.cpp" />
     <ClCompile Include="WaveManager.cpp" />
     <ClCompile Include="Scenes\Runner\RunnerScene.cpp" />
+    <ClCompile Include="include\Runner\Level.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Demo\TileCounter.h" />
@@ -31,6 +32,7 @@
     <ClInclude Include="include\BulletHell\Shooter.h" />
     <ClInclude Include="WaveManager.h" />
     <ClInclude Include="Scenes\Runner\RunnerScene.h" />
+    <ClInclude Include="include\Runner\Level.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

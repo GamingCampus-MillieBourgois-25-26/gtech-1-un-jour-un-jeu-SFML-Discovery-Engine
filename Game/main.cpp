@@ -1,25 +1,18 @@
-<<<<<<< Updated upstream
 #include "Engine.h"
 #include "SceneModule.h"
-#include "Scenes/Demo/DemoScene.h"
-=======
-#include "Game.h"
->>>>>>> Stashed changes
+#include "BulletHellScene.h"
 
 int main(int argc, const char** argv)
 {
-<<<<<<< Updated upstream
     Engine* const engine = Engine::GetInstance();
 
-    engine->Init(_argc, _argv);
+    engine->Init(argc, argv);
 
-    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<Demo::DemoScene>();
+    engine->GetModuleManager()
+        ->GetModule<SceneModule>()
+        ->SetScene<BulletHellScene>();
 
     engine->Run();
 
-=======
-    Game game;
-    game.Run(argc, argv);
->>>>>>> Stashed changes
     return 0;
 }

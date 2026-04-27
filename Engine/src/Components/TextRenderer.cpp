@@ -1,5 +1,9 @@
 ﻿#include "Components/TextRenderer.h"
 
+#include <SFML/Graphics/RenderWindow.hpp>
+
+#include "Core/GameObject.h"
+
 #include "SFML/Graphics/Text.hpp"
 
 #include "Modules/AssetsModule.h"
@@ -60,4 +64,14 @@ void TextRenderer::SetColor(const sf::Color _color)
 {
     color = _color;
     sfmlText->setFillColor(color);
+}
+
+int TextRenderer::GetCharacterSize() const
+{
+    return sfmlText->getCharacterSize();
+}
+
+void TextRenderer::SetCharacterSize(const int _size)
+{
+    sfmlText->setCharacterSize(_size);
 }

@@ -5,7 +5,7 @@
 #include "Assets/Font.h"
 
 #include "Components/ARenderedComponent.h"
-#include "Core/Component.h"
+// Note: Core/Component.h is already included transitively via ARenderedComponent.h
 
 class TextRenderer : public ARenderedComponent
 {
@@ -23,6 +23,9 @@ public:
 
     sf::Color GetColor() const;
     void SetColor(sf::Color _color);
+
+    int GetCharacterSize() const;
+    void SetCharacterSize(int _size);
 
 private:
     std::unique_ptr<sf::Text> sfmlText;

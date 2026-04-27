@@ -1,6 +1,7 @@
 #pragma once
 #include "Core/Component.h"
 #include "Core/GameObject.h"
+#include "Components/TextRenderer.h"
 
 class Star : public Component
 {

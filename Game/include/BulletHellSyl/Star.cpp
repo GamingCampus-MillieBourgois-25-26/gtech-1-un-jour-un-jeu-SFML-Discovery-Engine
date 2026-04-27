@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "Star.h"
 #include "Components/SquareCollider.h"
-#include <iostream>
+#include "Core/Scene.h"
+#include "BulletHellSyl/Enemy.h"
+#include "BulletHellSyl/EndGame.h"
 
 Star::Star(GameObject* obj)
 {
@@ -20,12 +22,25 @@ void Star::Update(const float _delta_time)
 	{
 		GetOwner()->Disable();
 		if (next)
-		{
 			next->GetOwner()->Enable();
-			std::cout << "touche" << std::endl;
-		}
 		else
-		{ }
+		{
+			const auto& objects = GetOwner()->GetScene()->GetGameObjects();
+			for (const auto& object : objects)
+			{
+				GameObject* obj = object.get();
+				if (!obj || obj->IsMarkedForDeletion())
+					continue;
+				if (obj->GetName() == "Enemy")
+				{
+					obj->GetComponent<Enemy>()->endGame = true;
+				}
+				else if (obj->GetName() == "EndDisplay")
+				{
+					obj->GetComponent<EndGame>()->End(true);
+				}
+			}
+		}
 	}
 }
 

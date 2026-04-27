@@ -4,6 +4,7 @@
 #include "BulletHellSyl/Enemy.h"
 #include "BulletHellSyl/BulletComponent.h"
 #include "BulletHellSyl/Star.h"
+#include "BulletHellSyl/EndGame.h"
 #include "Assets/Texture.h"
 #include "Components/RectangleShapeRenderer.h"
 #include "Components/SpriteRenderer.h"
@@ -77,5 +78,8 @@ public:
 		enemy->CreateComponent<Enemy>();
 		enemy->SetScale({ 0.5f, 0.5f });
 		enemy->SetPosition({ (float)window_size.x / 2.f, (float)window_size.y / 2.f });
+
+		GameObject* end = CreateGameObject("EndDisplay");
+		end->CreateComponent<EndGame>();
 	}
 };

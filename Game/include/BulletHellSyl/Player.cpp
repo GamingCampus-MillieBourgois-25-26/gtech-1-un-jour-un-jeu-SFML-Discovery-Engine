@@ -3,6 +3,7 @@
 #include "Components/RectangleShapeRenderer.h"
 #include "Core/Scene.h"
 #include "Components/SquareCollider.h"
+#include "BulletHellSyl/EndGame.h"
 #include <iostream>
 #include <string>
 
@@ -52,6 +53,20 @@ void Player::Update(const float _delta_time)
             {
                 life--;
                 UpdateDisplayer();
+                if (life == 0)
+                {
+                    const auto& objects = GetOwner()->GetScene()->GetGameObjects();
+                    for (const auto& object : objects)
+                    {
+                        GameObject* obj = object.get();
+                        if (!obj || obj->IsMarkedForDeletion())
+                            continue;
+                        else if (obj->GetName() == "EndDisplay")
+                        {
+                            obj->GetComponent<EndGame>()->End(false);
+                        }
+                    }
+                }
             }
         }
     }

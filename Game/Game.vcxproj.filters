@@ -53,6 +53,7 @@
     <ClCompile Include="src\TowerDefenseChris\TowerComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\TowerDefenseScene.cpp" />
     <ClCompile Include="include\BulletHellSyl\Star.cpp" />
+    <ClCompile Include="include\BulletHellSyl\EndGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Demo\Player.h" />
@@ -111,6 +112,7 @@
     <ClInclude Include="include\TowerDefenseSyl\SelectedTower.h" />
     <ClInclude Include="include\TowerDefenseSyl\TowerASelection.h" />
     <ClInclude Include="include\BulletHellSyl\Star.h" />
+    <ClInclude Include="include\BulletHellSyl\EndGame.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

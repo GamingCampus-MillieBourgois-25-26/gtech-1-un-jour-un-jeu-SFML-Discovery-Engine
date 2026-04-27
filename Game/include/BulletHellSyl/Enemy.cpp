@@ -16,7 +16,7 @@ Enemy::Enemy()
 void Enemy::Update(const float _delta_time)
 {
 	timer += _delta_time;
-	if (timer >= 0.1f)
+	if (timer >= 0.1f && !endGame)
 	{
 		timer = 0.f;
 		CreateBullet(GetOwner()->GetPosition());

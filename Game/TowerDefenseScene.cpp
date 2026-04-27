@@ -10,10 +10,17 @@
 #include "BaseT.h"
 #include "MapData.h"
 #include <iostream>
+#include "BaseTowerComponent.h"
+#include "SpawnQueue.h"
+#include "GameState.h"
+#include "HUDComponent.h"
 
-TowerDefenseScene::TowerDefenseScene()
+namespace TowerDefence {
+
+    TowerDefenseScene::TowerDefenseScene()
+        : Scene("TowerDefenseScene")
     : Scene("TowerDefense", false)
-{
+    {
     m_isInitialized = false;
     m_isHoldingTurret = false;
     m_selectedType = TurretType::BASIC;
@@ -50,12 +57,20 @@ void TowerDefenseScene::InitScene()
 
     if (GameObject* mapObj = CreateGameObject("LevelGrid"))
         mapObj->CreateComponent<MapRenderer>();
+        GameState::Get().Reset();
 
+        // Grille visuelle
+        GameObject* gridObj = CreateGameObject("Grid");
+        auto* gridRenderer = gridObj->CreateComponent<GridRenderer>();
+        gridRenderer->width = GRID_WIDTH;
+        gridRenderer->height = GRID_HEIGHT;
+        gridRenderer->cellSize = CELL_SIZE;
     if (GameObject* spawnerObj = CreateGameObject("EnemySpawner"))
         spawnerObj->CreateComponent<EnemySpawnerT>();
 
     if (GameObject* baseObj = CreateGameObject("Base"))
         baseObj->CreateComponent<BaseT>();
+        InitGrid();
 
     auto setupIcon = [&](const std::string& name, float x, const std::string& texFile) {
         if (GameObject* icon = CreateGameObject(name)) {
@@ -64,6 +79,25 @@ void TowerDefenseScene::InitScene()
             if (!tex) tex = assets->LoadAsset<Texture>(texFile);
             if (tex) icon->CreateComponent<SpriteRenderer>(tex);
         }
+        // Chemin complexe en zigzag — reste dans 20x13, arrive en {10,6} (centre)
+        enemyPath = {
+            // Entrée par le bord gauche, ligne 1
+            {0,1},{1,1},{2,1},{3,1},{4,1},{5,1},
+            // Descend
+            {5,2},{5,3},{5,4},
+            // Repart à gauche puis descend encore
+            {4,4},{3,4},{2,4},{1,4},
+            {1,5},{1,6},{1,7},{1,8},
+            // Traverse vers la droite
+            {2,8},{3,8},{4,8},{5,8},{6,8},{7,8},
+            // Remonte
+            {7,7},{7,6},{7,5},{7,4},
+            // Continue à droite
+            {8,4},{9,4},{10,4},{11,4},{12,4},
+            // Descend vers le centre
+            {12,5},{12,6},
+            // Arrive sur la base
+            {11,6},{10,6}
         };
 
     setupIcon("TurretIconBasic", 100.0f, "towerDefense_tile250.png");
@@ -72,7 +106,11 @@ void TowerDefenseScene::InitScene()
     m_isInitialized = true;
     std::cout << "[TD] Scene générée avec succès !" << std::endl;
 }
+        gridRenderer->path = enemyPath;
 
+        // Marque les cellules du chemin comme non-placables
+        for (const auto& cell : enemyPath)
+            (*&grid)[cell.y][cell.x] = CellType::Path;
 void TowerDefenseScene::HandlePlacement()
 {
     auto* mm = Engine::GetInstance()->GetModuleManager();
@@ -80,11 +118,24 @@ void TowerDefenseScene::HandlePlacement()
     auto* windowMod = mm->GetModule<WindowModule>();
     auto* assets = mm->GetModule<AssetsModule>();
 
+        // WaveManager
+        GameObject* waveObj = CreateGameObject("WaveManager");
+        auto* waveManager = waveObj->CreateComponent<WaveManager>();
+        waveManager->SetConfig(enemyPath, CELL_SIZE);
     if (!input || !windowMod || !assets) return;
 
+        // TowerPlacementSystem
+        GameObject* placementObj = CreateGameObject("PlacementSystem");
+        auto* placement = placementObj->CreateComponent<TowerPlacementSystem>();
+        placement->SetConfig(&grid, enemyPath, GRID_WIDTH, GRID_HEIGHT, CELL_SIZE);
+        placement->towerCost = 50;
     sf::RenderWindow* window = windowMod->GetWindow();
     if (!window) return;
 
+        // HUD
+        GameObject* hudObj = CreateGameObject("HUD");
+        auto* hud = hudObj->CreateComponent<HUDComponent>();
+        hud->towerCost = placement->towerCost;
     // Annulation (Clic droit)
     if (m_isHoldingTurret && input->GetMouseButtonDown(sf::Mouse::Button::Right)) {
         m_isHoldingTurret = false;
@@ -92,6 +143,21 @@ void TowerDefenseScene::HandlePlacement()
         return;
     }
 
+        // BaseTower — case centrale {10,6}, carrée VERTE
+        GameObject* baseObj = CreateGameObject("BaseTower");
+        auto* base = baseObj->CreateComponent<BaseTowerComponent>();
+        base->cellSize = CELL_SIZE;
+        base->hp = 30;
+        base->maxHp = 30;
+        base->color = sf::Color(50, 200, 50);  // vert vif
+        GameState::Get().playerHP = base->hp;
+        // Centre de la cellule {10,6}
+        baseObj->SetPosition(Maths::Vector2f(
+            10 * CELL_SIZE + CELL_SIZE * 0.5f,
+            6 * CELL_SIZE + CELL_SIZE * 0.5f
+        ));
+        // Marque la cellule comme non-placable
+        grid[6][10] = CellType::Tower;
     if (input->GetMouseButtonDown(sf::Mouse::Button::Left))
     {
         sf::Vector2i pixelPos = sf::Mouse::getPosition(*window);
@@ -108,8 +174,9 @@ void TowerDefenseScene::HandlePlacement()
             m_isHoldingTurret = true;
             std::cout << "--- SELECTION FORCEE : ANTI-AIR ---" << std::endl;
             return;
-        }
+    }
 
+    void TowerDefenseScene::InitGrid()
         // --- PLACEMENT SUR LA GRILLE ---
 
         if (m_isHoldingTurret)
@@ -120,7 +187,8 @@ void TowerDefenseScene::HandlePlacement()
             if (gx >= 0 && gx < MapData::WIDTH && gy >= 0 && gy < MapData::HEIGHT)
             {
                 if (MapData::level1[gy][gx] == 0) // Si la case est libre
-                {
+    {
+        grid.assign(GRID_HEIGHT, std::vector<CellType>(GRID_WIDTH, CellType::Empty));
                     GameObject* turret = CreateGameObject("Turret_" + std::to_string(gx) + "_" + std::to_string(gy));
                     turret->SetPosition(Maths::Vector2f(gx * 64.0f + 32.0f, gy * 64.0f + 32.0f));
                     turret->SetScale(Maths::Vector2f(0.5f, 0.5f));

@@ -25,6 +25,15 @@
     <Filter Include="Header Files\TowerDefense">
       <UniqueIdentifier>{13368fa9-39ed-4caf-a4c6-2fc1b38b14fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tower Defence">
+      <UniqueIdentifier>{62f3db49-e692-4bae-9d1b-c6910e966ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bullet Hell">
+      <UniqueIdentifier>{6b201399-890a-4660-90f4-bc19139606a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Clicker">
+      <UniqueIdentifier>{6470955a-c6f0-495a-b3f3-4129bdfc1c82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -93,6 +102,84 @@
     <ClCompile Include="ClickerLogic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="include\Demo\Tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\Demo\DemoScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerS.cpp">
+      <Filter>Bullet Hell</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletHellSceneS.cpp">
+      <Filter>Bullet Hell</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletS.cpp">
+      <Filter>Bullet Hell</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerDefenseScene.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="GridRenderer.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="CellType.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WaveManager.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerPlacementSystem.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerComponent.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyComponent.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClickerComponent.cpp">
+      <Filter>Clicker</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnQueue.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnFlusher.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileComponent.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDComponent.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseTowerComponent.cpp">
+      <Filter>Tower Defence</Filter>
+    </ClCompile>
+    <ClCompile Include="BHGameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BHWaveManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BHCollisionSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BHHUD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -150,6 +237,82 @@
       <Filter>Header Files\BulletHell</Filter>
     </ClInclude>
     <ClInclude Include="ClickerScene.h">
+    <ClInclude Include="include\Demo\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Demo\Tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\Demo\DemoScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerS.h">
+      <Filter>Bullet Hell</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletS.h">
+      <Filter>Bullet Hell</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletHellSceneS.h">
+      <Filter>Bullet Hell</Filter>
+    </ClInclude>
+    <ClInclude Include="GridRenderer.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="CellType.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerDefenseScene.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyComponent.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerComponent.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerPlacementSystem.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveManager.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="ClickerComponent.h">
+      <Filter>Clicker</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnQueue.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnFlusher.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileComponent.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDComponent.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseTowerComponent.h">
+      <Filter>Tower Defence</Filter>
+    </ClInclude>
+    <ClInclude Include="BHGameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BHWaveManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BHCollisionSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BaseT.h">
@@ -174,6 +337,7 @@
       <Filter>Header Files\TowerDefense</Filter>
     </ClInclude>
     <ClInclude Include="ClickerLogic.h">
+    <ClInclude Include="BHHUD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

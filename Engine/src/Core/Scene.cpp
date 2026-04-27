@@ -2,6 +2,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <algorithm>
 
+#include "Core/GameObject.h"
+
 Scene::Scene(const std::string& _name, const bool _enabled_at_start)
 {
     name = _name;
@@ -26,7 +28,7 @@ void Scene::Start() const
     }
 }
 
-void Scene::Update(const float _delta_time)
+void Scene::PreRender() const
 {
     if (!enabled) return;
 
@@ -61,17 +63,21 @@ void Scene::Update(const float _delta_time)
 // --- RENDU ET GUI ---
 
 void Scene::PreRender() const
+void Scene::Render(sf::RenderWindow* _window) const
 {
     for (size_t i = 0; i < gameObjects.size(); ++i)
     {
+        game_object->Render(_window);
         if (gameObjects[i]) gameObjects[i]->PreRender();
     }
 }
 
 void Scene::Render(sf::RenderWindow* _window) const
+void Scene::OnGUI() const
 {
     for (size_t i = 0; i < gameObjects.size(); ++i)
     {
+        game_object->OnGUI();
         if (gameObjects[i]) gameObjects[i]->Render(_window);
     }
 }
@@ -92,12 +98,23 @@ void Scene::OnDebug() const
     }
 }
 
+void Scene::PostRender() const
+{
+    for (const auto& game_object : gameObjects)
+    {
+        game_object->PostRender();
+    }
+}
+
+void Scene::Present()
 void Scene::OnDebugSelected() const
 {
     for (size_t i = 0; i < gameObjects.size(); ++i)
     {
         if (gameObjects[i]) gameObjects[i]->OnDebugSelected();
     }
+
+    DeleteMarkedGameObjects();
 }
 
 void Scene::PostRender() const
@@ -151,11 +168,24 @@ void Scene::Finalize() const
 }
 
 // --- GESTION DES GAMEOBJECTS ---
+const std::string& Scene::GetName() const
+{
+    return name;
+}
 
 GameObject* Scene::CreateGameObject(const std::string& _name)
 {
     auto game_object = std::make_unique<GameObject>();
     game_object->SetName(_name);
+    game_object->SetScene(this);
+
+    game_object->Awake();
+    game_object->OnEnable();
+    game_object->Start();
+
+    GameObject* raw_ptr = game_object.get();
+    gameObjects.push_back(std::move(game_object));
+    return raw_ptr;
     GameObject* rawPtr = game_object.get();
     pendingObjects.push_back(std::move(game_object));
     return rawPtr;
@@ -181,6 +211,14 @@ GameObject* Scene::FindGameObject(const std::string& _name) const
 const std::string& Scene::GetName() const { return name; }
 
 const std::vector<std::unique_ptr<GameObject>>& Scene::GetGameObjects() const { return gameObjects; }
+
+void Scene::DestroyGameObject(const GameObject* _game_object)
+{
+    std::erase_if(gameObjects, [_game_object](const std::unique_ptr<GameObject>& _obj)
+    {
+        return _obj.get() == _game_object;
+    });
+}
 
 void Scene::Enable()
 {
@@ -208,4 +246,24 @@ void Scene::MarkForDeletion()
     Disable();
 }
 
+bool Scene::IsMarkedForDeletion() const
+{
+    return markedForDeletion;
+}
+
+void Scene::DeleteMarkedGameObjects()
+{
+    std::erase_if(gameObjects, [](const std::unique_ptr<GameObject>& _game_object)
+    {
+        if (!_game_object->IsMarkedForDeletion())
+            return false;
+
+        _game_object->Destroy();
+        _game_object->Finalize();
+
+        Logger::Log(ELogLevel::Debug, "GameObject {} deleted.", _game_object->GetName());
+
+        return true;
+    });
+}
 bool Scene::IsMarkedForDeletion() const { return markedForDeletion; }

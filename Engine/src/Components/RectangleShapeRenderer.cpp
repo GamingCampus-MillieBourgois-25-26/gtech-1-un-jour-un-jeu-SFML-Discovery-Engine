@@ -24,6 +24,11 @@ void RectangleShapeRenderer::Render(sf::RenderWindow* _window)
 
     const GameObject* owner = GetOwner();
 
+    sf::RectangleShape shapeR;
+    shapeR.setSize(sf::Vector2f(GetOwner()->GetScale()));
+    shapeR.setPosition(sf::Vector2f(GetOwner()->GetPosition()));
+    shapeR.setFillColor(color);
+
     const Maths::Vector2<float> position = owner->GetPosition();
     shape->setPosition({position.x, position.y});
     shape->setSize(static_cast<sf::Vector2f>(owner->GetScale() * size));
@@ -31,6 +36,7 @@ void RectangleShapeRenderer::Render(sf::RenderWindow* _window)
     shape->setFillColor(color);
 
     _window->draw(*shape);
+    _window->draw(shapeR);
 }
 
 void RectangleShapeRenderer::OnDebug()

@@ -11,6 +11,7 @@ void WindowModule::Awake()
     Module::Awake();
 
     window = new sf::RenderWindow(sf::VideoMode({800, 800}), "SFML Discovery Engine");
+    window = new sf::RenderWindow(sf::VideoMode({1000, 650}), "SFML Discovery Engine");
 }
 
 void WindowModule::PreRender()

@@ -3,6 +3,7 @@
 template <typename T>
 Scene* SceneModule::SetScene()
 {
+    // Créer la nouvelle scène et la marquer comme prochaine scène active
     nextFrameScene = CreateScene<T>();
     return nextFrameScene;
 }

@@ -1,14 +1,16 @@
-#include "Engine.h"
+﻿#include "Engine.h"
 #include "SceneModule.h"
-#include "Scenes/Demo/DemoScene.h"
+#include "MainScene.h"
 
-int main(const int _argc, const char** _argv)
+int main(int argc, const char** argv)
 {
-    Engine* const engine = Engine::GetInstance();
+    Engine* engine = Engine::GetInstance();
 
-    engine->Init(_argc, _argv);
+    engine->Init(argc, argv);
 
-    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<Demo::DemoScene>();
+    engine->GetModuleManager()
+        ->GetModule<SceneModule>()
+        ->SetScene<MainScene>();
 
     engine->Run();
 

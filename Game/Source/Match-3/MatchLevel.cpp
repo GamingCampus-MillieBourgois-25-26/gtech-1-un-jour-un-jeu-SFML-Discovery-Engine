@@ -1,5 +1,4 @@
 #include "Match-3/MatchLevel.h"
-#include <SquareCollider.h>
 
 
 Match_3::MatchLevel::MatchLevel() : Scene("MatchLevel")
@@ -20,11 +19,14 @@ Match_3::MatchLevel::MatchLevel() : Scene("MatchLevel")
 	player->CreateComponent<PlayerMatch>();
 	SquareCollider* playerCollider = player->CreateComponent<SquareCollider>();
 
+	GameObject* tileMatch = CreateGameObject("TileMatch");
+	TileMatch* tileMatchComponent = tileMatch->CreateComponent<TileMatch>();
+
 	int id = 0;
 
-	for (int i = 0; i < BOARD_SIZE; i++)
+	for (int i = 0; i < tileMatchComponent->BOARD_SIZE; i++)
 	{
-		for (int j = 0; j < BOARD_SIZE; j++)
+		for (int j = 0; j < tileMatchComponent->BOARD_SIZE; j++)
 		{
 			std::string id_str = std::to_string(id);
 			GameObject* tile = CreateGameObject("Tile" + id_str);
@@ -36,7 +38,7 @@ Match_3::MatchLevel::MatchLevel() : Scene("MatchLevel")
 		
 			tile->SetPosition({ 45.f * j + 190.f, 45.f * i + 200.f });
 
-			Tiles[i][j] = tile;
+			tileMatchComponent->GetTiles()[i][j] = tile;
 			id++;
 		}
 	}

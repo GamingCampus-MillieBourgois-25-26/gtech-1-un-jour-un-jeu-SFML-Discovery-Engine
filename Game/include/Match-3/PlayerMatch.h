@@ -2,6 +2,7 @@
 #include "Component.h"
 #include <InputModule.h>
 #include <SquareCollider.h>
+#include <Match-3/TileMatch.h>
 #include "Scene.h"
 
 class PlayerMatch : public Component
@@ -16,10 +17,14 @@ private:
 	Maths::Vector2i clickPosition;
 	SquareCollider* selectedTile = nullptr;
 
+	int index_I = 0;
+	int index_J = 0;
+
 public:
 	void Start() override;
 	void Update(float deltaTime) override;
 
 	SquareCollider* ReturnTileName(int id);
+	void swapPosition(int i, int j);
 };
 

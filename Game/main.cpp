@@ -1,7 +1,8 @@
 ﻿#include "Engine.h"
 #include "SceneModule.h"
+#include "TDScene.h"
 
-#include "MainScene.h"
+#include "Clicker/MainScene.h"
 
 int main(int argc, const char** argv)
 {
@@ -10,9 +11,7 @@ int main(int argc, const char** argv)
     engine->Init(argc, argv);
 
 
-    engine->GetModuleManager()
-        ->GetModule<SceneModule>()
-        ->SetScene<MainScene>();
+    engine->GetModuleManager()->GetModule<SceneModule>()->SetScene<TD::TDScene>();
 
     engine->Run();
 

@@ -1,5 +1,6 @@
 ﻿#include "ClickArea.h"
 #include "InputModule.h"
+#include "GameObject.h"
 
 void ClickArea::Start()
 {

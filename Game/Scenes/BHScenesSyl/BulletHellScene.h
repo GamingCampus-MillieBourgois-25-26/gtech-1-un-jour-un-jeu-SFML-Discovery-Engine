@@ -31,11 +31,10 @@ public:
 		// GameObjects
 		GameObject* player = CreateGameObject("Player");
 		SpriteRenderer* tex = player->CreateComponent<SpriteRenderer>(playerTex);
-		//tex->SetPivot();
 		player->CreateComponent<Player>();
-		SquareCollider* collider = player->CreateComponent<SquareCollider>();
+		/*SquareCollider* collider = player->CreateComponent<SquareCollider>();
 		collider->SetWidth({70.f});
-		collider->SetHeight({50.f});
+		collider->SetHeight({50.f});*/
 		player->SetPosition({ 250.f, 400.f });
 		player->SetScale({ 0.3f, 0.3f });
 		RectangleShapeRenderer* shape = player->CreateComponent<RectangleShapeRenderer>();

@@ -93,10 +93,12 @@ bool Player::CheckCollision()
         if (obj->GetName().find("bullet") == std::string::npos)
             continue;
         auto posObj = obj->GetPosition();
-        SquareCollider* playerCol = GetOwner()->GetComponent<SquareCollider>();
-        SquareCollider* bulletCol = obj->GetComponent<SquareCollider>();
-        if(SquareCollider::IsColliding(*playerCol, *bulletCol))
-            return true;
+        auto sizeObj = obj->GetComponent<RectangleShapeRenderer>()->GetSize();
+        auto pos = GetOwner()->GetPosition();
+        /*if (pos.x < posObj.x + sizeObj->GetWidth())
+        {
+
+        }*/
 
     }
     return false;

@@ -23,7 +23,7 @@ TowerDefense::TowerDefenseScene::TowerDefenseScene()
     Texture* towerTex = assets->LoadAsset<Texture>("TowerDefenseChris/set/tower.png");
 
     GameObject* map = CreateGameObject("Map");
-    map->SetPosition(Maths::Vector2f(0.f, 0.f));
+    map->SetPosition(Maths::Vector2f(320.f, 320.f));
     map->SetScale(Maths::Vector2f(4.f, 4.f));
     map->CreateComponent<SpriteRenderer>(mapTexture);
 

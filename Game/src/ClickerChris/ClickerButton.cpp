@@ -12,11 +12,12 @@ void ClickerButton::Update(float _delta_time)
     auto mouse = InputModule::GetMousePosition();
     auto position = GetOwner()->GetPosition();
 
+
     bool isHover =
-        mouse.x >= position.x &&
-        mouse.x <= position.x + size.x &&
-        mouse.y >= position.y &&
-        mouse.y <= position.y + size.y;
+        mouse.x >= position.x - size.x * 0.5f &&
+        mouse.x <= position.x + size.x * 0.5f &&
+        mouse.y >= position.y - size.y * 0.5f &&
+        mouse.y <= position.y + size.y * 0.5f;
 
     if (isHover && InputModule::GetMouseButton(sf::Mouse::Button::Left))
     {

@@ -32,9 +32,9 @@ namespace bulletHell
     }
 
     void BulletHellScene::CreateBackground()
-    {
+    {   
         GameObject* background = CreateGameObject("Background");
-        background->SetPosition(Maths::Vector2f(0.0f, 0.0f));
+        background->SetPosition(Maths::Vector2f(400.0f, 300.0f));
         background->SetScale(Maths::Vector2f(2.0f, 2.0f));
 
         if (backgroundTexture != nullptr)

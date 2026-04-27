@@ -46,8 +46,8 @@ void InputTowerComponent::Update(float _delta_time)
     if (isPathCell)
         return;
 
-    float px = x * cellSize + 0.f;
-    float py = y * cellSize + 1.f;
+    float px = x * cellSize + cellSize * 0.5f;
+    float py = y * cellSize + cellSize * 0.5f;
 
     if (TowerComponent::GetActiveCount() >= 3)
         return;

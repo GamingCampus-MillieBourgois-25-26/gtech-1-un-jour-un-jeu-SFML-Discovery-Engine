@@ -20,7 +20,7 @@ namespace bulletHell
         phase1Settings.shootCooldown = 1.0f;
         phase1Settings.bulletSpeed = 180.0f;
         phase1Settings.bulletSize = Maths::Vector2f(20.0f, 20.0f);
-        phase1Settings.bulletSpawnOffset = Maths::Vector2f(80.0f, 120.0f);
+        phase1Settings.bulletSpawnOffset = Maths::Vector2f(0.0f, 70.0f);
         phase1Settings.spreadBulletCount = 5;
         phase1Settings.spreadAngleDegrees = 40.0f;
         phase1Settings.straightBurstEnabled = false;
@@ -33,7 +33,7 @@ namespace bulletHell
         phase2Settings.shootCooldown = 0.5f;
         phase2Settings.bulletSpeed = 220.0f;
         phase2Settings.bulletSize = Maths::Vector2f(10.0f, 10.0f);
-        phase2Settings.bulletSpawnOffset = Maths::Vector2f(80.0f, 120.0f);
+        phase2Settings.bulletSpawnOffset = Maths::Vector2f(0.0f, 70.0f);
         phase2Settings.spreadBulletCount = 10;
         phase2Settings.spreadAngleDegrees = 100.0f;
         phase2Settings.straightBurstEnabled = false;
@@ -46,7 +46,7 @@ namespace bulletHell
         phase3Settings.shootCooldown = 0.2f;
         phase3Settings.bulletSpeed = 260.0f;
         phase3Settings.bulletSize = Maths::Vector2f(10.0f, 10.0f);
-        phase3Settings.bulletSpawnOffset = Maths::Vector2f(80.0f, 120.0f);
+        phase3Settings.bulletSpawnOffset = Maths::Vector2f(0.0f, 70.0f);
         phase3Settings.spreadBulletCount = 20;
         phase3Settings.spreadAngleDegrees = 360.0f;
         phase3Settings.straightBurstEnabled = true;

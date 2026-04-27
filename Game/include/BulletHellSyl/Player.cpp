@@ -18,23 +18,23 @@ void Player::Update(const float _delta_time)
 
     if (InputModule::GetKey(sf::Keyboard::Key::D))
     {
-        if(position.x < window_size.x)
+        if(position.x + 19.f < window_size.x)
             position.x += speed * _delta_time;
     }
     if (InputModule::GetKey(sf::Keyboard::Key::Q))
     {
-        if (position.x > 0)
+        if (position.x - 19.f > 0)
             position.x -= speed * _delta_time;
     }
 
     if (InputModule::GetKey(sf::Keyboard::Key::Z))
     {
-        if (position.y > 0)
+        if (position.y - 14.f > 0)
             position.y -= speed * _delta_time;
     }
     if (InputModule::GetKey(sf::Keyboard::Key::S))
     {
-        if (position.y < window_size.y)
+        if (position.y + 14.f < window_size.y)
             position.y += speed * _delta_time;
     }
     if (InputModule::GetKeyDown(sf::Keyboard::Key::Escape))

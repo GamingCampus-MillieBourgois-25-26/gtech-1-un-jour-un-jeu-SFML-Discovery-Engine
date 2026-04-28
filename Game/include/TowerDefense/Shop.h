@@ -1,7 +1,9 @@
 #pragma once
 #include "Component.h"
+#include "GameObject.h"
 #include <InputModule.h>
 #include <TowerDefense/Player.h>
+#include <SFML/Graphics/Rect.hpp>
 
 namespace TowerDefense 
 {

@@ -41,6 +41,8 @@ void PlayerMatch::Update(float deltaTime)
         int draggingX = currentMouse.x - clickPosition.x;
         int draggingY = currentMouse.y - clickPosition.y;
 
+        Logger::Log(ELogLevel::Debug, "Index I : {}", index_I);
+        Logger::Log(ELogLevel::Debug, "Index J : {}", index_J);
         Logger::Log(ELogLevel::Debug, "dragging X = {}", draggingX);
         Logger::Log(ELogLevel::Debug, "dragging Y = {}", draggingY);
 
@@ -57,7 +59,7 @@ void PlayerMatch::Update(float deltaTime)
         {
             Logger::Log(ELogLevel::Debug, "Drag vers la droite detecte");
 
-            swapPosition(index_I + 1, index_J);
+            swapPosition(index_I, index_J + 1);
             // Action match-3 ici
             isDragging = false;
         }
@@ -66,7 +68,7 @@ void PlayerMatch::Update(float deltaTime)
         {
             Logger::Log(ELogLevel::Debug, "Drag vers le haut detecte");
 
-            swapPosition(index_I, index_J - 1);
+            swapPosition(index_I - 1, index_J);
             // Action match-3 ici
             isDragging = false;
         }
@@ -75,7 +77,7 @@ void PlayerMatch::Update(float deltaTime)
         {
             Logger::Log(ELogLevel::Debug, "Drag vers le bas detecte");
 
-            swapPosition(index_I, index_J + 1);
+            swapPosition(index_I + 1, index_J);
             // Action match-3 ici
             isDragging = false;
         }
@@ -100,8 +102,9 @@ SquareCollider* PlayerMatch::ReturnTileName(int id)
 void PlayerMatch::swapPosition(int i, int j)
 {
     GameObject* TileMatchComponent = GetOwner()->GetScene()->FindGameObject("TileMatch");
-    GameObject* TileSelected = TileMatchComponent->GetComponent<Match_3::TileMatch>()->GetSelectedTile(index_I, index_J);
-    GameObject* otherTile = TileMatchComponent->GetComponent<Match_3::TileMatch>()->GetSelectedTile(i, j); // On récupère l'autre tile (celle à inverser).
+    GameObject* TileSelected = TileMatchComponent->GetComponent<Match_3::TileMatch>()->GetTiles()[index_I][index_J];
+    GameObject* otherTile = TileMatchComponent->GetComponent<Match_3::TileMatch>()->GetTiles()[i][j]; 
+    // On récupère l'autre tile (celle à inverser).
 
     Maths::Vector2f TileSelectedPosition = TileSelected->GetPosition();
     Maths::Vector2f otherTilePosition = otherTile->GetPosition();
@@ -116,10 +119,10 @@ void PlayerMatch::swapPosition(int i, int j)
     TileSelected->SetPosition(TileSelectedPosition);
     otherTile->SetPosition(otherTilePosition);
 
-    //// Swap dans le tableau
+    // Swap dans le tableau
 
-    //GameObject* temp = TileSelected;
-    //TileSelected = otherTile;
-    //otherTile = temp;
+    GameObject* temp = TileSelected;
+    TileSelected = otherTile;
+    otherTile = temp;
 
 }

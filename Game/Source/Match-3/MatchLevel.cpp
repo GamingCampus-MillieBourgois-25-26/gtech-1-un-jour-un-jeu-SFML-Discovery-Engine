@@ -1,6 +1,5 @@
 #include "Match-3/MatchLevel.h"
 
-
 Match_3::MatchLevel::MatchLevel() : Scene("MatchLevel")
 {
 	WindowModule* windowModule = Engine::GetInstance()->GetModuleManager()->GetModule<WindowModule>();
@@ -18,6 +17,7 @@ Match_3::MatchLevel::MatchLevel() : Scene("MatchLevel")
 	GameObject* player = CreateGameObject("Player");
 	player->CreateComponent<PlayerMatch>();
 	SquareCollider* playerCollider = player->CreateComponent<SquareCollider>();
+	playerCollider->SetSize({ 5.f, 5.f });
 
 	GameObject* tileMatch = CreateGameObject("TileMatch");
 	TileMatch* tileMatchComponent = tileMatch->CreateComponent<TileMatch>();

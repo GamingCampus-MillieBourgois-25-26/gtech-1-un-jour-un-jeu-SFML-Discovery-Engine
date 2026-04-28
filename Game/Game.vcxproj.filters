@@ -13,12 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-
-    <Filter Include="Demo" />
   </ItemGroup>
-
   <ItemGroup>
-    <ClCompile Include="*.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\Demo\DemoScene.cpp">
@@ -63,17 +60,19 @@
     <ClCompile Include="Source\Match-3\MatchLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Match-3\ScoreMatch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Match-3\PlayerMatch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Match-3\TileMatch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Match-3\ScoreMatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
-
   <ItemGroup>
     <ClInclude Include="include\Demo\Player.h">
       <Filter>Header Files</Filter>
@@ -123,13 +122,16 @@
     <ClInclude Include="include\Match-3\MatchLevel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Match-3\TileMatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="include\Match-3\ScoreMatch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Match-3\PlayerMatch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Match-3\TileMatch.h">
+    <ClInclude Include="include\pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

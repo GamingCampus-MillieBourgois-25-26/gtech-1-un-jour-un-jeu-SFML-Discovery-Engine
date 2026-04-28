@@ -21,7 +21,7 @@ void HQComponent::Init()
 {
 	std::string string = std::to_string(hp);
 	life = GetOwner()->GetScene()->CreateGameObject("display");
-	life->SetPosition({ 470.f , 400.f });
+	life->SetPosition({ 450.f , 10.f });
 	life->CreateComponent<LifeDisplay>();
 	TextRenderer* text = life->CreateComponent<TextRenderer>("life: " + string + "/3");
 	text->SetColor(sf::Color::White);
@@ -35,11 +35,7 @@ void HQComponent::TakeDamage()
 	if (hp < 0)
 		hp = 0;
 	std::string string = std::to_string(hp);
-	life = GetOwner()->GetScene()->CreateGameObject("display");
-	life->SetPosition({ 470.f , 400.f });
-	life->CreateComponent<LifeDisplay>();
-	TextRenderer* text = life->CreateComponent<TextRenderer>("life: " + string + "/3");
-	text->SetColor(sf::Color::White);
+	life->GetComponent<TextRenderer>()->SetText("life: " + string + "/3");
 	if (hp == 0 && final == nullptr)
 	{
 		final = GetOwner()->GetScene()->CreateGameObject("display");

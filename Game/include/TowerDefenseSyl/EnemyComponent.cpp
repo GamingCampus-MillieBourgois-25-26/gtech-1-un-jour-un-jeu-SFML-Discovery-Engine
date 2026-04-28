@@ -1,12 +1,13 @@
-#include "EnemyAComponent.h"
+#include "EnemyComponent.h"
 
-EnemyAComponent::EnemyAComponent(std::vector<Maths::Vector2f> inPath, HQComponent* QGComp)
+EnemyComponent::EnemyComponent(std::vector<Maths::Vector2f> inPath, HQComponent* QGComp, int* argent)
 {
 	path = inPath;
     QG = QGComp;
+    gold = argent;
 }
 
-void EnemyAComponent::Update(float _delta_time)
+void EnemyComponent::Update(float _delta_time)
 {
     if (pathIndex >= path.size())
     {
@@ -25,11 +26,12 @@ void EnemyAComponent::Update(float _delta_time)
     }
 }
 
-void EnemyAComponent::InflictDamage(int dmg)
+void EnemyComponent::TakeDamage(int dmg)
 {
     health -= dmg;
     if (health <= 0)
     {
         GetOwner()->Disable();
+        *gold += 1;
     }
 }

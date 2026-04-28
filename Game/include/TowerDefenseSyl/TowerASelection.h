@@ -14,5 +14,6 @@ public:
 	RectangleShapeRenderer* shape;
 	SelectedTower* selector = nullptr;
 	char type = 'A';
+	int cost = 3;
 };
 

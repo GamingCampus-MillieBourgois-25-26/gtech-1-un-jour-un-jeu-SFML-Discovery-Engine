@@ -19,8 +19,8 @@ int main(const int _argc, const char** _argv)
         /*->SetScene<TowerDefense::TowerDefenseScene>();*/
         /*->SetScene<BullethellChris::BulletHell>();*/
         //->SetScene<BulletHellScene>();
-        /*->SetScene<TDScene>();*/
-        ->SetScene<ClickerScene>();
+        ->SetScene<TDScene>();
+        //->SetScene<ClickerScene>();
         /*->SetScene<ClickerChris::ClickerScene>();*/
 
     engine->Run();

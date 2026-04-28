@@ -1,14 +1,15 @@
 #include "Spawner.h"
-#include "TowerDefenseSyl/EnemyAComponent.h"
+#include "TowerDefenseSyl/EnemyComponent.h"
 #include "Core/GameObject.h"
 #include "Core/Scene.h"
 #include "Components/RectangleShapeRenderer.h"
 #include <iostream>
 
-Spawner::Spawner(std::vector<Maths::Vector2f> inPath, HQComponent* QGComp)
+Spawner::Spawner(std::vector<Maths::Vector2f> inPath, HQComponent* QGComp, int* argent)
 {
 	path = inPath;
 	QG = QGComp;
+	gold = argent;
 }
 
 void Spawner::Update(float _delta_time)
@@ -35,7 +36,7 @@ void Spawner::Wave1(float _delta_time)
 		count++;
 		//std::cout << "spawn" << std::endl;
 		GameObject* enemy = GetOwner()->GetScene()->CreateGameObject("enemy");
-		enemy->CreateComponent<EnemyAComponent>(path, QG);
+		enemy->CreateComponent<EnemyComponent>(path, QG, gold);
 		enemy->SetPosition(spawnPoint);
 		RectangleShapeRenderer* shape_renderer = enemy->CreateComponent<RectangleShapeRenderer>();
 		shape_renderer->SetColor(sf::Color::Yellow);

@@ -122,7 +122,7 @@
     <ClCompile Include="include\TowerDefenseSyl\LifeDisplay.cpp" />
     <ClCompile Include="Scenes\ClickerScenesSyl\ClickerScene.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\HQComponent.cpp" />
-    <ClCompile Include="include\TowerDefenseSyl\EnemyAComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\EnemyComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\EnemyBComponent.cpp" />
     <ClCompile Include="include\BulletHellSyl\Enemy.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\ProjectileComponent.cpp" />
@@ -151,7 +151,7 @@
     <ClInclude Include="include\TowerDefenseSyl\LifeDisplay.h" />
     <ClInclude Include="Scenes\ClickerScenesSyl\ClickerScene.h" />
     <ClInclude Include="include\TowerDefenseSyl\HQComponent.h" />
-    <ClInclude Include="include\TowerDefenseSyl\EnemyAComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\EnemyComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\EnemyBComponent.h" />
     <ClInclude Include="include\BulletHellSyl\Enemy.h" />
     <ClInclude Include="include\TowerDefenseSyl\ProjectileComponent.h" />

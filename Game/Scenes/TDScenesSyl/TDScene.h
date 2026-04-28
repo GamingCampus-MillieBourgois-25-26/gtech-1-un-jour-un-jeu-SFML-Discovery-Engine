@@ -3,7 +3,7 @@
 #include "Core/Scene.h"
 #include "Components/RectangleShapeRenderer.h"
 #include "Components/SpriteRenderer.h"
-#include "TowerDefenseSyl/EnemyAComponent.h"
+#include "TowerDefenseSyl/EnemyComponent.h"
 #include "TowerDefenseSyl/TowerAComponent.h"
 #include "TowerDefenseSyl/tileComponent.h"
 #include "TowerDefenseSyl/Spawner.h"
@@ -11,6 +11,7 @@
 #include "TowerDefenseSyl/Container.h"
 #include "TowerDefenseSyl/SelectedTower.h"
 #include "TowerDefenseSyl/TowerASelection.h"
+#include "TowerDefenseSyl/TDPlayer.h"
 #include "Modules/WindowModule.h"
 #include "TowerDefenseSyl/HQComponent.h"
 #include "Modules/AssetsModule.h"
@@ -35,9 +36,17 @@ public:
 			map[i].resize(15);
 		}
 
-		//_______________GameObjects________________
+		// ------------------ GameObjects ------------------
 		GameObject* selector = CreateGameObject("selection");
 		SelectedTower* selectComp = selector->CreateComponent<SelectedTower>();
+
+		GameObject* player = CreateGameObject("player");
+		TDPlayer* playerComp = player->CreateComponent<TDPlayer>();
+		player->SetPosition({ 450.f , 45.f });
+		TextRenderer* playerText = player->CreateComponent<TextRenderer>("");
+		playerText->SetCharacterSize(30);
+		playerText->SetColor(sf::Color::Yellow);
+		int* gold = playerComp->GetGold();
 		
 		//Create Map
 		HQComponent* QGComp;
@@ -61,7 +70,7 @@ public:
 					shape->SetColor(sf::Color::Transparent);
 					shape->SetSize(Maths::Vector2f(125.f, 125.f));
 					shape->SetPivot({ 13.5f, 13.8f });
-					tile->CreateComponent<Container>(shape, selectComp);
+					tile->CreateComponent<Container>(shape, selectComp, gold);
 					tile->SetPosition({ x * tileSize + offset, y * tileSize + offset });
 					tile->SetScale({ 0.22f,0.22f });
 					map[y][x] = tile;
@@ -78,8 +87,6 @@ public:
 			}
 		}
 
-		//
-
 		GameObject* spawner = CreateGameObject("spawner");
 		spawner->CreateComponent<Spawner>(path, QGComp);
 
@@ -90,15 +97,13 @@ public:
 		shapeA->SetPivot({ 30.f, 30.f });
 		selectTowerA->CreateComponent<SpriteRenderer>(towerATex);
 		selectTowerA->CreateComponent<TowerASelection>(shapeA, selectComp);
-		selectTowerA->SetPosition({ (float)window_size.x - 80.f , 120.f });
+		selectTowerA->SetPosition({ (float)window_size.x - 80.f , 190.f });
 		selectTowerA->SetScale({ 0.5f, 0.5f });
 
 		GameObject* tours = CreateGameObject("display");
-		tours->SetPosition({ (float)window_size.x - 125.f , 10.f });
+		tours->SetPosition({ (float)window_size.x - 125.f , 110.f });
 		TextRenderer* text = tours->CreateComponent<TextRenderer>("Tours");
 		text->SetColor(sf::Color::Cyan);
-
-		GameObject* player = CreateGameObject("player");
 	}
 
 	Maths::Vector2u window_size = Engine::GetInstance()->GetModuleManager()->GetModule<WindowModule>()->GetSize();
@@ -110,26 +115,26 @@ public:
 	std::vector<std::vector<GameObject*>> map;
 	std::vector<std::vector<int>> mapSheet =
 	{
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0},
+		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+		{0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+		{0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+		{0, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	};
 
 	std::vector<Maths::Vector2f> path = {

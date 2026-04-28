@@ -6,10 +6,11 @@
 #include "InputModule.h"
 #include <iostream>
 
-Container::Container(RectangleShapeRenderer* shap, SelectedTower* select)
+Container::Container(RectangleShapeRenderer* shap, SelectedTower* select, int* argent)
 {
     shape = shap;
     selector = select;
+    gold = argent;
 }
 
 void Container::Update(float _delta_time)
@@ -23,9 +24,10 @@ void Container::Update(float _delta_time)
             char* tower = selector->GetSelectedTower();
             if (tower == nullptr)
                 return;
-            if (*tower == 'A')
+            if (*tower == 'A' && *gold >= 3)
             {
                 empty = false;
+                *gold -= 3;
                 std::cout << "creation de A" << std::endl;
                 GameObject* tower = GetOwner()->GetScene()->CreateGameObject("tower");
                 tower->CreateComponent<TowerAComponent>();

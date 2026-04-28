@@ -52,6 +52,10 @@
     <ClCompile Include="src\TowerDefenseChris\SpawnerComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\TowerComponent.cpp" />
     <ClCompile Include="src\TowerDefenseChris\TowerDefenseScene.cpp" />
+    <ClCompile Include="src\Match3\Match3Board.cpp" />
+    <ClCompile Include="src\Match3\Match3Scene.cpp" />
+    <ClCompile Include="src\Match3\Match3UI.cpp" />
+    <ClCompile Include="src\Match3\Match3Controller.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Demo\Player.h" />
@@ -109,6 +113,10 @@
     <ClInclude Include="include\ClickerSyl\ScoreDisplay.h" />
     <ClInclude Include="include\TowerDefenseSyl\SelectedTower.h" />
     <ClInclude Include="include\TowerDefenseSyl\TowerASelection.h" />
+    <ClInclude Include="include\Match3\Match3Board.h" />
+    <ClInclude Include="include\Match3\Match3Scene.h" />
+    <ClInclude Include="include\Match3\Match3UI.h" />
+    <ClInclude Include="include\Match3\Match3Controller.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -123,7 +123,6 @@
     <ClCompile Include="Scenes\ClickerScenesSyl\ClickerScene.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\HQComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\EnemyComponent.cpp" />
-    <ClCompile Include="include\TowerDefenseSyl\EnemyBComponent.cpp" />
     <ClCompile Include="include\BulletHellSyl\Enemy.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\ProjectileComponent.cpp" />
     <ClCompile Include="Scenes\BHScenesSyl\BulletHellScene.cpp" />
@@ -152,7 +151,6 @@
     <ClInclude Include="Scenes\ClickerScenesSyl\ClickerScene.h" />
     <ClInclude Include="include\TowerDefenseSyl\HQComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\EnemyComponent.h" />
-    <ClInclude Include="include\TowerDefenseSyl\EnemyBComponent.h" />
     <ClInclude Include="include\BulletHellSyl\Enemy.h" />
     <ClInclude Include="include\TowerDefenseSyl\ProjectileComponent.h" />
     <ClInclude Include="Scenes\BHScenesSyl\BulletHellScene.h" />

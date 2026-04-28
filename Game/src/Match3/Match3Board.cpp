@@ -18,12 +18,26 @@ void Match3Board::Init(int width, int height)
 
         for (int x = 0; x < m_width; ++x)
         {
-            m_grid[y][x].type = RandomCandy();
+            CandyType candy;
+
+            do
+            {
+                candy = RandomCandy();
+            } while (
+                (x >= 2 &&
+                    m_grid[y][x - 1].type == candy &&
+                    m_grid[y][x - 2].type == candy)
+                ||
+                (y >= 2 &&
+                    m_grid[y - 1][x].type == candy &&
+                    m_grid[y - 2][x].type == candy)
+                );
+
+            m_grid[y][x].type = candy;
             m_grid[y][x].marked = false;
         }
     }
 }
-
 bool Match3Board::Swap(int x1, int y1, int x2, int y2)
 {
     if (!IsInside(x1, y1) || !IsInside(x2, y2))

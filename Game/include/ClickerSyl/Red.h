@@ -13,7 +13,7 @@ public:
 	float timer = 1.f;
 	int level = 0;
 	unsigned int* score;
-	unsigned int cost = 400;
+	unsigned int cost = 350;
 	float size = 76.f;
 	InputModule* input;
 };

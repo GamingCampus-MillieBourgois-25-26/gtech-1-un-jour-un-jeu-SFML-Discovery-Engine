@@ -68,17 +68,25 @@ public:
 
 		GameObject* display = CreateGameObject("display");
 		display->CreateComponent<ScoreDisplay>(&score, &nb);
+		TextRenderer* scoreText = display->CreateComponent<TextRenderer>("");
+		scoreText->SetColor(sf::Color::Yellow);
 
 		GameObject* cursorPrice = CreateGameObject("display");
 		cursorPrice->SetPosition({ (float)window_size.x - 200.f , 120.f });
+		TextRenderer* text1 = cursorPrice->CreateComponent<TextRenderer>("");
+		text1->SetColor(sf::Color::White);
 		cursorPrice->CreateComponent<PriceDisplay>(&cursorComp->cost);
 
 		GameObject* pinkPrice = CreateGameObject("display");
 		pinkPrice->SetPosition({ (float)window_size.x - 200.f , 270.f });
+		TextRenderer* text2 = pinkPrice->CreateComponent<TextRenderer>("");
+		text2->SetColor(sf::Color::White);
 		pinkPrice->CreateComponent<PriceDisplay>(&pinkComp->cost);;
 
 		GameObject* redPrice = CreateGameObject("display");
 		redPrice->SetPosition({ (float)window_size.x - 200.f , 413.f });
+		TextRenderer* text3 = redPrice->CreateComponent<TextRenderer>("");
+		text3->SetColor(sf::Color::White);
 		redPrice->CreateComponent<PriceDisplay>(&redComp->cost);
 	}
 

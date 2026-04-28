@@ -1,17 +1,25 @@
-#include "TowerAComponent.h"
-#include "ProjectileComponent.h"
-#include "Components/SpriteRenderer.h"
-#include "Modules/AssetsModule.h"
-#include "Core/GameObject.h"
-#include "Core/Scene.h"
-#include <iostream>
+#include "TowerDefenseSyl/Tower.h"
 
-TowerAComponent::TowerAComponent()
+Tower::Tower(Type towerType)
 {
-
+    type = towerType;
+    if (type == Type::A)
+    {
+        damage = 1;
+        atkSpeed = 1.6f;
+        reload = atkSpeed;
+        range = 150.f;
+    }
+    else
+    {
+        damage = 1;
+        atkSpeed = 0.5f;
+        reload = atkSpeed;
+        range = 130.f;
+    }
 }
 
-void TowerAComponent::Update(float _delta_time)
+void Tower::Update(float _delta_time)
 {
     reload += _delta_time;
     GameObject* obj = FindTarget();
@@ -25,7 +33,7 @@ void TowerAComponent::Update(float _delta_time)
     }
 }
 
-void TowerAComponent::shot(GameObject* obj)
+void Tower::shot(GameObject* obj)
 {
     AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
     GameObject* projectile = GetOwner()->GetScene()->CreateGameObject("projectile");
@@ -35,7 +43,7 @@ void TowerAComponent::shot(GameObject* obj)
     projectile->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/TowerDefense/bullet.png"));
 }
 
-GameObject* TowerAComponent::FindTarget()
+GameObject* Tower::FindTarget()
 {
     GameObject* owner = GetOwner();
     const auto& objects = owner->GetScene()->GetGameObjects();

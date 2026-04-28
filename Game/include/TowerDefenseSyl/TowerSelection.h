@@ -4,16 +4,22 @@
 #include "Components/RectangleShapeRenderer.h"
 #include "Core/GameObject.h"
 
-class TowerASelection : public Component
+enum class Type
+{
+	A,
+	B
+};
+
+class TowerSelection : public Component
 {
 public:
-	TowerASelection(RectangleShapeRenderer* shap, SelectedTower* select);
+	TowerSelection(RectangleShapeRenderer* shap, SelectedTower* select, Type TowerType);
 	void Update(float _delta_time) override;
 	bool IsUnderCursor();
 
 	RectangleShapeRenderer* shape;
 	SelectedTower* selector = nullptr;
-	char type = 'A';
+	Type type;
 	int cost = 5;
 };
 

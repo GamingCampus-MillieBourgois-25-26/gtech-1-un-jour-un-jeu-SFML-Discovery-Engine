@@ -1,5 +1,5 @@
 #include "Container.h"
-#include "TowerDefenseSyl/TowerAComponent.h"
+#include "TowerDefenseSyl/Tower.h"
 #include "Components/SpriteRenderer.h"
 #include "Modules/AssetsModule.h"
 #include "Core/Scene.h"
@@ -21,19 +21,28 @@ void Container::Update(float _delta_time)
         if (InputModule::GetMouseButtonDown(sf::Mouse::Button::Left) && empty == true)
         {
             AssetsModule* assets_module = Engine::GetInstance()->GetModuleManager()->GetModule<AssetsModule>();
-            char* tower = selector->GetSelectedTower();
+            Type* tower = selector->GetSelectedTower();
             if (tower == nullptr)
                 return;
-            if (*tower == 'A' && *gold >= 5)
+            if (*tower == Type::A && *gold >= 5)
             {
                 empty = false;
                 *gold -= 5;
-                std::cout << "creation de A" << std::endl;
-                GameObject* tower = GetOwner()->GetScene()->CreateGameObject("tower");
-                tower->CreateComponent<TowerAComponent>();
-                tower->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/TowerDefense/towerA.png"));
-                tower->SetScale({ 0.25f,0.25f });
-                tower->SetPosition(GetOwner()->GetPosition());
+                GameObject* newTower = GetOwner()->GetScene()->CreateGameObject("tower");
+                newTower->CreateComponent<Tower>(Type::A);
+                newTower->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/TowerDefense/towerA.png"));
+                newTower->SetScale({ 0.25f,0.25f });
+                newTower->SetPosition(GetOwner()->GetPosition());
+            }
+            if (*tower == Type::B && *gold >= 10)
+            {
+                empty = false;
+                *gold -= 10;
+                GameObject* newTower = GetOwner()->GetScene()->CreateGameObject("tower");
+                newTower->CreateComponent<Tower>(Type::B);
+                newTower->CreateComponent<SpriteRenderer>(assets_module->GetAsset<Texture>("Sylvain/TowerDefense/towerB.png"));
+                newTower->SetScale({ 0.25f,0.25f });
+                newTower->SetPosition(GetOwner()->GetPosition());
             }
         }
     }

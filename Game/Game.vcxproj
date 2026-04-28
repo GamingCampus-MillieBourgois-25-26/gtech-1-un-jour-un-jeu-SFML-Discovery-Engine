@@ -129,14 +129,14 @@
     <ClCompile Include="include\BulletHellSyl\BulletComponent.cpp" />
     <ClCompile Include="include\BulletHellSyl\Player.cpp" />
     <ClCompile Include="Scenes\TDScenesSyl\TDScene.cpp" />
-    <ClCompile Include="include\TowerDefenseSyl\TowerAComponent.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\Tower.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\TDPlayer.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\TileComponent.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\Spawner.cpp" />
     <ClCompile Include="include\ClickerSyl\Square.cpp" />
     <ClCompile Include="include\ClickerSyl\ScoreDisplay.cpp" />
     <ClCompile Include="include\TowerDefenseSyl\SelectedTower.cpp" />
-    <ClCompile Include="include\TowerDefenseSyl\TowerASelection.cpp" />
+    <ClCompile Include="include\TowerDefenseSyl\TowerSelection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\TowerDefenseSyl\Container.h" />
@@ -207,14 +207,14 @@
     <ClInclude Include="include\BulletHellSyl\BulletComponent.h" />
     <ClInclude Include="include\BulletHellSyl\Player.h" />
     <ClInclude Include="Scenes\TDScenesSyl\TDScene.h" />
-    <ClInclude Include="include\TowerDefenseSyl\TowerAComponent.h" />
+    <ClInclude Include="include\TowerDefenseSyl\Tower.h" />
     <ClInclude Include="include\TowerDefenseSyl\TDPlayer.h" />
     <ClInclude Include="include\TowerDefenseSyl\TileComponent.h" />
     <ClInclude Include="include\TowerDefenseSyl\Spawner.h" />
     <ClInclude Include="include\ClickerSyl\Square.h" />
     <ClInclude Include="include\ClickerSyl\ScoreDisplay.h" />
     <ClInclude Include="include\TowerDefenseSyl\SelectedTower.h" />
-    <ClInclude Include="include\TowerDefenseSyl\TowerASelection.h" />
+    <ClInclude Include="include\TowerDefenseSyl\TowerSelection.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

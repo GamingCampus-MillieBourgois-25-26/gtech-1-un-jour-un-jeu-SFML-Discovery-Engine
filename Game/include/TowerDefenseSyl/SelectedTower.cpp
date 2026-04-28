@@ -1,13 +1,13 @@
 #include "SelectedTower.h"
 #include <iostream>
 
-void SelectedTower::SetSelectedTower(char* comp)
+void SelectedTower::SetSelectedTower(Type* comp)
 {
 	std::cout << "selection" << std::endl;
 	select = comp;
 }
 
-char* SelectedTower::GetSelectedTower()
+Type* SelectedTower::GetSelectedTower()
 {
 	return select;
 }

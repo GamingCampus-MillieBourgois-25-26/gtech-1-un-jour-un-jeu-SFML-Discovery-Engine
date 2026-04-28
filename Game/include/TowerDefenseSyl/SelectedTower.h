@@ -1,12 +1,14 @@
 #pragma once
 #include "Core/Component.h"
 
+enum class Type;
+
 class SelectedTower : public Component
 {
 public:
-	void SetSelectedTower(char* comp);
-	char* GetSelectedTower();
+	void SetSelectedTower(Type* comp);
+	Type* GetSelectedTower();
 
-	char* select = nullptr;
+	Type* select = nullptr;
 };
 

@@ -4,13 +4,13 @@
 #include "Components/RectangleShapeRenderer.h"
 #include "Components/SpriteRenderer.h"
 #include "TowerDefenseSyl/EnemyTD.h"
-#include "TowerDefenseSyl/TowerAComponent.h"
+#include "TowerDefenseSyl/Tower.h"
 #include "TowerDefenseSyl/tileComponent.h"
 #include "TowerDefenseSyl/Spawner.h"
 #include "TowerDefenseSyl/ProjectileComponent.h"
 #include "TowerDefenseSyl/Container.h"
 #include "TowerDefenseSyl/SelectedTower.h"
-#include "TowerDefenseSyl/TowerASelection.h"
+#include "TowerDefenseSyl/TowerSelection.h"
 #include "TowerDefenseSyl/TDPlayer.h"
 #include "Modules/WindowModule.h"
 #include "TowerDefenseSyl/HQComponent.h"
@@ -30,6 +30,8 @@ public:
 		Texture* towerATex = assets_module->LoadAsset<Texture>("Sylvain/TowerDefense/towerA.png");
 		Texture* bulletTex = assets_module->LoadAsset<Texture>("Sylvain/TowerDefense/bullet.png");
 		Texture* QGTex = assets_module->LoadAsset<Texture>("Sylvain/TowerDefense/QG.png");
+		Texture* towerBTex = assets_module->LoadAsset<Texture>("Sylvain/TowerDefense/towerB.png");
+		Texture* enemyTex = assets_module->LoadAsset<Texture>("Sylvain/TowerDefense/enemy.png");
 
 		map.resize(20);
 		for (int i = 0; i < 20; ++i) {
@@ -90,15 +92,25 @@ public:
 		GameObject* spawner = CreateGameObject("spawner");
 		spawner->CreateComponent<Spawner>(path, QGComp, gold);
 
-		GameObject* selectTowerA = CreateGameObject("selection");
+		GameObject* selectTowerA = CreateGameObject("TowerIcon1");
 		RectangleShapeRenderer* shapeA = selectTowerA->CreateComponent<RectangleShapeRenderer>();
 		shapeA->SetColor(sf::Color::Transparent);
 		shapeA->SetSize(Maths::Vector2f(125.f, 125.f));
 		shapeA->SetPivot({ 30.f, 30.f });
 		selectTowerA->CreateComponent<SpriteRenderer>(towerATex);
-		selectTowerA->CreateComponent<TowerASelection>(shapeA, selectComp);
+		selectTowerA->CreateComponent<TowerSelection>(shapeA, selectComp, Type::A);
 		selectTowerA->SetPosition({ (float)window_size.x - 80.f , 190.f });
 		selectTowerA->SetScale({ 0.5f, 0.5f });
+
+		GameObject* selectTowerB = CreateGameObject("TowerIcon2");
+		RectangleShapeRenderer* shapeB = selectTowerB->CreateComponent<RectangleShapeRenderer>();
+		shapeB->SetColor(sf::Color::Transparent);
+		shapeB->SetSize(Maths::Vector2f(125.f, 125.f));
+		shapeB->SetPivot({ 30.f, 30.f });
+		selectTowerB->CreateComponent<SpriteRenderer>(towerBTex);
+		selectTowerB->CreateComponent<TowerSelection>(shapeB, selectComp, Type::B);
+		selectTowerB->SetPosition({ (float)window_size.x - 80.f , 280.f });
+		selectTowerB->SetScale({ 0.5f, 0.5f });
 
 		GameObject* tours = CreateGameObject("display");
 		tours->SetPosition({ (float)window_size.x - 125.f , 110.f });

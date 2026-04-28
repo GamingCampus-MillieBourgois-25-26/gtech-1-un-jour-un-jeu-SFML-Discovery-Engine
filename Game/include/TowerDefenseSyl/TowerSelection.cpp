@@ -1,13 +1,14 @@
-#include "TowerASelection.h"
+#include "TowerSelection.h"
 #include "InputModule.h"
 
-TowerASelection::TowerASelection(RectangleShapeRenderer* shap, SelectedTower* select)
+TowerSelection::TowerSelection(RectangleShapeRenderer* shap, SelectedTower* select, Type TowerType)
 {
 	shape = shap;
     selector = select;
+    type = TowerType;
 }
 
-void TowerASelection::Update(float _delta_time)
+void TowerSelection::Update(float _delta_time)
 {
     if (IsUnderCursor())
     {
@@ -19,7 +20,7 @@ void TowerASelection::Update(float _delta_time)
         shape->SetColor(sf::Color::Transparent);
 }
 
-bool TowerASelection::IsUnderCursor()
+bool TowerSelection::IsUnderCursor()
 {
     const Maths::Vector2f mouse_position = static_cast<Maths::Vector2f>(InputModule::GetMousePosition());
 

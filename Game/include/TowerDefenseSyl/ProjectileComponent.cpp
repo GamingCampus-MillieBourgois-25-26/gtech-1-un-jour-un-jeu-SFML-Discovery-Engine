@@ -1,5 +1,5 @@
 #include "ProjectileComponent.h"
-#include "TowerDefenseSyl/EnemyComponent.h"
+#include "TowerDefenseSyl/EnemyTD.h"
 
 
 ProjectileComponent::ProjectileComponent(GameObject* obj)
@@ -16,7 +16,9 @@ void ProjectileComponent::Update(float _delta_time)
 	{
 		if (target->IsEnabled())
 		{
-			target->GetComponent<EnemyComponent>();
+			EnemyTD* enemy = target->GetComponent<EnemyTD>();
+			if (enemy)
+				enemy->TakeDamage(damage);
 		}
 		GetOwner()->MarkForDeletion();
 	}

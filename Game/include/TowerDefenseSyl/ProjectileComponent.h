@@ -13,4 +13,5 @@ private:
 	float speed = 400.f;
 	GameObject* target;
 	Maths::Vector2f pos;
+	int damage = 1;
 };

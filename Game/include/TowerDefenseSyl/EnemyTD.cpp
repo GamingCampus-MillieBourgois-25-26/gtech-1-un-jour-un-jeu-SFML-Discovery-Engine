@@ -1,18 +1,19 @@
-#include "EnemyComponent.h"
+#include "EnemyTD.h"
 
-EnemyComponent::EnemyComponent(std::vector<Maths::Vector2f> inPath, HQComponent* QGComp, int* argent)
+EnemyTD::EnemyTD(std::vector<Maths::Vector2f> inPath, HQComponent* QGComp, int* argent)
 {
 	path = inPath;
     QG = QGComp;
     gold = argent;
 }
 
-void EnemyComponent::Update(float _delta_time)
+void EnemyTD::Update(float _delta_time)
 {
     if (pathIndex >= path.size())
     {
         QG->TakeDamage();
         GetOwner()->MarkForDeletion();
+        GetOwner()->Disable();
         return;
     }
     Maths::Vector2f direction = path[pathIndex] - GetOwner()->GetPosition();
@@ -26,12 +27,13 @@ void EnemyComponent::Update(float _delta_time)
     }
 }
 
-void EnemyComponent::TakeDamage(int dmg)
+void EnemyTD::TakeDamage(int dmg)
 {
     health -= dmg;
     if (health <= 0)
     {
-        GetOwner()->Disable();
         *gold += 1;
+        GetOwner()->MarkForDeletion();
+        GetOwner()->Disable();
     }
 }

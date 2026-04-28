@@ -1,5 +1,5 @@
 #include "Spawner.h"
-#include "TowerDefenseSyl/EnemyComponent.h"
+#include "TowerDefenseSyl/EnemyTD.h"
 #include "Core/GameObject.h"
 #include "Core/Scene.h"
 #include "Components/RectangleShapeRenderer.h"
@@ -30,13 +30,12 @@ void Spawner::Update(float _delta_time)
 void Spawner::Wave1(float _delta_time)
 {
 	timer += _delta_time;
-	if (timer >= 0.3f)
+	if (timer >= 0.6f)
 	{
 		timer = 0.f;
 		count++;
-		//std::cout << "spawn" << std::endl;
 		GameObject* enemy = GetOwner()->GetScene()->CreateGameObject("enemy");
-		enemy->CreateComponent<EnemyComponent>(path, QG, gold);
+		enemy->CreateComponent<EnemyTD>(path, QG, gold);
 		enemy->SetPosition(spawnPoint);
 		RectangleShapeRenderer* shape_renderer = enemy->CreateComponent<RectangleShapeRenderer>();
 		shape_renderer->SetColor(sf::Color::Yellow);

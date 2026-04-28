@@ -24,10 +24,10 @@ void Container::Update(float _delta_time)
             char* tower = selector->GetSelectedTower();
             if (tower == nullptr)
                 return;
-            if (*tower == 'A' && *gold >= 3)
+            if (*tower == 'A' && *gold >= 5)
             {
                 empty = false;
-                *gold -= 3;
+                *gold -= 5;
                 std::cout << "creation de A" << std::endl;
                 GameObject* tower = GetOwner()->GetScene()->CreateGameObject("tower");
                 tower->CreateComponent<TowerAComponent>();

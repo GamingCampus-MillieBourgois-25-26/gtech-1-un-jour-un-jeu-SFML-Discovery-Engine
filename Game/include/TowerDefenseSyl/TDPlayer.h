@@ -9,6 +9,6 @@ class TDPlayer : public Component
 public:
 	void Update(float _delta_time) override;
 	int* GetGold();
-	int gold = 10;
+	int gold = 15;
 };
 

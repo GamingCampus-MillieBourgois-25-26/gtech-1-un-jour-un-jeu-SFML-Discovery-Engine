@@ -3,7 +3,7 @@
 #include "Core/Scene.h"
 #include "Components/RectangleShapeRenderer.h"
 #include "Components/SpriteRenderer.h"
-#include "TowerDefenseSyl/EnemyComponent.h"
+#include "TowerDefenseSyl/EnemyTD.h"
 #include "TowerDefenseSyl/TowerAComponent.h"
 #include "TowerDefenseSyl/tileComponent.h"
 #include "TowerDefenseSyl/Spawner.h"
@@ -88,7 +88,7 @@ public:
 		}
 
 		GameObject* spawner = CreateGameObject("spawner");
-		spawner->CreateComponent<Spawner>(path, QGComp);
+		spawner->CreateComponent<Spawner>(path, QGComp, gold);
 
 		GameObject* selectTowerA = CreateGameObject("selection");
 		RectangleShapeRenderer* shapeA = selectTowerA->CreateComponent<RectangleShapeRenderer>();

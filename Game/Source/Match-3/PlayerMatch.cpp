@@ -100,9 +100,9 @@ SquareCollider* PlayerMatch::ReturnTileName(int id)
 void PlayerMatch::swapPosition(int i, int j)
 {
     GameObject* TileMatchComponent = GetOwner()->GetScene()->FindGameObject("TileMatch");
-    GameObject* TileSelected = TileMatchComponent->GetComponent<Match_3::TileMatch>()->GetTiles()[index_I][index_J];
-    GameObject* otherTile = TileMatchComponent->GetComponent<Match_3::TileMatch>()->GetTiles()[i][j]; // On récupère l'autre tile (celle à inverser).
-    
+    GameObject* TileSelected = TileMatchComponent->GetComponent<Match_3::TileMatch>()->GetSelectedTile(index_I, index_J);
+    GameObject* otherTile = TileMatchComponent->GetComponent<Match_3::TileMatch>()->GetSelectedTile(i, j); // On récupère l'autre tile (celle à inverser).
+
     Maths::Vector2f TileSelectedPosition = TileSelected->GetPosition();
     Maths::Vector2f otherTilePosition = otherTile->GetPosition();
     Maths::Vector2f tempPosition = TileSelectedPosition;
@@ -116,10 +116,10 @@ void PlayerMatch::swapPosition(int i, int j)
     TileSelected->SetPosition(TileSelectedPosition);
     otherTile->SetPosition(otherTilePosition);
 
-    // Swap dans le tableau
+    //// Swap dans le tableau
 
-    GameObject* temp = TileSelected;
-    TileSelected = otherTile;
-    otherTile = temp;
+    //GameObject* temp = TileSelected;
+    //TileSelected = otherTile;
+    //otherTile = temp;
 
 }

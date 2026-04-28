@@ -13,6 +13,8 @@ namespace Match_3
 		void Render(sf::RenderWindow* window) override;
 
 		auto& GetTiles() { return Tiles; }
+		GameObject* GetSelectedTile(int i, int j){ return Tiles[i][j]; }
+
 	private:
 		GameObject* Tiles[BOARD_SIZE][BOARD_SIZE];
 	};

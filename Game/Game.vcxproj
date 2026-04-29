@@ -12,7 +12,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="include\BulletHellSyl\EndGame.cpp" />
+    <ClCompile Include="src\Match3\Match3Controller.cpp" />
+    <ClCompile Include="src\Match3\Match3UI.cpp" />
+    <ClCompile Include="src\Match3\Match3Scene.cpp" />
+    <ClCompile Include="src\Match3\Match3Board.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
       <ForcedIncludeFiles />
@@ -31,6 +34,10 @@
     <ClInclude Include="include\Demo\TileCounter.h" />
     <ClInclude Include="include\Demo\TileSpawner.h" />
     <ClInclude Include="include\pch.h" />
+    <ClInclude Include="include\Match3\Match3Board.h" />
+    <ClInclude Include="include\Match3\Match3Scene.h" />
+    <ClInclude Include="include\Match3\Match3UI.h" />
+    <ClInclude Include="include\Match3\Match3Controller.h" />
     <ClInclude Include="Scenes\Demo\DemoScene.h" />
     <ClInclude Include="include\BulletHellSyl\Star.h" />
   </ItemGroup>

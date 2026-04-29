@@ -7,7 +7,7 @@
 #include "Scenes/BHScenesSyl/BulletHellScene.h"
 #include "Scenes/TDScenesSyl/TDScene.h"
 #include "Scenes/ClickerScenesSyl/ClickerScene.h"
-
+#include "Match3/Match3Scene.h"
 
 int main(const int _argc, const char** _argv)
 {
@@ -18,10 +18,11 @@ int main(const int _argc, const char** _argv)
     engine->GetModuleManager()->GetModule<SceneModule>()
         /*->SetScene<TowerDefense::TowerDefenseScene>();*/
         /*->SetScene<BullethellChris::BulletHell>();*/
-        //->SetScene<BulletHellScene>();
-        ->SetScene<TDScene>();
-        //->SetScene<ClickerScene>();
+        /*->SetScene<BulletHellScene>();*/
+        /*->SetScene<TDScene>();*/
+        /*->SetScene<ClickerScene>();*/
         /*->SetScene<ClickerChris::ClickerScene>();*/
+        ->SetScene<Match3::Match3Scene>();
 
     engine->Run();
 
